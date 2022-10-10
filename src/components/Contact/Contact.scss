@@ -31,7 +31,7 @@ form textarea {
   box-shadow: inset 0px 2px 3px 1px rgba(0, 0, 0, 0.05),
     0px 1px 0px 0px rgba(255, 255, 255, 0.025);
   width: 100%;
-  margin: 0.75em 0;
+  margin: 0.33em 0;
 }
 
 form input[type="text"]:focus,
@@ -44,7 +44,7 @@ form textarea:focus {
 }
 
 form textarea {
-  height: 15em;
+  height: 8em;
 }
 
 form .actions:last-child {

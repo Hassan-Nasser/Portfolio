@@ -4,12 +4,9 @@ import Modal from "react-bootstrap/Modal";
 import { Scrollbars } from "react-custom-scrollbars";
 import Tag from "../Tag/Tag";
 import 'react-multi-carousel/lib/styles.css';
-import { db } from "../../config/firebase";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'bootstrap/dist/css/bootstrap.css';
-import mydatabase from "../../constants/projects.json";
-import { collection, doc, getDocs, setDoc } from "firebase/firestore/lite";
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
@@ -71,31 +68,8 @@ class Portfolio extends Component {
 
   componentDidMount() {
     this.getProjects();
-    // this.fetch();
-    // this.addData();
   }
 
-  // addData = async() => {
-  //   mydatabase.forEach(async (element) => {
-  //     const l =  await firebase.firestore().collection('myDB').doc(element.name).set(element);
-  //     console.log("++++++++++++++++++", l);
-  //     // await db.collection("myDB").doc(element.name).set(element);
-  //   }
-  //   )
-  // }
-  // fetch = async () => {
-  //   const documents = (await getDocs(collection(db, 'projects'))).docs.map((doc) => doc.data());
-  //   const json = new Blob([JSON.stringify(documents, null, 4)], { type: 'application/json' });
-  //   console.log("sss",json);
-  //   writeFileP(`/public/data.json`, "Hello World", (err, data) => {
-  //     console.log(err || data);
-  // });
-  // fs.writeFile('/public/data.json', json, (err) => {
-  //   if (err)
-  //     console.log("Errorrr" + err);
-  //   console.log("write sucessfully");
-  // });
-  // }
 
   getProjects = async () => {
     const projects = await firebase.firestore().collection('projects').where("spotlight", "==", true).get();
