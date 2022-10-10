@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { TiChevronLeftOutline, TiChevronRightOutline } from 'https://cdn.skypack.dev/react-icons/ti';
 import "./Carousel.scss";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+// import 'font-awesome/css/font-awesome.min.css';
 
 const Carousel = ({ children }) => {
     const [active, setActive] = useState(2);
@@ -57,7 +58,7 @@ const Carousel = ({ children }) => {
     const next = () => {
         setActive(i => {
             i = i + 1;
-            if (i === count-1)
+            if (i === count - 1)
                 i = 0;
             return i;
         })
@@ -76,7 +77,11 @@ const Carousel = ({ children }) => {
             onTouchEnd={() => handleTouchEnd()}
 
         >
-            {active > 0 && <button className='nav left' onClick={() => setActive(i => i - 1)}><TiChevronLeftOutline /></button>}
+            {active > 0 &&
+                <button className='nav left' onClick={() => setActive(i => i - 1)}>
+                     <FontAwesomeIcon icon={faChevronLeft} />
+
+                </button>}
             {React.Children.map(children, (child, i) => (
                 <div className='card-container' style={{
                     '--active': i === active ? 1 : 0,
@@ -90,7 +95,10 @@ const Carousel = ({ children }) => {
                     {child}
                 </div>
             ))}
-            {active < count - 1 && <button className='nav right' onClick={() => setActive(i => i + 1)}><TiChevronRightOutline /></button>}
+            {active < count - 1 &&
+             <button className='nav right' onClick={() => setActive(i => i + 1)}>
+                 <FontAwesomeIcon icon={faChevronRight} />
+                </button>}
         </div>
     );
 };
