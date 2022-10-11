@@ -11,6 +11,7 @@ import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { Link } from "react-router-dom";
+import {db} from "../../config/firebase";
 
 
 const storage = getStorage();
