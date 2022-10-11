@@ -71,11 +71,6 @@
       "last 1 safari version"
     ]
   },
-  "browser": {
-    "fs": false,
-    "path": false,
-    "os": false
-  },
   "devDependencies": {
     "gh-pages": "^4.0.0"
   }
