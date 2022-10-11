@@ -29,7 +29,6 @@ const Carousel = ({ children }) => {
 
     const handleTouchEnd = () => {
         if (touchStart - touchEnd > 150) {
-            console.log("swipe left");
             setActive(i => i + 1)
         }
 
@@ -46,24 +45,6 @@ const Carousel = ({ children }) => {
             setActive(i => i - 1)
         }
     }
-
-    const pervious = () => {
-        setActive(i => {
-            i = i - 1;
-            if (i === 0)
-                i = count - 1;
-            return i;
-        })
-    }
-    const next = () => {
-        setActive(i => {
-            i = i + 1;
-            if (i === count - 1)
-                i = 0;
-            return i;
-        })
-    }
-
 
     const MAX_VISIBILITY = 4;
     return (

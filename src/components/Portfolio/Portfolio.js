@@ -9,27 +9,8 @@ import { db } from "../../config/firebase";
 import { collection, getDocs } from 'firebase/firestore/lite';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
-// import Tab from "react-bootstrap/Tab";
-// import Tabs from 'react-bootstrap/Tabs';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
-
-
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1
-  }
-};
 
 
 class Portfolio extends Component {

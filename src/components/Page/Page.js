@@ -10,19 +10,19 @@ export function Page({ page, ...rest }) {
     return (
         <div className="wrapper2" style={{ backgroundColor: page.color }}>
             <div className="page-container">
-                {page.pageNumber == 1 && (
+                {page.pageNumber === 1 && (
                     <Profile />
                 )}
-                {page.pageNumber == 2 && (
+                {page.pageNumber === 2 && (
                     <Work />
                 )}
-                {page.pageNumber == 3 && (
+                {page.pageNumber === 3 && (
                     <Highlight />
                 )}
-                {page.pageNumber == 4 && (
+                {page.pageNumber === 4 && (
                     <Portfolio />
                 )}
-                {page.pageNumber == 5 && (
+                {page.pageNumber === 5 && (
                     <Contact />
                 )}
                 {/* <Form /> */}

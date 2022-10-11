@@ -23,10 +23,10 @@ export const pages = [
   //   pageNumber: 4,
   //   color: "#57DCBE"
   // },
-  {
-    path: "/contact",
-    title: "Contact",
-    pageNumber: 5,
-    color: "#60C689"
-  }
+  // {
+  //   path: "/contact",
+  //   title: "Contact",
+  //   pageNumber: 5,
+  //   color: "#60C689"
+  // }
 ];
