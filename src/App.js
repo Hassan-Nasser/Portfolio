@@ -7,7 +7,7 @@ import { Routes } from "./components/Routes";
 function App() {
   return (
     <AppContextProvider>
-      <BrowserRouter>
+      <BrowserRouter  basename="/Portfolio" >
         <Navigation />
         <Routes />
       </BrowserRouter>
