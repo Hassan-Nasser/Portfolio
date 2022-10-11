@@ -11,18 +11,18 @@ export const pages = [
     pageNumber: 2,
     color: "#5727B0"
   },
-  {
-    path: "/highlight",
-    title: "Highlight",
-    pageNumber: 3,
-    color: "#57ACDC"
-  },
-  {
-    path: "/Portfolio",
-    title: "portfolio",
-    pageNumber: 4,
-    color: "#57DCBE"
-  },
+  // {
+  //   path: "/highlight",
+  //   title: "Highlight",
+  //   pageNumber: 3,
+  //   color: "#57ACDC"
+  // },
+  // {
+  //   path: "/Portfolio",
+  //   title: "portfolio",
+  //   pageNumber: 4,
+  //   color: "#57DCBE"
+  // },
   {
     path: "/contact",
     title: "Contact",
