@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.1b108f19.css",
-    "main.js": "/static/js/main.151957a6.js",
-    "static/media/Multiplayer.png": "/static/media/Multiplayer.cf745757bcd691fc2572.png",
-    "static/media/AR&VR.png": "/static/media/AR&VR.d323ad0ba71319981077.png",
-    "static/media/Unity.png": "/static/media/Unity.660982af4d24e51c8574.png",
-    "static/media/ProfilePicture.jpg": "/static/media/ProfilePicture.1867a6fe21e7a8ea3933.jpg",
-    "static/media/Unreal.png": "/static/media/Unreal.197dfa054fdf40f2d57d.png",
-    "static/media/revicons.eot": "/static/media/revicons.a77de540a38981833f9e.eot",
-    "static/media/revicons.ttf": "/static/media/revicons.57fd05d4ae650374c8de.ttf",
-    "static/media/revicons.woff": "/static/media/revicons.e8746a624ed098489406.woff",
-    "index.html": "/index.html",
-    "main.1b108f19.css.map": "/static/css/main.1b108f19.css.map",
-    "main.151957a6.js.map": "/static/js/main.151957a6.js.map"
+    "main.css": "/Portfolio/static/css/main.b1ebd226.css",
+    "main.js": "/Portfolio/static/js/main.540b4f1b.js",
+    "static/media/Multiplayer.png": "/Portfolio/static/media/Multiplayer.cf745757bcd691fc2572.png",
+    "static/media/AR&VR.png": "/Portfolio/static/media/AR&VR.d323ad0ba71319981077.png",
+    "static/media/Unity.png": "/Portfolio/static/media/Unity.660982af4d24e51c8574.png",
+    "static/media/ProfilePicture.jpg": "/Portfolio/static/media/ProfilePicture.1867a6fe21e7a8ea3933.jpg",
+    "static/media/Unreal.png": "/Portfolio/static/media/Unreal.197dfa054fdf40f2d57d.png",
+    "static/media/revicons.eot": "/Portfolio/static/media/revicons.a77de540a38981833f9e.eot",
+    "static/media/revicons.ttf": "/Portfolio/static/media/revicons.57fd05d4ae650374c8de.ttf",
+    "static/media/revicons.woff": "/Portfolio/static/media/revicons.e8746a624ed098489406.woff",
+    "index.html": "/Portfolio/index.html",
+    "main.b1ebd226.css.map": "/Portfolio/static/css/main.b1ebd226.css.map",
+    "main.540b4f1b.js.map": "/Portfolio/static/js/main.540b4f1b.js.map"
   },
   "entrypoints": [
-    "static/css/main.1b108f19.css",
-    "static/js/main.151957a6.js"
+    "static/css/main.b1ebd226.css",
+    "static/js/main.540b4f1b.js"
   ]
 }
