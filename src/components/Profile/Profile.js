@@ -11,7 +11,7 @@ class Profile extends Component {
       <>
         <div className="container">
           <div className="row d-flex justify-content-center">
-            <div className="col-lg-3 col-md-6 col-sm-3 profile-img">
+            <div className="col-lg-3 col-md-6 col-sm-6 profile-img">
               <span className="image fit">
                 <img className="profile-image" src={require('../../images/ProfilePicture.jpg')} alt="pic" />
               </span>
@@ -19,7 +19,7 @@ class Profile extends Component {
           </div>
 
           <div className="row d-flex justify-content-center " >
-            <header className=" col-md-12 col-sm-6 col-lg-6" >
+            <header className=" col-md-12 col-sm-12 col-lg-6" >
               <h1 className="profile-header">
                 <strong>Hassan Nasser</strong>
               </h1>
