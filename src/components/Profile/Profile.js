@@ -11,7 +11,7 @@ class Profile extends Component {
       <>
         <div className="container">
           <div className="row d-flex justify-content-center">
-            <div className="col-lg-3 col-md-6 col-sm-6 profile-img">
+            <div className="col-lg-3 col-md-4 col-sm-6 profile-img">
               <span className="image fit">
                 <img className="profile-image" src={require('../../images/ProfilePicture.jpg')} alt="pic" />
               </span>
@@ -29,7 +29,7 @@ class Profile extends Component {
             </header>
           </div>
           <div className="row d-flex justify-content-center ">
-            <div className="title-profile col-md-8 col-sm-12 col-lg-8">
+            <div className="title-profile col-md-10 col-sm-12 col-lg-10">
               <div className="intro">
                 <p>
                   I am a game developer living in Cairo, Egypt.
@@ -39,7 +39,7 @@ class Profile extends Component {
                 </p>
               </div>
               <div className="scrolly">
-                <Link to="/work"  className="btn btn-lg btn-primary">Learn about what I do</Link>
+                <a href="#work"  className="btn btn-lg btn-primary">Learn about what I do</a>
               </div>
 
             </div>

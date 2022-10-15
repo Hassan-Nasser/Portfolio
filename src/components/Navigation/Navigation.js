@@ -1,36 +1,26 @@
 import React from "react";
 import { pages } from "../../data";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
 import "./Navigation.scss";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const NavLink = styled.a`
-  border-radius: 8px;
-  flex: none;
-  font-weight: 500;
-  padding: 6px 6px;
-  text-decoration: none;
-  transition: background-color 200ms ease;
-
-  &:hover {
-    background-color: rgba(47, 66, 80, 0.2);
-    text-decoration: none;
-  }
-`;
-
 export function Navigation(props) {
-  return (
-    <div {...props}>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+return (
+    <div>
+
+      <a id="logo" href="/" >Hassan Nasser</a>
+      <ul id="menu">
         {pages.map((page, index) => (
-          <NavLink as={Link} key={index} to={page.path}>
-            {page.title}
-          </NavLink>
+          <li className={props.activePage === index ? "active" : ""} key={index}
+            onClick={() => { props.goToPage(page.pageNumber) }}
+            data-menuanchor={page.title}>
+            <a className="link">
+              {page.title}
+            </a>
+          </li>
+
         ))}
-      </nav>
+      </ul>
     </div>
   );
-
 }
 

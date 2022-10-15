@@ -65,14 +65,17 @@ class Contact extends Component {
   render() {
     return (
       <>
-        <div className="container medium">
-          <header>
-            <h2>Get in touch</h2>
-            <p>
-              As a freelancer, i'm available for new projects and
-              collaborations.
-            </p>
-          </header>
+        <div className="contact-container">
+          <div className="center">
+            <header >
+              <h2>Get in touch</h2>
+              <p>
+                As a freelancer, i'm available for new projects and
+                collaborations.
+              </p>
+            </header>
+          </div>
+
           <div className="row">
             <div className="col-12">
               <form method="post" onSubmit={this.handleSubmit}>
@@ -120,33 +123,34 @@ class Contact extends Component {
                       onChange={(e) => this.handleChange("message", e)}
                     ></textarea>
                   </div>
-                  <div className="col-lg-12">
-                    <ul className="actions">
-                      <li>
-                        {this.state.name !== "" &&
+                  <div className="row submit ">
+                    <div className="col-lg-12 center">
+
+                      {this.state.name !== "" &&
                         this.state.subject !== "" &&
                         this.state.email !== "" &&
                         this.state.message !== "" ? (
-                          <input
-                            type="submit"
-                            className="btn btn-lg btn-primary"
-                            value="Send Message"
-                          />
-                        ) : (
-                          <input
-                            type="submit"
-                            disabled
-                            className="btn btn-lg btn-primary"
-                            value="Send Message"
-                          />
-                        )}
-                      </li>
-                    </ul>
+                        <input
+                          type="submit"
+                          className="btn btn-lg btn-primary"
+                          value="Send Message"
+                        />
+                      ) : (
+                        <input
+                          type="submit"
+                          disabled
+                          className="btn btn-lg btn-primary"
+                          value="Send Message"
+                        />
+                      )}
+
+                    </div>
                   </div>
+
                 </div>
               </form>
             </div>
-            <div className="col-lg-12">
+            <div className="col-lg-12 center">
               <hr />
               <h3>Find me on ...</h3>
               <ul className="social">
@@ -156,7 +160,7 @@ class Contact extends Component {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <FontAwesomeIcon icon={faTwitter} size="3x" />
+                    <FontAwesomeIcon icon={faTwitter} size="2x" />
                   </a>
                 </li>
                 <li>
@@ -165,7 +169,7 @@ class Contact extends Component {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <FontAwesomeIcon icon={faFacebookF} size="3x" />
+                    <FontAwesomeIcon icon={faFacebookF} size="2x" />
                   </a>
                 </li>
                 <li>
@@ -174,7 +178,7 @@ class Contact extends Component {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <FontAwesomeIcon icon={faLinkedin} size="3x" />
+                    <FontAwesomeIcon icon={faLinkedin} size="2x" />
                   </a>
                 </li>
                 <li>
@@ -183,7 +187,7 @@ class Contact extends Component {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <FontAwesomeIcon icon={faGithub} size="3x" />
+                    <FontAwesomeIcon icon={faGithub} size="2x" />
                   </a>
                 </li>
                 <li>
@@ -192,7 +196,7 @@ class Contact extends Component {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <FontAwesomeIcon icon={faYoutube} size="3x" />
+                    <FontAwesomeIcon icon={faYoutube} size="2x" />
                   </a>
                 </li>
               </ul>
@@ -200,6 +204,8 @@ class Contact extends Component {
           </div>
         </div>
       </>
+
+
     );
   }
 }

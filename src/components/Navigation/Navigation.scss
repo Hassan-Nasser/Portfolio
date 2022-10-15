@@ -1,31 +1,108 @@
-nav.navbar {
-    justify-content: center;
-}
-.navbar{
-    text-align: center;
-    align-items: center !important;
-}
-// .nav-bar {
-//     // background-color: #282828;
-//     // width: 100%;
-//     // text-align: center;
-//     flex: none;
-//     margin: 0 auto;
+// nav.navbar {
+//     justify-content: center;
 // }
-
-//   .bar-container{
-// justify-content: center !important;
-//   }
-// .nav-link {
-//     border-radius: 8px;
-//     flex: none;
-//     font-weight: 500;
-//     padding: 12px 24px;
-//     text-decoration: none;
-//     transition: background-color 200ms ease;
-
-//     &:hover {
-//         background-color: rgba(47, 66, 80, 0.2);
-//         text-decoration: none;
-//     }
+// .navbar{
+//     text-align: center;
+//     align-items: center !important;
 // }
+#menu {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 70;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    letter-spacing: 1px;
+    font-size: 1.1em;
+}
+
+#menu li {
+    display: inline-block;
+    margin: 10px 0;
+    position: relative;
+}
+
+#menu a {
+    color: #fff;
+    padding: 0 1.1em 1.1em 1.1em;
+}
+
+#menu li.active a:after {
+    content: '';
+    margin: 0 1.1em 0 1.1em;
+    height: 2px;
+    background: #fff;
+    display: block;
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    right: 0;
+    display: block;
+}
+
+#logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    color: #fff;
+    font-weight: 700;
+    z-index: 99;
+    font-size: 1.9em;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+@media screen and (max-width: 900px) {
+    #logo {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    #menu {
+        letter-spacing: 0;
+        font-size: .95em;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    }
+}
+
+@media screen and (max-width: 900px),
+screen and (max-height: 500px) {
+    #menu {
+        text-align: center;
+        left: 0;
+        right: 0;
+    }
+
+    #menu a {
+        color: #fff;
+        padding: 0 .5em 0.5em 0.5em;
+    }
+}
+
+.page-nav {
+    height: 50px;
+    /*width: 100vw;*/
+    
+    border: 2px solid white;
+    
+    position: fixed;
+    
+    display: flex;
+    align-self: flex-end;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .page-nav-button {
+    padding: 10px;
+    margin: 10px;
+    color: white;
+    border: 2px solid white;
+  }
+ 
+  

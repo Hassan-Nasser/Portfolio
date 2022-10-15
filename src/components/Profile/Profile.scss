@@ -42,7 +42,6 @@
     font-size: 2em;
   }
   .intro {
-    font-size: 1.35em !important;
     text-align:left;
 
   }
@@ -50,6 +49,7 @@
 .profile-header{
   margin-bottom: 1%;
   flex: 2;
+  text-align: center;
 }
 .scrolly{
   text-align: center;
@@ -72,4 +72,11 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  text-align: center;
 }
+@media screen and (max-width: 630px){
+  .image .profile-image {
+    width: 60%;
+    margin: 0 auto;
+  }
+ }

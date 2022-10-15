@@ -128,7 +128,7 @@ class Portfolio extends Component {
           <div className="container-fluid slider">
             {/* {this.state.projectsCover ( */}
             <ImageGallery items={this.state.projectsCover}
-              thumbnailPosition="bottom"
+              thumbnailPosition="left"
               showFullscreenButton={false}
               showPlayButton={false}
               showBullets={true}
@@ -140,7 +140,7 @@ class Portfolio extends Component {
 
           <footer>
             <div className="scrolly">
-              <Link to="/portfolio" className="btn btn-lg btn-primary">My Recent Work</Link>
+              <a href="" className="btn btn-lg btn-primary">My Recent Work</a>
             </div>
           </footer>
           <Modal

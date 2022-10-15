@@ -1,18 +1,51 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
-import { AppContextProvider } from "./components/AppContext";
 import { Navigation } from "./components/Navigation/Navigation";
-import { Routes } from "./components/Routes";
+import PageScroller from "./components/PageScroller/PageScroller";
+import PageIndicator from "./components/PageIndicator/PageIndicator";
+import Profile from "./components/Profile/Profile";
+import Work from "./components/Work/Work";
+import Highlight from "./components/Highlight/Highlight";
+import Portfolio from "./components/Portfolio/Portfolio";
+import Page from "./components/Page/Page";
+import Contact from "./components/Contact/Contact";
+import "./GlobalStyles.scss";
+import "./App.css";
 
-function App() {
-  return (
-    <AppContextProvider>
-      <BrowserRouter  basename="/Portfolio" >
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+  }
+
+  render() {
+
+    return (
+      <PageScroller style={{ display: 'flex', flexDirection: 'column' }}>
         <Navigation />
-        <Routes />
-      </BrowserRouter>
-    </AppContextProvider>
-  );
+        <PageIndicator />
+        <Page className='page p0'
+          style={{ backgroundColor: '#272BB0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+          nav-title={'Num 1'}>
+          <Profile />
+        </Page>
+        <Page className='page p1' style={{ backgroundColor: '#5727B0', display: 'flex', alignItems: 'center', justifyContent: 'center' }} nav-title={'Num 2'}>
+          <Work />
+        </Page>
+        <Page className="p2" style={{ backgroundColor: '#57ACDC', display: 'flex', alignItems: 'center', justifyContent: 'center' }} nav-title={'Num 3'}>
+          <Highlight />
+        </Page>
+        <Page className="p3" style={{ backgroundColor: '#57DCBE', display: 'flex', alignItems: 'center', justifyContent: 'center' }} nav-title={'Num 4'}>
+          <Portfolio />
+        </Page>
+        <Page className="p4" style={{ backgroundColor: '#60C689', display: 'flex', alignItems: 'center', justifyContent: 'center' }} nav-title={'Num 5'}>
+          <Contact />
+        </Page>
+      </PageScroller>
+    );
+  }
+
 }
+
 
 export default App;

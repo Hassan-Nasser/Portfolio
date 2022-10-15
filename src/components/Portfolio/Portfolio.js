@@ -179,7 +179,7 @@ class Portfolio extends Component {
           </div>
           <footer>
             <div className="scrolly">
-              <Link to="/contact" className="btn btn-lg btn-primary">Get in touch with me</Link>
+              <a href="" className="btn btn-lg btn-primary">Get in touch with me</a>
             </div>
           </footer>
           <Modal

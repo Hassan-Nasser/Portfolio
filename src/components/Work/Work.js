@@ -6,37 +6,40 @@ class Work extends Component {
   render() {
     return (
       <>
-        <div className="container">
-          <header className="work-header">
-            <h2>Here's all the stuff I do</h2>
-            <p>Softwares and technologies i have multiple years experience at.</p>
-          </header>
-          <div className="row aln-center">
-            <div className="col-xl-3 col-md-6 col-sm-12">
+        <div className="work-container ">
+          <div className="row d-flex justify-content-center">
+            <header className=" work-header">
+              <h2>Here's all the stuff I do</h2>
+              <p>Softwares and technologies i have multiple years experience at.</p>
+            </header>
+          </div>
+
+          <div className="row d-flex justify-content-center">
+            <div className="col-xl-3 col-lg-3 col-md-3 col-sm col-xs-6  col-6">
               <section className="box style1">
                 <span className="image-icon ">
                   <img src={require("../../images/Unity.png")} alt="" />
                 </span>
                 <h3 className="subject">Unity</h3>
-                <span className="work-description">
+                <p className="work-description">
                   Used unity game engine for {new Date().getFullYear() - 2017}+ years in different projects,
                   from games to simulations to mobile apps.
-                </span>
+                </p>
               </section>
             </div>
-            <div className="col-xl-3 col-md-6 col-sm-12">
+            <div className="col-xl-3 col-lg-3 col-md-3 col-sm col-xs-6 col-6">
               <section className="box style1">
                 <span className="image-icon ">
                   <img src={require("../../images/Unreal.png")} alt="" />
                 </span>
                 <h3 className="subject">Unreal</h3>
-                <span className="work-description">
+                <p className="work-description">
                   Experienced in unreal engine and capable of developing all kind of AAA games with it,
                   From battle royale games to FPS games to MMO games.
-                </span>
+                </p>
               </section>
             </div>
-            <div className="col-xl-3 col-md-6 col-sm-12">
+            <div className="col-xl-3 col-lg-3 col-md-3 col-sm col-xs-6  col-6">
               <section className="box style1">
                 <span className="image-icon ">
                   <img src={require("../../images/Multiplayer.png")} alt="" />
@@ -48,7 +51,7 @@ class Work extends Component {
                 </span>
               </section>
             </div>
-            <div className="col-xl-3 col-md-6 col-sm-12">
+            <div className="col-xl-3 col-lg-3 col-md-3 col-sm col-xs-6  col-6">
               <section className="box style1">
                 <span className="image-icon ">
                   <img src={require("../../images/AR&VR.png")} alt="" />
@@ -61,10 +64,10 @@ class Work extends Component {
               </section>
             </div>
           </div>
-          <footer className="work-footer">
+          <footer className=" work-footer">
             <div className="scrolly">
-                <Link to="/highlight"  className="btn btn-lg btn-primary">Featured Projects</Link>
-              </div>
+              <a href="" className="btn btn-lg btn-primary">Featured Projects</a>
+            </div>
           </footer>
         </div>
       </>
