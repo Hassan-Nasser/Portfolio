@@ -23,7 +23,7 @@ const Project = ({ project, showModal, tagsExist, headerPosition }) => {
     }, [project]);
 
     return <div>
-        <article className="box style2"
+        <article className="pbox style2"
             style={{ width: "100%", cursor: "pointer" }}>
             <button
                 className="transparent image featured"

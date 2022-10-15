@@ -46,7 +46,7 @@ const Carousel = ({ children }) => {
         }
     }
 
-    const MAX_VISIBILITY = 4;
+    const MAX_VISIBILITY = 3;
     return (
         <div className='carousel'
             onMouseDown={mouseDownEvent => handleMouseDown(mouseDownEvent)}
@@ -66,11 +66,11 @@ const Carousel = ({ children }) => {
             {React.Children.map(children, (child, i) => (
                 <div className='card-container' style={{
                     '--active': i === active ? 1 : 0,
-                    '--offset': (active - i) / 2.3,
+                    '--offset': (active - i) / 3.2,
                     '--direction': Math.sign(active - i),
                     '--abs-offset': Math.abs(active - i) / 3,
                     'pointerEvents': active === i ? 'auto' : 'none',
-                    'opacity': Math.abs(active - i) >= MAX_VISIBILITY ? '0' : '1',
+                    'opacity': Math.abs(active - i) >= MAX_VISIBILITY ? '0.8' : '1',
                     'display': Math.abs(active - i) > MAX_VISIBILITY ? 'none' : 'block',
                 }}>
                     {child}

@@ -20,6 +20,7 @@ class PageScroller extends Component {
     this.pages = 0;
     this.scrollLocker = () => { };
     this.currentIndex = 0;
+    this.easeAnim = null;
 
 
   }
@@ -38,16 +39,16 @@ class PageScroller extends Component {
     const windoww = e.currentTarget;
     if (this.state.scrollAgain) {
       if (pageIndex >= 0 && pageIndex <= this.pages - 1) {
-       
+
         if (this.state.y >= windoww.scrollY) {
           console.log("scrolling up");
-          pageIndex--;
-          this.scroll(winHeight, pageIndex);
+          // pageIndex--;
+          // this.scroll(winHeight, pageIndex);
 
         } else if (this.state.y < windoww.scrollY) {
           console.log("scrolling down");
-          pageIndex++;
-          this.scroll(winHeight, pageIndex);
+          // pageIndex++;
+          // this.scroll(winHeight, pageIndex);
 
         }
       }
@@ -84,6 +85,8 @@ class PageScroller extends Component {
       window.scrollTo(0, target);
       if (t <= duration)
         setTimeout(animateScroll, increament);
+
+      // easeAnim = null;
 
     }
     animateScroll();
