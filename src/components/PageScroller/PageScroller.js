@@ -5,6 +5,7 @@ import PageIndicator from "../PageIndicator/PageIndicator";
 import { Navigation } from "../Navigation/Navigation"
 import "./PageScroller.scss";
 
+let animSetTime = null;
 
 class PageScroller extends Component {
   constructor(props) {
@@ -20,8 +21,6 @@ class PageScroller extends Component {
     this.pages = 0;
     this.scrollLocker = () => { };
     this.currentIndex = 0;
-    this.easeAnim = null;
-
 
   }
 
@@ -84,9 +83,7 @@ class PageScroller extends Component {
       t += increament;
       window.scrollTo(0, target);
       if (t <= duration)
-        setTimeout(animateScroll, increament);
-
-      // easeAnim = null;
+        animSetTime = setTimeout(animateScroll, increament);
 
     }
     animateScroll();
@@ -101,6 +98,8 @@ class PageScroller extends Component {
   }
 
   goToPage = (index) => {
+    if (animSetTime !== null)
+      clearTimeout(animSetTime);
     this.scroll(window.innerHeight, index);
   }
 
