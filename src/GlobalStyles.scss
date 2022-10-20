@@ -7,24 +7,6 @@
   padding: 0;
 }
 
-// @media only screen and (min-width: 600px) {
-//   html {
-//     zoom: .8;
-//   }
-// }
-
-// @media only screen and (min-width: 800px) {
-//   html {
-//     zoom: .9;
-//   }
-// }
-
-// @media only screen and (min-width: 1000px) {
-//   html {
-//     zoom: 1;
-//   }
-// }
-
 html {
   overflow: auto;
 }
@@ -181,4 +163,75 @@ header {
 
 .padding-top-8 {
   padding-top: 5em;
+}
+
+.white {
+  color: white;
+}
+
+.font-1 {
+  font-size: 0.9em;
+}
+
+.font-2 {
+  font-size: 1.4em;
+}
+
+.font-3 {
+  font-size: 2.5em;
+}
+.font-4{
+  font-size: 1.3em;
+  line-height: 1.4;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+
+@font-face {
+  font-family: "crimson";
+  src: local('crimson'), url("./Fonts/Crimson/CrimsonPro-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "gantari";
+  src: local('gantari'), url("./Fonts/gantari/Gantari-VariableFont_wght.ttf") format('woff');
+}
+
+@font-face {
+  font-family: "prototype";
+  src: local('prototype'), url("./Fonts/Prototype.ttf") format('woff');
+}
+
+@font-face {
+  font-family: "montserrat";
+  src: local('montserrat'), url("./Fonts/Montserrat-Regular.ttf") format('woff');
+}
+
+@font-face {
+  font-family: "satisfy";
+  src: local('satisfy'), url("./Fonts/Satisfy-Regular.ttf") format('woff');
+}
+
+.satisfy{
+  font-family: satisfy;
+}
+.gantari {
+  font-family: gantari;
+}
+.montserrat{
+  font-family: montserrat;
+}
+
+.crimson {
+  font-family: crimson;
+}
+.prototype{
+  font-family: prototype;
 }

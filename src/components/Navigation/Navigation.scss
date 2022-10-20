@@ -1,4 +1,3 @@
-
 #menu {
     position: fixed;
     top: 20px;
@@ -18,7 +17,7 @@
 
 #menu a {
     color: #fff;
-    padding: 0 1.1em 1.1em 1.1em;
+    padding: 0px 0.5em 0.5em 0.5em;
 }
 
 #menu li.active a:after {
@@ -41,10 +40,8 @@
     color: #fff;
     font-weight: 700;
     z-index: 99;
-    font-size: 1.9em;
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: antialiased;
-    font-style: italic;
 }
 
 a {
@@ -61,7 +58,6 @@ a {
     #menu {
         letter-spacing: 0;
         font-size: .95em;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     }
 }
 
@@ -78,36 +74,35 @@ screen and (max-height: 500px) {
         padding: 0 .4em .4em 0.4em;
     }
 }
-@media screen and (max-width: 400px){
+
+@media screen and (max-width: 400px) {
     #menu {
         max-width: 60%;
+        font-size: 0.5em;
     }
 
-    // #menu a {
-    //     color: #fff;
-    //     padding: 0 .5em 0.5em 0.5em;
-    // }
+    #menu a {
+        font-size: 1.1em;
+    }
 }
 
 .page-nav {
     height: 50px;
     /*width: 100vw;*/
-    
+
     border: 2px solid white;
-    
+
     position: fixed;
-    
+
     display: flex;
     align-self: flex-end;
     align-items: center;
     justify-content: flex-end;
-  }
-  
-  .page-nav-button {
+}
+
+.page-nav-button {
     padding: 10px;
     margin: 10px;
     color: white;
     border: 2px solid white;
-  }
- 
-  
+}

@@ -1,12 +1,10 @@
 import { Component } from "react";
 import "./Profile.scss";
 import Background from '../../images/Title-Frame.png';
-import { Link } from "react-router-dom";
+
+
 class Profile extends Component {
-
-
   render() {
-    // let location = useLocation();
     return (
       <div className="container" >
         <div className="row d-flex justify-content-center">
@@ -19,18 +17,18 @@ class Profile extends Component {
 
         <div className="row d-flex justify-content-center " >
           <header className=" col-md-12 col-sm-12 col-lg-6" >
-            <h1 className="profile-header">
-              <strong>Hassan Nasser</strong>
+            <h1 className="profile-header ">
+              <strong className="font-1 prototype">Hassan Nasser</strong>
             </h1>
             <div className="job-title" style={{ backgroundImage: "url(" + Background + ")" }}>
-              <span>Senior Game Developer</span>
+              <span className="font-2 satisfy white">Senior Game Developer</span>
             </div>
           </header>
         </div>
         <div className="row d-flex justify-content-center ">
           <div className="title-profile col-md-10 col-sm-12 col-lg-10">
             <div className="intro">
-              <p>
+              <p className="montserrat font-4">
                 I am a game developer living in Cairo, Egypt.
                 I recived my B.Sc from faculty of Computers and Artificial Intelligence, Benha University.<br />
                 I have been working as a game developer for {new Date().getFullYear() - 2017}+ years.

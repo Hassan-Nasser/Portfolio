@@ -48,12 +48,12 @@ class PageScroller extends Component {
   componentDidMount = () => {
     this._isMobile = isMobileDevice();
     console.log(this._isMobile);
-    if (this._isMobile) {
-      document.addEventListener('touchmove', this.onTouchMove, { passive: false });
-      document.addEventListener('touchstart', this.onTouchStart);
-    } else {
+    // if (this._isMobile) {
+    //   document.addEventListener('touchmove', this.onTouchMove, { passive: false });
+    //   document.addEventListener('touchstart', this.onTouchStart);
+    // } else {
       document.addEventListener('wheel', this.onScroll, { passive: false });
-    }
+    // }
     window.addEventListener('resize', this.onResize);
 
     this.onResize();
@@ -78,12 +78,12 @@ class PageScroller extends Component {
   }
 
   componentWillUnmount() {
-    if (this._isMobile) {
-      document.removeEventListener('touchmove', this.onTouchMove);
-      document.removeEventListener('touchstart', this.onTouchStart);
-    } else {
+    // if (this._isMobile) {
+    //   document.removeEventListener('touchmove', this.onTouchMove);
+    //   document.removeEventListener('touchstart', this.onTouchStart);
+    // } else {
       document.removeEventListener('wheel', this.onScroll);
-    }
+    // }
     window.removeEventListener('resize', this.onResize);
   }
 
