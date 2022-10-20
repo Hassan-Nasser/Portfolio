@@ -55,23 +55,23 @@ const Carousel = ({ children }) => {
         let newActive = active;
         setActive((newActive + 1) % count);
     }
-    const generateItems = () => {
-        var items = []
-        var level
-        for (var i = active - 2; i < active + 3; i++) {
-            var index = i
-            if (i < 0) {
-                index = count + i
-            } else if (i >= count) {
-                index = i % count
-            }
-            level = active - i
-            items.push(<Item
-                key={index} id={this.state.items[index]}
-                level={level} />)
-        }
-        return items
-    }
+    // const generateItems = () => {
+    //     var items = []
+    //     var level
+    //     for (var i = active - 2; i < active + 3; i++) {
+    //         var index = i
+    //         if (i < 0) {
+    //             index = count + i
+    //         } else if (i >= count) {
+    //             index = i % count
+    //         }
+    //         level = active - i
+    //         items.push(<Item
+    //             key={index} id={this.state.items[index]}
+    //             level={level} />)
+    //     }
+    //     return items
+    // }
 
 
     const MAX_VISIBILITY = 3;
