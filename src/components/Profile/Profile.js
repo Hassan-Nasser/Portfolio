@@ -8,8 +8,7 @@ class Profile extends Component {
   render() {
     // let location = useLocation();
     return (
-      <>
-        <div className="container">
+        <div className="container height-100 padding-top-8">
           <div className="row d-flex justify-content-center">
             <div className="col-lg-3 col-md-4 col-sm-6 profile-img">
               <span className="image fit">
@@ -38,14 +37,10 @@ class Profile extends Component {
                   I enjoy making games and particpate in everything related to games.
                 </p>
               </div>
-              <div className="scrolly">
-                <a href="#work"  className="btn btn-lg btn-primary">Learn about what I do</a>
-              </div>
 
             </div>
           </div>
         </div>
-      </>
     );
   }
 }

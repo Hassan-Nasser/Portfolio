@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import "./Carousel.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-// import 'font-awesome/css/font-awesome.min.css';
 
 const Carousel = ({ children }) => {
     const [active, setActive] = useState(2);
@@ -11,6 +10,8 @@ const Carousel = ({ children }) => {
     const [touchEnd, setTouchEnd] = React.useState(0);
     const [mouseStart, setMouseStart] = React.useState(0);
     const [mouseEnd, setMouseEnd] = React.useState(0);
+    const [items, setItems] = React.useState(React.Children.toArray(children));
+
 
     const handleTouchStart = (e) => {
         setTouchStart(e.targetTouches[0].clientX);
@@ -45,6 +46,33 @@ const Carousel = ({ children }) => {
             setActive(i => i - 1)
         }
     }
+    const pervious = () => {
+        let newActive = active;
+        newActive--;
+        setActive(newActive < 0 ? count - 1 : newActive);
+    }
+    const next = () => {
+        let newActive = active;
+        setActive((newActive + 1) % count);
+    }
+    const generateItems = () => {
+        var items = []
+        var level
+        for (var i = active - 2; i < active + 3; i++) {
+            var index = i
+            if (i < 0) {
+                index = count + i
+            } else if (i >= count) {
+                index = i % count
+            }
+            level = active - i
+            items.push(<Item
+                key={index} id={this.state.items[index]}
+                level={level} />)
+        }
+        return items
+    }
+
 
     const MAX_VISIBILITY = 3;
     return (
@@ -59,8 +87,8 @@ const Carousel = ({ children }) => {
 
         >
             {active > 0 &&
-                <button className='nav left' onClick={() => setActive(i => i - 1)}>
-                     <FontAwesomeIcon icon={faChevronLeft} />
+                <button className='nav left' onClick={() => pervious()}>
+                    <FontAwesomeIcon icon={faChevronLeft} />
 
                 </button>}
             {React.Children.map(children, (child, i) => (
@@ -77,8 +105,8 @@ const Carousel = ({ children }) => {
                 </div>
             ))}
             {active < count - 1 &&
-             <button className='nav right' onClick={() => setActive(i => i + 1)}>
-                 <FontAwesomeIcon icon={faChevronRight} />
+                <button className='nav right' onClick={() => next()}>
+                    <FontAwesomeIcon icon={faChevronRight} />
                 </button>}
         </div>
     );

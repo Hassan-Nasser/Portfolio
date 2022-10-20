@@ -64,8 +64,7 @@ class Contact extends Component {
 
   render() {
     return (
-      <>
-        <div className="contact-container">
+        <div className="container height-100 padding-top-8">
           <div className="center">
             <header >
               <h2>Get in touch</h2>
@@ -203,9 +202,6 @@ class Contact extends Component {
             </div>
           </div>
         </div>
-      </>
-
-
     );
   }
 }

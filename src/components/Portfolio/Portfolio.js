@@ -82,8 +82,7 @@ class Portfolio extends Component {
       return null;
     }
     return (
-      <>
-        <div className="container">
+        <div className="container height-100 padding-top-8">
           <header>
             <h2>My Recent Work</h2>
             <p>
@@ -157,7 +156,6 @@ class Portfolio extends Component {
 
             <div className='appp'>
               <Carousel>
-
                 {
                   this.state.projects && this.state.projects.map((project, i) => (
                     <div className="card" key={i}>
@@ -170,7 +168,6 @@ class Portfolio extends Component {
 
                     </div>
                   ))}
-
               </Carousel>
             </div>
 
@@ -217,7 +214,6 @@ class Portfolio extends Component {
             </Modal.Body>
           </Modal>
         </div>
-      </>
     );
   }
 }

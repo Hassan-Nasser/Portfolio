@@ -1,5 +1,8 @@
-export default function easeInOutCubic(currentTime, startValue, changeInValue, duration) {
-  const time = (currentTime / duration) - 1;
-  const timeCubic = time * time * time;
-  return (changeInValue * (timeCubic + 1)) + startValue;
+
+
+export default function easeInOutCubic(t, b, c, d) {
+  t /= d / 2
+    if (t < 1) return c / 2 * t * t + b
+    t--
+    return -c / 2 * (t * (t - 2) - 1) + b
 }

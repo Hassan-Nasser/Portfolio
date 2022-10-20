@@ -21,7 +21,7 @@ class App extends React.Component {
   render() {
 
     return (
-      <PageScroller style={{ display: 'flex', flexDirection: 'column' }}>
+      <PageScroller scrollMode='full-page' style={{ display: 'flex', flexDirection: 'column' }}>
         <Navigation />
         <PageIndicator />
         <Page className='page p0'

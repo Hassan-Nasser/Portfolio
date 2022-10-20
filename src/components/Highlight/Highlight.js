@@ -114,8 +114,7 @@ class Portfolio extends Component {
 
   render() {
     return (
-      <>
-        <div className="container">
+        <div className="container height-100 padding-top-8">
           <div className=" d-flex justify-content-center">
             <header>
               <h2>Career Highlight</h2>
@@ -178,7 +177,6 @@ class Portfolio extends Component {
             </Modal.Body>
           </Modal>
         </div>
-      </>
     );
   }
 }
