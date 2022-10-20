@@ -5,7 +5,7 @@ import "./Work.scss";
 class Work extends Component {
   render() {
     return (
-      <div className="container height-100 padding-top-8">
+      <div className="container">
         <div className="row d-flex justify-content-center">
           <header className=" work-header">
             <h2>Here's all the stuff I do</h2>

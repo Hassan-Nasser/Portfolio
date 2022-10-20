@@ -82,7 +82,7 @@ class Portfolio extends Component {
       return null;
     }
     return (
-        <div className="container height-100 padding-top-8">
+        <div className="container">
           <header>
             <h2>My Recent Work</h2>
             <p>
@@ -174,11 +174,11 @@ class Portfolio extends Component {
 
 
           </div>
-          <footer>
+          {/* <footer>
             <div className="scrolly">
               <a href="" className="btn btn-lg btn-primary">Get in touch with me</a>
             </div>
-          </footer>
+          </footer> */}
           <Modal
             size="xl"
             show={this.state.show}
