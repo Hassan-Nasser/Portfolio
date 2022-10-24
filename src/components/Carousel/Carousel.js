@@ -104,26 +104,25 @@ const Carousel = ({ children }) => {
             {React.Children.map(children, (child, i) => (
                 <div className='card-container' style={{
                     '--active': i === active ? 1 : 0,
-                    '--offset': (active - i) / 3.2,
+                    '--offset': (active - i) / (width <= 768 ? 10 : 3.2),
                     '--direction': Math.sign(active - i),
                     '--abs-offset': Math.abs(active - i) / 3,
                     'pointerEvents': active === i ? 'auto' : 'none',
                     'opacity': Math.abs(active - i) >= MAX_VISIBILITY ? '0.8' : '1',
                     'display': Math.abs(active - i) > (width <= 768 ? 0 : MAX_VISIBILITY) ? 'none' : 'block',
                 }}>
-            {child}
-        </div>
-    ))
-}
-{
-    active < count - 1 &&
-    <button className='nav right' onClick={() => next()}>
-        <FontAwesomeIcon icon={faChevronRight} />
-    </button>
-}
+                    {child}
+                </div>
+            ))
+            }
+            {
+                active < count - 1 &&
+                <button className='nav right' onClick={() => next()}>
+                    <FontAwesomeIcon icon={faChevronRight} />
+                </button>
+            }
         </div >
     );
 };
 
 export default Carousel;
-//  width <= 768 ? 'none' : 

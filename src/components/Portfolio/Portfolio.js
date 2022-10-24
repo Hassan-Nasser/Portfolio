@@ -1,6 +1,6 @@
 import { Component } from "react";
 import "./Portfolio.scss";
-import Modal from "react-bootstrap/Modal";
+import Modal from "../Modal/Modal";
 import { Scrollbars } from "react-custom-scrollbars";
 import Tag from "../Tag/Tag";
 import Carousel from "../Carousel/Carousel";
@@ -22,7 +22,8 @@ class Portfolio extends Component {
       tags: [],
       projectImage: "",
       value: 0,
-      isLoaded: false
+      isLoaded: false,
+      isModalOpen: false
     };
   }
 
@@ -68,16 +69,19 @@ class Portfolio extends Component {
   }
 
   setShow = (flag, currentProject = "") => {
-    this.setState({ show: flag });
-    if (flag) {
-      this.setState({ currentProject });
-    }
+    this.setState({ isModalOpen: flag });
+    console.log("flag = ", flag);
+    // if (flag) {
+    //   this.setState({ currentProject });
+    // }
   };
-
+  toggleModal = () => {
+    this.setState({ isModalOpen: !this.state.isModalOpen });
+  }
 
   render() {
     if (!this.state.isLoaded) {
-      return null;
+      return null; 
     }
     return (
       <div className="container">
@@ -92,7 +96,7 @@ class Portfolio extends Component {
         </div>
 
         <div className="row d-flex justify-content-center">
-
+          {this.state.isModalOpen && <Modal onRequestClose={() => this.toggleModal()} />}
           {/* <Tabs
               defaultActiveKey="0"
               id="uncontrolled-tab-example"
@@ -167,44 +171,8 @@ class Portfolio extends Component {
                 </div>
               ))}
           </Carousel>
-
-
-
         </div>
-        <Modal
-          size="xl"
-          show={this.state.show}
-          onHide={() => this.setShow(false)}
-          dialogClassName="modal-90w"
-          aria-labelledby="example-custom-modal-styling-title"
-          className="Modal-Style"
-        >
-          <Modal.Header closeButton>
-            <Modal.Title id="example-custom-modal-styling-title">
-              {this.state.header}
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <div className="video image featured">
-              <iframe
-                title="myFrame"
-                src={this.state.currentProject.url}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-            <Tag className="tag" tags={this.state.currentProject.tags} />
-            <Scrollbars
-              style={{ height: 100 }}
-            // autoHide
-            >
-              <p className="description">{this.state.currentProject.description}</p>
 
-            </Scrollbars>
-
-          </Modal.Body>
-        </Modal>
       </div>
     );
   }
