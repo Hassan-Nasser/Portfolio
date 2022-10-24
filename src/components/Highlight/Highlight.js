@@ -137,11 +137,6 @@ class Portfolio extends Component {
 
           </div>
 
-          {/* <footer>
-            <div className="scrolly">
-              <a href="" className="btn btn-lg btn-primary">My Recent Work</a>
-            </div>
-          </footer> */}
           <Modal
             size="xl"
             show={this.state.show}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./Carousel.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
@@ -10,9 +10,19 @@ const Carousel = ({ children }) => {
     const [touchEnd, setTouchEnd] = React.useState(0);
     const [mouseStart, setMouseStart] = React.useState(0);
     const [mouseEnd, setMouseEnd] = React.useState(0);
-    const [items, setItems] = React.useState(React.Children.toArray(children));
+    const [width, setWidth] = useState(window.innerWidth);
 
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowSizeChange);
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
+        }
+    }, []);
 
+    const handleWindowSizeChange = (e) => {
+        setWidth(window.innerWidth);
+        console.log("w = ", width);
+    }
     const handleTouchStart = (e) => {
         setTouchStart(e.targetTouches[0].clientX);
     }
@@ -99,17 +109,21 @@ const Carousel = ({ children }) => {
                     '--abs-offset': Math.abs(active - i) / 3,
                     'pointerEvents': active === i ? 'auto' : 'none',
                     'opacity': Math.abs(active - i) >= MAX_VISIBILITY ? '0.8' : '1',
-                    'display': Math.abs(active - i) > MAX_VISIBILITY ? 'none' : 'block',
+                    'display': Math.abs(active - i) > (width <= 768 ? 0 : MAX_VISIBILITY) ? 'none' : 'block',
                 }}>
-                    {child}
-                </div>
-            ))}
-            {active < count - 1 &&
-                <button className='nav right' onClick={() => next()}>
-                    <FontAwesomeIcon icon={faChevronRight} />
-                </button>}
+            {child}
         </div>
+    ))
+}
+{
+    active < count - 1 &&
+    <button className='nav right' onClick={() => next()}>
+        <FontAwesomeIcon icon={faChevronRight} />
+    </button>
+}
+        </div >
     );
 };
 
 export default Carousel;
+//  width <= 768 ? 'none' : 

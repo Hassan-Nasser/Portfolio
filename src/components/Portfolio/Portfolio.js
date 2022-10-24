@@ -10,8 +10,6 @@ import { collection, getDocs } from 'firebase/firestore/lite';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Link } from "react-router-dom";
-
 
 class Portfolio extends Component {
   constructor(props) {
@@ -35,10 +33,10 @@ class Portfolio extends Component {
   componentDidMount() {
     this.getProjects();
     this.getTags(db);
-    this.setState({isLoaded:true});
+    this.setState({ isLoaded: true });
   }
   componentWillUnmount() {
-    this.setState({isLoaded:false});
+    this.setState({ isLoaded: false });
   }
 
   getProjects = async () => {
@@ -82,17 +80,20 @@ class Portfolio extends Component {
       return null;
     }
     return (
-        <div className="container">
-          <header>
+      <div className="container">
+        <div className="row d-flex justify-content-center">
+          <header className=" dosis">
             <h2>My Recent Work</h2>
             <p>
               Here are a few projects I've worked on recently. Want to see more?{" "}
               <a href="#contact">Email me</a>.
             </p>
           </header>
-          <div>
+        </div>
 
-            {/* <Tabs
+        <div className="row d-flex justify-content-center">
+
+          {/* <Tabs
               defaultActiveKey="0"
               id="uncontrolled-tab-example"
               className="mb-3"
@@ -153,67 +154,58 @@ class Portfolio extends Component {
 
               )}
             </Tabs> */}
-
-            <div className='appp'>
-              <Carousel>
-                {
-                  this.state.projects && this.state.projects.map((project, i) => (
-                    <div className="card" key={i}>
-                      <Project
-                        key={project.name}
-                        tagsExist={true}
-                        project={project}
-                        headerPosition="normal-header-position"
-                        showModal={() => this.setShow(true, project)} />
-
-                    </div>
-                  ))}
-              </Carousel>
-            </div>
+          <Carousel>
+            {
+              this.state.projects && this.state.projects.map((project, i) => (
+                <div className="card" key={i}>
+                  <Project
+                    key={project.name}
+                    tagsExist={true}
+                    project={project}
+                    headerPosition="normal-header-position"
+                    showModal={() => this.setShow(true, project)} />
+                </div>
+              ))}
+          </Carousel>
 
 
 
-          </div>
-          {/* <footer>
-            <div className="scrolly">
-              <a href="" className="btn btn-lg btn-primary">Get in touch with me</a>
-            </div>
-          </footer> */}
-          <Modal
-            size="xl"
-            show={this.state.show}
-            onHide={() => this.setShow(false)}
-            dialogClassName="modal-90w"
-            aria-labelledby="example-custom-modal-styling-title"
-            className="Modal-Style"
-          >
-            <Modal.Header closeButton>
-              <Modal.Title id="example-custom-modal-styling-title">
-                {this.state.header}
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <div className="video image featured">
-                <iframe
-                  title="myFrame"
-                  src={this.state.currentProject.url}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-              <Tag className="tag" tags={this.state.currentProject.tags} />
-              <Scrollbars
-                style={{ height: 100 }}
-              // autoHide
-              >
-                <p className="description">{this.state.currentProject.description}</p>
-
-              </Scrollbars>
-
-            </Modal.Body>
-          </Modal>
         </div>
+        <Modal
+          size="xl"
+          show={this.state.show}
+          onHide={() => this.setShow(false)}
+          dialogClassName="modal-90w"
+          aria-labelledby="example-custom-modal-styling-title"
+          className="Modal-Style"
+        >
+          <Modal.Header closeButton>
+            <Modal.Title id="example-custom-modal-styling-title">
+              {this.state.header}
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div className="video image featured">
+              <iframe
+                title="myFrame"
+                src={this.state.currentProject.url}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+            <Tag className="tag" tags={this.state.currentProject.tags} />
+            <Scrollbars
+              style={{ height: 100 }}
+            // autoHide
+            >
+              <p className="description">{this.state.currentProject.description}</p>
+
+            </Scrollbars>
+
+          </Modal.Body>
+        </Modal>
+      </div>
     );
   }
 }

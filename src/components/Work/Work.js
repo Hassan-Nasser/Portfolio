@@ -7,20 +7,20 @@ class Work extends Component {
     return (
       <div className="container">
         <div className="row d-flex justify-content-center">
-          <header className=" work-header">
+          <header className=" work-header dosis">
             <h2>Here's all the stuff I do</h2>
-            <p>Softwares and technologies i have multiple years experience at.</p>
+            <p className="font-5">Softwares and technologies i have multiple years experience at.</p>
           </header>
         </div>
 
-        <div className="row d-flex justify-content-center">
+        <div className="row d-flex justify-content-center ">
           <div className="col-xl-3 col-lg-3 col-md-3 col-sm col-xs-6  col-6">
             <section className="box style1">
               <span className="image-icon ">
                 <img src={require("../../images/Unity.png")} alt="" />
               </span>
-              <h3 className="subject">Unity</h3>
-              <span className="work-description">
+              <h3 className="subject prototype">Unity</h3>
+              <span className="work-description montserrat">
                 Used unity game engine for {new Date().getFullYear() - 2017}+ years in different projects,
                 from games to simulations to mobile apps.
               </span>
@@ -31,8 +31,8 @@ class Work extends Component {
               <span className="image-icon ">
                 <img src={require("../../images/Unreal.png")} alt="" />
               </span>
-              <h3 className="subject">Unreal</h3>
-              <span className="work-description">
+              <h3 className="subject prototype">Unreal</h3>
+              <span className="work-description montserrat">
                 Experienced in unreal engine and capable of developing all kind of AAA games with it,
                 From battle royale games to FPS games to MMO games.
               </span>
@@ -43,8 +43,8 @@ class Work extends Component {
               <span className="image-icon ">
                 <img src={require("../../images/Multiplayer.png")} alt="" />
               </span>
-              <h3 className="subject">Multiplayer</h3>
-              <span className="work-description">
+              <h3 className="subject prototype">Multiplayer</h3>
+              <span className="work-description montserrat">
                 Used different frameworks like Photon and Unet with unity to integrate multiplayer to different kind of games,
                 board games with turn based and Host migration multiplayer, and real-time strategy games.
               </span>
@@ -55,8 +55,8 @@ class Work extends Component {
               <span className="image-icon ">
                 <img src={require("../../images/AR&VR.png")} alt="" />
               </span>
-              <h3 className="subject">AR & VR</h3>
-              <span className="work-description">
+              <h3 className="subject prototype">AR & VR</h3>
+              <span className="work-description montserrat">
                 Developed all kind of AR apps and VR games, used vuforia marker AR to develop multiple mobile apps,
                 used SteamVR to develop multiple PC games and simulations.
               </span>
