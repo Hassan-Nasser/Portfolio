@@ -21,10 +21,10 @@
   margin-bottom: 0.8rem;
   margin-top: 0.8rem;
 }
-
-.work-header {
-  margin-top: 13%;
-}
+// // 
+// .work-header {
+//   margin-top: 13%;
+// }
 
 .work-footer {
   text-align: center;
@@ -39,6 +39,14 @@
   .work-container {
     margin-top: 6em;
   }
+  .image-icon {
+    img {
+      width: 40%;
+    }
+  }
+  .work-header {
+  margin-top: 10%;
+}
   
 }
 @media screen and (min-width: 576px) {

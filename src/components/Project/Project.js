@@ -27,8 +27,10 @@ const Project = ({ project, showModal, tagsExist, headerPosition }) => {
             style={{ width: "100%", cursor: "pointer" }}>
             <button
                 className="transparent image featured"
-                onClick={() =>
-                    showModal()
+                onClick={event => {
+                    event.preventDefault();
+                    showModal(event);
+                }
                 }
             >
                 {projectImage

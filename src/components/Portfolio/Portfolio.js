@@ -11,6 +11,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'bootstrap/dist/css/bootstrap.css';
 
+
 class Portfolio extends Component {
   constructor(props) {
     super(props);
@@ -68,20 +69,20 @@ class Portfolio extends Component {
     this.getProjectsWithTag(event)
   }
 
-  setShow = (flag, currentProject = "") => {
-    this.setState({ isModalOpen: flag });
-    console.log("flag = ", flag);
-    // if (flag) {
-    //   this.setState({ currentProject });
-    // }
+  setShow = (currentProject) => {
+    this.setState({ isModalOpen: true });
+    this.setState({ currentProject });
+    // console.log(currentProject.name);
+
+
   };
-  toggleModal = () => {
-    this.setState({ isModalOpen: !this.state.isModalOpen });
+  closeModal = () => {
+    this.setState({ isModalOpen: false });
   }
 
   render() {
     if (!this.state.isLoaded) {
-      return null; 
+      return null;
     }
     return (
       <div className="container">
@@ -96,7 +97,7 @@ class Portfolio extends Component {
         </div>
 
         <div className="row d-flex justify-content-center">
-          {this.state.isModalOpen && <Modal onRequestClose={() => this.toggleModal()} />}
+          {this.state.isModalOpen && <Modal project={this.state.currentProject} closeModal={()=>this.closeModal} />}
           {/* <Tabs
               defaultActiveKey="0"
               id="uncontrolled-tab-example"
@@ -167,7 +168,7 @@ class Portfolio extends Component {
                     tagsExist={true}
                     project={project}
                     headerPosition="normal-header-position"
-                    showModal={() => this.setShow(true, project)} />
+                    showModal={(event) => {event.preventDefault(); this.setShow(project) }} />
                 </div>
               ))}
           </Carousel>

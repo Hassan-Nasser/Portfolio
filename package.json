@@ -29,6 +29,7 @@
     "node-sass": "^6.0.0",
     "react": "^18.2.0",
     "react-bootstrap": "^1.4.0",
+    "react-bootstrap-sweetalert": "^5.2.0",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^18.2.0",
     "react-image-gallery": "^1.2.11",
@@ -42,7 +43,7 @@
     "react-transition-group": "4.4.1",
     "reactstrap": "^8.7.1",
     "styled-components": "^5.3.6",
-    "sweetalert2": "^10.12.7",
+    "sweetalert2": "^11.6.2",
     "sweetpagination": "^1.0.15",
     "web-vitals": "^2.1.4",
     "write-file-p": "^1.0.8"

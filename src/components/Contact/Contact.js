@@ -56,6 +56,7 @@ class Contact extends Component {
       );
   };
   handleChange = (type, e) => {
+    e.preventDefault();
     if (type === "name") this.setState({ name: e.target.value });
     else if (type === "subject") this.setState({ subject: e.target.value });
     else if (type === "email") this.setState({ email: e.target.value });
