@@ -11,8 +11,8 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'bootstrap/dist/css/bootstrap.css';
 
-
 class Portfolio extends Component {
+  static scrollEnable = true;
   constructor(props) {
     super(props);
     this.state = {
@@ -72,7 +72,6 @@ class Portfolio extends Component {
   setShow = (currentProject) => {
     this.setState({ isModalOpen: true });
     this.setState({ currentProject });
-    // console.log(currentProject.name);
 
 
   };
@@ -97,7 +96,9 @@ class Portfolio extends Component {
         </div>
 
         <div className="row d-flex justify-content-center">
-          {this.state.isModalOpen && <Modal project={this.state.currentProject} closeModal={()=>this.closeModal} />}
+          {this.state.isModalOpen &&
+            <Modal project={this.state.currentProject} closeModal={() => this.closeModal()} />
+          }
           {/* <Tabs
               defaultActiveKey="0"
               id="uncontrolled-tab-example"
@@ -168,7 +169,7 @@ class Portfolio extends Component {
                     tagsExist={true}
                     project={project}
                     headerPosition="normal-header-position"
-                    showModal={(event) => {event.preventDefault(); this.setShow(project) }} />
+                    showModal={() => {this.setShow(project) }} />
                 </div>
               ))}
           </Carousel>

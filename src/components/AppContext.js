@@ -1,24 +1,5 @@
 import React, { createContext, useState } from "react";
 
-export const AppContext = createContext();
+ const AppContext = React.createContext({ isModal: false, setIsModal: () => { } });
 
-export function AppContextProvider({ children }) {
-  const [preset, setPreset] = useState("roomToBottom");
-  const [enterAnimation, setEnterAnimation] = useState("");
-  const [exitAnimation, setExitAnimation] = useState("");
-
-  return (
-    <AppContext.Provider
-      value={{
-        preset,
-        enterAnimation,
-        exitAnimation,
-        setPreset,
-        setEnterAnimation,
-        setExitAnimation
-      }}
-    >
-      {children}
-    </AppContext.Provider>
-  );
-}
+export default AppContext;

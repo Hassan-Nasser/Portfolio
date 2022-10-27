@@ -6,6 +6,8 @@ import { Navigation } from "../Navigation/Navigation"
 import "./PageScroller.scss";
 import animatedScrollTo from '../../utils/animated-scroll-to';
 import isMobileDevice from '../../utils/is-mobile';
+import AppContext from "../AppContext";
+import Portfolio from "../Portfolio/Portfolio";
 
 let animSetTime = null;
 
@@ -32,7 +34,10 @@ class PageScroller extends Component {
       y: window.scrollY,
       activeSlide: 0,
       slidesCount: 5,
-      initialSlide: 0
+      initialSlide: 0,
+      modalMode: false,
+      isModal: false,
+      setIsModal: this.setIsModal
     };
 
     this.pages = 0;
@@ -44,10 +49,13 @@ class PageScroller extends Component {
     this._touchStart = 0;
     this._isMobile = null;
   }
+  setIsModal = isModal => {
+    this.setState({ isModal });
+  };
 
   componentDidMount = () => {
     this._isMobile = isMobileDevice();
-    console.log(this._isMobile);
+
     if (this._isMobile) {
       document.addEventListener('touchmove', this.onTouchMove, { passive: false });
       document.addEventListener('touchstart', this.onTouchStart);
@@ -134,7 +142,7 @@ class PageScroller extends Component {
 
     const scrollDown = (evt.wheelDelta || -evt.deltaY || -evt.detail) < 0;
     let { activeSlide } = this.state;
-    
+
     if (scrollDown) {
       activeSlide++;
     } else {
@@ -169,6 +177,9 @@ class PageScroller extends Component {
   // }
 
   scrollToSlide = (slide) => {
+    // console.log("modalIsOpen = ", this.context.isModal)
+    if (this.state.isModal)
+      return;
     if (slide >= 0 && slide < this.state.slidesCount) {
       this._isScrollPending = true;
       this.setState({
@@ -272,9 +283,12 @@ class PageScroller extends Component {
 
   render() {
     return (
-      <div style={{ height: this.state.height }}>
-        {this.renderChildren()}
-      </div>
+      <AppContext.Provider value={{ isModal: this.state.isModal, setIsModal: this.state.setIsModal }}>
+        {console.log("From page scroller ", this.state.isModal)}
+        <div style={{ height: this.state.height }}>
+          {this.renderChildren()}
+        </div>
+      </AppContext.Provider>
     );
   }
 }

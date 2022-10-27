@@ -1,17 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Tag from "../Tag/Tag";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
-
 import { db } from "../../config/firebase";
 import "./Project.scss";
+import AppContext  from "../AppContext";
 
 const storage = getStorage();
 
-
-
 const Project = ({ project, showModal, tagsExist, headerPosition }) => {
     const [projectImage, setProjectImage] = useState(null);
-
+    const { isModal, setIsModal } = useContext(AppContext);
     useEffect(() => {
         let isMounted = true;
         getDownloadURL(ref(storage, `${project.name}.jpg`))
@@ -27,9 +25,10 @@ const Project = ({ project, showModal, tagsExist, headerPosition }) => {
             style={{ width: "100%", cursor: "pointer" }}>
             <button
                 className="transparent image featured"
-                onClick={event => {
-                    event.preventDefault();
-                    showModal(event);
+                onClick={() => {
+                    setIsModal(true);
+                    console.log("current value = ", isModal);
+                    showModal();
                 }
                 }
             >
