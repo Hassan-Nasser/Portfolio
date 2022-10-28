@@ -40,7 +40,7 @@ const Project = ({ project, showModal, tagsExist, headerPosition }) => {
                 </div>
 
                 {tagsExist && (
-                    <Tag className="tag tag-position" tags={project.tags} />
+                    <Tag isModal={false} className="tag tag-position" tags={project.tags} />
                 )}
 
             </button>

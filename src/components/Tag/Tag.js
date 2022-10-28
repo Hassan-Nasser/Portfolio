@@ -23,7 +23,7 @@ class Tag extends Component {
     };
 
     render() {
-        return <div className="tag-container">
+        return <div className={this.props.isModal?"tag-container-modal":"tag-container"}>
             {this.state.tags && this.state.tags.map((tag) =>
                 <span key={tag.name} className={this.props.className}>{tag.name}</span>
             )}

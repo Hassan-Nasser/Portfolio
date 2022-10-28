@@ -31,6 +31,7 @@
     "react-bootstrap": "^1.4.0",
     "react-bootstrap-sweetalert": "^5.2.0",
     "react-custom-scrollbars": "^4.2.1",
+    "react-custom-scrollbars-2": "^4.5.0",
     "react-dom": "^18.2.0",
     "react-image-gallery": "^1.2.11",
     "react-multi-carousel": "^2.8.0",

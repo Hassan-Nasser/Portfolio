@@ -27,11 +27,11 @@ code {
 	height: 15vh;
 	min-height: 100px;
 	margin-bottom: 30px;
-	
+
 	&.medium {
 		height: 30vh;
 	}
-	
+
 	&.large {
 		height: 45vh;
 	}
@@ -45,11 +45,24 @@ code {
 	position: fixed;
 	right: 0;
 	top: 0;
-	z-index: 1;
-}
-.modal__backdrop__Body--open {
+	z-index: 200;
 	overflow: hidden;
-  }
+	height: 100%;
+	width: 100vw;
+}
+
+.modalbackdrop{	
+	bottom: 0;
+	left: 0;
+	overflow: auto;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 201;
+	overflow: hidden;
+	height: 100%;
+	width: 100vw;
+}
 
 .modal__container {
 	background: #fff;
@@ -58,6 +71,9 @@ code {
 	margin: 50px auto;
 	padding: 15px;
 	width: 560px;
+	z-index: 500;
+	position: fixed;
+	top: 0;
 }
 
 .modal__title {
@@ -67,7 +83,47 @@ code {
 }
 
 iframe {
-	width: 100%;
-	height: 22em;
+	width: 90%;
+	height: 18em;
 	position: relative;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.video {
+	display: block;
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	
+}
+
+.view {
+	background: #d9d9d9;
+	border-radius: 8px;
+	padding: 10px;
+	box-sizing: border-box;
+	scrollbar-width: 10px;
+  }
+  
+//   .view::-webkit-scrollbar {
+// 	/* Fix webkit scrollbar issue
+// 	 What about Firefox? */
+// 	visibility: hidden;
+//   }
+  
+  .view p {
+	line-height: 1.5rem;
+  }
+  
+  .vtrack {
+	// background-color: blue;
+	top: 2px;
+	right: 2px;
+	bottom: 2px;
+	width: 10px;
+  }
+  
+  .vthumb {
+	background-color: gray;
   }

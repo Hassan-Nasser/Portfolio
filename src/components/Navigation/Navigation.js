@@ -4,6 +4,8 @@ import "./Navigation.scss";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export function Navigation(props) {
+
+
   return (
     <div className="prototype">
       <a id="logo" className="font-3" href="#" >Hassan Nasser</a>
@@ -16,7 +18,6 @@ export function Navigation(props) {
               {page.title}
             </a>
           </li>
-
         ))}
       </ul>
     </div>

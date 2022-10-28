@@ -177,7 +177,6 @@ class PageScroller extends Component {
   // }
 
   scrollToSlide = (slide) => {
-    // console.log("modalIsOpen = ", this.context.isModal)
     if (this.state.isModal)
       return;
     if (slide >= 0 && slide < this.state.slidesCount) {
