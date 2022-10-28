@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Portfolio/static/css/main.4500db76.css",
-    "main.js": "/Portfolio/static/js/main.68583b55.js",
+    "main.css": "/Portfolio/static/css/main.490848f9.css",
+    "main.js": "/Portfolio/static/js/main.880ecc37.js",
     "static/media/Multiplayer.png": "/Portfolio/static/media/Multiplayer.cf745757bcd691fc2572.png",
     "static/media/AR&VR.png": "/Portfolio/static/media/AR&VR.d323ad0ba71319981077.png",
     "static/media/CrimsonPro-VariableFont_wght.ttf": "/Portfolio/static/media/CrimsonPro-VariableFont_wght.4af3cccf68390b98dbf3.ttf",
@@ -17,11 +17,11 @@
     "static/media/revicons.ttf": "/Portfolio/static/media/revicons.57fd05d4ae650374c8de.ttf",
     "static/media/revicons.woff": "/Portfolio/static/media/revicons.e8746a624ed098489406.woff",
     "index.html": "/Portfolio/index.html",
-    "main.4500db76.css.map": "/Portfolio/static/css/main.4500db76.css.map",
-    "main.68583b55.js.map": "/Portfolio/static/js/main.68583b55.js.map"
+    "main.490848f9.css.map": "/Portfolio/static/css/main.490848f9.css.map",
+    "main.880ecc37.js.map": "/Portfolio/static/js/main.880ecc37.js.map"
   },
   "entrypoints": [
-    "static/css/main.4500db76.css",
-    "static/js/main.68583b55.js"
+    "static/css/main.490848f9.css",
+    "static/js/main.880ecc37.js"
   ]
 }
