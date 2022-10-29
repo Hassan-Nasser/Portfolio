@@ -21,24 +21,24 @@ const Carousel = ({ children }) => {
 
     const handleWindowSizeChange = (e) => {
         setWidth(window.innerWidth);
-        console.log("w = ", width);
     }
     const handleTouchStart = (e) => {
         setTouchStart(e.targetTouches[0].clientX);
     }
-    const handleMouseDown = (e) => {
-        setMouseStart(e.clientX);
-    }
+    // const handleMouseDown = (e) => {
+    //     setMouseStart(e.clientX);
+    // }
 
 
     const handleTouchMove = (e) => {
         setTouchEnd(e.targetTouches[0].clientX);
     }
-    const handleMouseMove = (e) => {
-        setMouseEnd(e.clientX);
-    }
+    // const handleMouseMove = (e) => {
+    //     setMouseEnd(e.clientX);
+    // }
 
     const handleTouchEnd = () => {
+        console.log("=====", touchStart - touchEnd)
         if (touchStart - touchEnd > 150) {
             setActive(i => i + 1)
         }
@@ -47,15 +47,15 @@ const Carousel = ({ children }) => {
             setActive(i => i - 1)
         }
     }
-    const handleMouseUp = () => {
-        if (mouseStart - mouseEnd > 150) {
-            setActive(i => i + 1)
-        }
+    // const handleMouseUp = () => {
+    //     if (mouseStart - mouseEnd > 150) {
+    //         setActive(i => i + 1)
+    //     }
 
-        if (mouseStart - mouseEnd < -150) {
-            setActive(i => i - 1)
-        }
-    }
+    //     if (mouseStart - mouseEnd < -150) {
+    //         setActive(i => i - 1)
+    //     }
+    // }
     const pervious = () => {
         let newActive = active;
         newActive--;
@@ -87,13 +87,13 @@ const Carousel = ({ children }) => {
     const MAX_VISIBILITY = 3;
     return (
         <div className='carousel'
-            onMouseDown={mouseDownEvent => handleMouseDown(mouseDownEvent)}
-            onMouseMove={mouseMoveEvent => handleMouseMove(mouseMoveEvent)}
-            onMouseUp={() => handleMouseUp()}
+        // onMouseDown={mouseDownEvent => handleMouseDown(mouseDownEvent)}
+        // onMouseMove={mouseMoveEvent => handleMouseMove(mouseMoveEvent)}
+        // onMouseUp={() => handleMouseUp()}
 
-            onTouchStart={touchStartEvent => handleTouchStart(touchStartEvent)}
-            onTouchMove={touchMoveEvent => handleTouchMove(touchMoveEvent)}
-            onTouchEnd={() => handleTouchEnd()}
+        // onTouchStart={touchStartEvent => handleTouchStart(touchStartEvent)}
+        // onTouchMove={touchMoveEvent => handleTouchMove(touchMoveEvent)}
+        // onTouchEnd={() => handleTouchEnd()}
 
         >
             {active > 0 &&
@@ -109,7 +109,7 @@ const Carousel = ({ children }) => {
                     '--abs-offset': Math.abs(active - i) / 3,
                     'pointerEvents': active === i ? 'auto' : 'none',
                     'opacity': Math.abs(active - i) >= MAX_VISIBILITY ? '0.8' : '1',
-                    'display': Math.abs(active - i) > (width <= 768 ? 0 : MAX_VISIBILITY) ? 'none' : 'block',
+                    'display': Math.abs(active - i) > (width <= 768 ? 1 : MAX_VISIBILITY) ? 'none' : 'block',
                 }}>
                     {child}
                 </div>
