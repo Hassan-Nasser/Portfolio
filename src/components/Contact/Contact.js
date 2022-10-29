@@ -7,10 +7,11 @@ import {
   faLinkedin,
   faTwitter,
   faYoutube,
-  
+
 } from "@fortawesome/free-brands-svg-icons";
 import emailjs from "emailjs-com";
 import Swal from "sweetalert2";
+import Upwork from '../../images/Upwork.png';
 
 class Contact extends Component {
   constructor(props) {
@@ -168,6 +169,15 @@ class Contact extends Component {
             <ul className="social">
               <li>
                 <a
+                  href="https://www.upwork.com/freelancers/hassannasser"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img className="upwork" style={{ backgroundImage: "url(" + Upwork + ")" }}></img>
+                </a>
+              </li>
+              <li>
+                <a
                   href="https://www.twitter.com/HaSsSaN_NaSsSeR"
                   target="_blank"
                   rel="noreferrer"
@@ -175,15 +185,7 @@ class Contact extends Component {
                   <FontAwesomeIcon icon={faTwitter} size="2x" />
                 </a>
               </li>
-              <li>
-                <a
-                  href="https://www.facebook.com/hassan.nasser.1995/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <FontAwesomeIcon icon={faFacebookF} size="2x" />
-                </a>
-              </li>
+
               <li>
                 <a
                   href="https://www.linkedin.com/in/hassan-naser/"

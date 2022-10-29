@@ -1,6 +1,6 @@
 import React from "react";
 import PageIndicatorButton from "../PageIndicatorButton/PageIndicatorButton";
-
+import "./PageIndicator.scss";
 
 class PageIndicator extends React.Component {
 
@@ -24,17 +24,16 @@ class PageIndicator extends React.Component {
   render() {
     let pageIndicatorStyle = {
       ...this.props.style,
-      height: '100vh',
       position: 'fixed',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      top: '20px'
+      
     };
 
 
     return (
-      <div style={pageIndicatorStyle} >
+      <div className="indicator">
         {this.renderIndicators()}
       </div>
     );
@@ -42,5 +41,3 @@ class PageIndicator extends React.Component {
 }
 
 export default PageIndicator;
-
-  //

@@ -8,8 +8,8 @@ class PageIndicatorButton extends React.Component {
     
     render() {
       let indicatorStyle = {
-        height: '8px',
-        width: this.props.active ? '20px' : '8px',
+        height: '12px',
+        width: this.props.active ? '26px' : '12px',
         margin: '10px',
         borderRadius: '4px',
         backgroundColor: 'white',
