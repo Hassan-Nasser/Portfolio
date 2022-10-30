@@ -11,7 +11,7 @@ class PageIndicatorButton extends React.Component {
         height: '12px',
         width: this.props.active ? '26px' : '12px',
         margin: '10px',
-        borderRadius: '4px',
+        borderRadius: '10px',
         backgroundColor: 'white',
         transition: 'width 500ms ease'
       };

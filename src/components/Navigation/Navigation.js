@@ -1,13 +1,20 @@
 import React from "react";
+import { useContext } from "react";
 import { pages } from "../../data";
 import "./Navigation.scss";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faBars, faGamepad } from '@fortawesome/fontawesome-free-solid';
+import AppContext from "../AppContext";
 
 export function Navigation(props) {
   const [click, setClick] = React.useState(false);
-  const handleClick = () => setClick(!click);
+  const { setIsNav } = useContext(AppContext);
+  const handleClick = () => {
+    setClick(!click);
+    // if (click) setIsNav(false);
+    // else setIsNav(true);
+  };
   const Close = () => setClick(false);
 
   return (
@@ -21,7 +28,7 @@ export function Navigation(props) {
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             {pages.map((page, index) => (
               <li className={props.activePage === index ? "nav-item active" : "nav-item"} key={index}
-                onClick={() => { props.goToPage(page.pageNumber) }}
+                onClick={() => { handleClick(); props.goToPage(page.pageNumber); }}
                 data-menuanchor={page.title}>
                 <a className="font-2 nav-links">
                   {page.title}

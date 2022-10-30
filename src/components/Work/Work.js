@@ -7,7 +7,7 @@ class Work extends Component {
     return (
       <div className="container">
         <div className="row d-flex justify-content-center">
-          <header className=" work-header dosis">
+          <header className=" work-header lora">
             <h2>Here's all the stuff I do</h2>
             <p className="font-5">Softwares and technologies i have multiple years experience at.</p>
           </header>

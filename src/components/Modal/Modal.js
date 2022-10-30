@@ -1,9 +1,7 @@
 import "./Modal.scss"
-import { useState, useEffect, useContext } from "react";
-import SweetAlert from 'react-bootstrap-sweetalert';
+import { useContext } from "react";
 import Tag from "../Tag/Tag";
 import { Scrollbars } from "react-custom-scrollbars-2";
-import ScrollArea from "react-scrollbar";
 import AppContext from "../AppContext";
 
 const Modal = ({ project, closeModal }) => {
@@ -12,7 +10,7 @@ const Modal = ({ project, closeModal }) => {
 
     return (
         <>
-            <div className="modal__backdrop" onClick={() => { console.log("Clicked"); setIsModal(false); closeModal(); }}></div>
+            <div className="modal__backdrop" onClick={() => {setIsModal(false); closeModal(); }}></div>
             <div className="modal__container">
 
                 <h3 className="modal__title" id="example-custom-modal-styling-title">{project.name}</h3>

@@ -1,6 +1,5 @@
 import { Component } from "react";
 import "./Highlight.scss";
-import Modal from "react-bootstrap/Modal";
 import { Scrollbars } from "react-custom-scrollbars";
 import Tag from "../Tag/Tag";
 import 'react-multi-carousel/lib/styles.css';
@@ -10,9 +9,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import { Link } from "react-router-dom";
-import {db} from "../../config/firebase";
-
+import { db } from "../../config/firebase";
+import Modal from "../Modal/Modal";
+import AppContext from "../AppContext";
+import NoImage from '../../images/no-image.png';
 
 const storage = getStorage();
 const responsive = {
@@ -45,6 +45,7 @@ const lazyLoadList = [
 ];
 
 class Portfolio extends Component {
+  static contextType = AppContext;
   constructor(props) {
     super(props);
     this.state = {
@@ -55,6 +56,7 @@ class Portfolio extends Component {
       tags: [],
       projectImage: "",
       value: 0,
+      isModalOpen: false,
       projectsCover: [{
         original: require("../../images/grey.png"),
         thumbnail: require("../../images/grey.png"),
@@ -83,23 +85,31 @@ class Portfolio extends Component {
             { original: data, thumbnail: data, originalAlt: project.name }
           );
           this.setState({ projectsCover: joined })
-        }).catch(err => console.log(err));
+        }).catch(err => {
+          var joined = this.state.projectsCover.concat(
+            { original: NoImage, thumbnail: NoImage, originalAlt: project.name }
+          );
+          this.setState({ projectsCover: joined })
+          console.log(err)
+        });
     });
     this.setState({ projects: projectList });
-
   }
 
-  setShow = (flag, currentProject = "") => {
-    this.setState({ show: flag });
-    if (flag) {
-      this.setState({ currentProject });
-    }
-  };
+
   showModal = (e) => {
     let selectedProject = {};
     selectedProject = this.getSelectedProject(e.target.alt);
-    this.setShow(true, selectedProject);
+    this.setShow(selectedProject);
   }
+  setShow = (currentProject) => {
+    this.setState({ isModalOpen: true });
+    this.setState({ currentProject });
+  };
+  closeModal = () => {
+    this.setState({ isModalOpen: false });
+  }
+
   getSelectedProject = (projectName) => {
     let pp = {};
     this.state.projects.forEach(p => {
@@ -113,65 +123,37 @@ class Portfolio extends Component {
 
 
   render() {
+    const { isModal, setIsModal } = this.context
     return (
-        <div className="container">
-          <div className=" d-flex justify-content-center">
-            <header>
-              <h2>Career Highlight</h2>
-              <p>
-                These are some of the biggest projects I worked on.
-              </p>
-            </header>
-          </div>
 
-          <div className="container-fluid slider">
-            {/* {this.state.projectsCover ( */}
-            <ImageGallery items={this.state.projectsCover}
-              thumbnailPosition="bottom"
-              showFullscreenButton={false}
-              showPlayButton={false}
-              showBullets={true}
-              lazyLoad={true}
-              onClick={(e) => this.showModal(e)}
-            />
-
-          </div>
-
-          <Modal
-            size="xl"
-            show={this.state.show}
-            onHide={() => this.setShow(false)}
-            dialogClassName="modal-90w"
-            aria-labelledby="example-custom-modal-styling-title"
-            className="Modal-Style"
-          >
-            <Modal.Header closeButton>
-              <Modal.Title id="example-custom-modal-styling-title">
-                {this.state.header}
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <div className="video image featured">
-                <iframe
-                  title="myFrame"
-                  src={this.state.currentProject.url}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-              <Tag className="tag" tags={this.state.currentProject.tags} />
-              <Scrollbars
-                style={{ height: 100 }}
-              // autoHide
-              >
-                <p className="description">{this.state.currentProject.description}</p>
-
-              </Scrollbars>
-
-            </Modal.Body>
-          </Modal>
+      <div className="container">
+        <div className=" d-flex justify-content-center lora">
+          <header>
+            <h2>Career Highlight</h2>
+            <p>
+              These are some of the biggest projects I worked on.
+            </p>
+          </header>
         </div>
+
+        <div className="container-fluid slider">
+          <ImageGallery items={this.state.projectsCover}
+            thumbnailPosition="bottom"
+            showFullscreenButton={false}
+            showPlayButton={false}
+            showBullets={true}
+            lazyLoad={true}
+            onClick={(e) => { this.showModal(e); setIsModal(true); }}
+          />
+        </div>
+        <div className="row d-flex justify-content-center">
+          {this.state.isModalOpen &&
+            <Modal project={this.state.currentProject} closeModal={() => this.closeModal()} />
+          }
+        </div>
+
+
+      </div>
     );
   }
 }

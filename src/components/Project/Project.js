@@ -3,7 +3,8 @@ import Tag from "../Tag/Tag";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { db } from "../../config/firebase";
 import "./Project.scss";
-import AppContext  from "../AppContext";
+import AppContext from "../AppContext";
+import NoImage from '../../images/no-image.png';
 
 const storage = getStorage();
 
@@ -16,6 +17,9 @@ const Project = ({ project, showModal, tagsExist, headerPosition }) => {
             .then((data) => {
                 if (isMounted)
                     setProjectImage(data);
+            }).catch((err) => {
+                console.log("err",err);
+                setProjectImage(NoImage);
             });
         return () => { isMounted = false };
     }, [project]);

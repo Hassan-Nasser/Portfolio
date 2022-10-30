@@ -68,7 +68,7 @@ class Contact extends Component {
   render() {
     return (
       <div className="container">
-        <div className="row d-flex justify-content-center white">
+        <div className="row d-flex justify-content-center white lora">
           <header >
             <h2>Get in touch</h2>
             <p>
@@ -176,23 +176,15 @@ class Contact extends Component {
                   <img className="upwork" style={{ backgroundImage: "url(" + Upwork + ")" }}></img>
                 </a>
               </li>
-              <li>
-                <a
-                  href="https://www.twitter.com/HaSsSaN_NaSsSeR"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <FontAwesomeIcon icon={faTwitter} size="2x" />
-                </a>
-              </li>
 
               <li>
                 <a
                   href="https://www.linkedin.com/in/hassan-naser/"
                   target="_blank"
                   rel="noreferrer"
+                  
                 >
-                  <FontAwesomeIcon icon={faLinkedin} size="2x" />
+                  <FontAwesomeIcon  icon={faLinkedin} size="2x" />
                 </a>
               </li>
               <li>

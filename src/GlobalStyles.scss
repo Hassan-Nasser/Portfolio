@@ -92,7 +92,7 @@ header {
 }
 
 .font-3 {
-  font-size: 2.5em;
+  font-size: 2.4em;
 }
 
 .font-4 {
@@ -140,6 +140,15 @@ font-size: 1.2em;
 @font-face {
   font-family: "blenda";
   src: local('blenda'), url("./Fonts/Blenda\ Script.otf") format('woff');
+}
+
+@font-face {
+  font-family: "lora";
+  src: local('lora'), url("./Fonts/Lora-VariableFont_wght.ttf") format('woff');
+}
+
+.lora {
+  font-family: lora;
 }
 
 .blenda {
