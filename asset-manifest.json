@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Portfolio/static/css/main.56c1488e.css",
-    "main.js": "/Portfolio/static/js/main.529c3c19.js",
+    "main.css": "/Portfolio/static/css/main.4c6b8086.css",
+    "main.js": "/Portfolio/static/js/main.f42dd05c.js",
     "static/media/Multiplayer.png": "/Portfolio/static/media/Multiplayer.cf745757bcd691fc2572.png",
     "static/media/AR&VR.png": "/Portfolio/static/media/AR&VR.d323ad0ba71319981077.png",
     "static/media/CrimsonPro-VariableFont_wght.ttf": "/Portfolio/static/media/CrimsonPro-VariableFont_wght.4af3cccf68390b98dbf3.ttf",
@@ -9,7 +9,6 @@
     "static/media/Unity.png": "/Portfolio/static/media/Unity.660982af4d24e51c8574.png",
     "static/media/Dosis-Medium.ttf": "/Portfolio/static/media/Dosis-Medium.50346366837ca02cca28.ttf",
     "static/media/Gantari-VariableFont_wght.ttf": "/Portfolio/static/media/Gantari-VariableFont_wght.6511cd2dc4cb224cfde4.ttf",
-    "static/media/Upwork.png": "/Portfolio/static/media/Upwork.3e513641cfcef076371e.png",
     "static/media/ProfilePicture.jpg": "/Portfolio/static/media/ProfilePicture.1867a6fe21e7a8ea3933.jpg",
     "static/media/Blenda Script.otf": "/Portfolio/static/media/Blenda Script.184c67447026dce1ee5f.otf",
     "static/media/Unreal.png": "/Portfolio/static/media/Unreal.197dfa054fdf40f2d57d.png",
@@ -18,12 +17,13 @@
     "static/media/revicons.eot": "/Portfolio/static/media/revicons.a77de540a38981833f9e.eot",
     "static/media/revicons.ttf": "/Portfolio/static/media/revicons.57fd05d4ae650374c8de.ttf",
     "static/media/revicons.woff": "/Portfolio/static/media/revicons.e8746a624ed098489406.woff",
+    "static/media/Upwork.svg": "/Portfolio/static/media/Upwork.66e89555b0d12677e2dfa7d102dc4151.svg",
     "index.html": "/Portfolio/index.html",
-    "main.56c1488e.css.map": "/Portfolio/static/css/main.56c1488e.css.map",
-    "main.529c3c19.js.map": "/Portfolio/static/js/main.529c3c19.js.map"
+    "main.4c6b8086.css.map": "/Portfolio/static/css/main.4c6b8086.css.map",
+    "main.f42dd05c.js.map": "/Portfolio/static/js/main.f42dd05c.js.map"
   },
   "entrypoints": [
-    "static/css/main.56c1488e.css",
-    "static/js/main.529c3c19.js"
+    "static/css/main.4c6b8086.css",
+    "static/js/main.f42dd05c.js"
   ]
 }
