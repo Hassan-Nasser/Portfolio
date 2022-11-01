@@ -119,9 +119,9 @@ class PageScroller extends Component {
   }
 
   onTouchMove = (evt) => {
-    if (this.props.scrollMode !== scrollMode.FULL_PAGE) {
-      return;
-    }
+    // if (this.props.scrollMode !== scrollMode.FULL_PAGE) {
+    //   return;
+    // }
 
     evt.preventDefault();
     const touchEnd = evt.changedTouches[0].clientY;
@@ -135,9 +135,9 @@ class PageScroller extends Component {
     }
   }
   onScroll = (evt) => {
-    if (this.props.scrollMode !== scrollMode.FULL_PAGE) {
-      return;
-    }
+    // if (this.props.scrollMode !== scrollMode.FULL_PAGE) {
+    //   return;
+    // }
 
     evt.preventDefault();
     if (this._isScrollPending) {

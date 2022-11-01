@@ -167,7 +167,7 @@ class Portfolio extends Component {
                     tagsExist={true}
                     project={project}
                     headerPosition="normal-header-position"
-                    showModal={() => {this.setShow(project) }} />
+                    showModal={() => { this.setShow(project) }} />
                 </div>
               ))}
           </Carousel>

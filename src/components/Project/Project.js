@@ -31,7 +31,6 @@ const Project = ({ project, showModal, tagsExist, headerPosition }) => {
                 className="transparent image featured"
                 onClick={() => {
                     setIsModal(true);
-                    console.log("current value = ", isModal);
                     showModal();
                 }
                 }

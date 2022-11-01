@@ -1,5 +1,5 @@
 import "./Modal.scss"
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import Tag from "../Tag/Tag";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import AppContext from "../AppContext";
@@ -7,10 +7,21 @@ import AppContext from "../AppContext";
 const Modal = ({ project, closeModal }) => {
 
     const { isModal, setIsModal } = useContext(AppContext);
+    const myContainer = useRef();
+
+    useEffect(() => {
+        function disablePreventDefault(e) {
+            e.stopPropagation();
+        }
+
+        if (myContainer && myContainer.current) {
+            myContainer.current.addEventListener("wheel", disablePreventDefault, false);
+        }
+    }, []);
 
     return (
         <>
-            <div className="modal__backdrop" onClick={() => {setIsModal(false); closeModal(); }}></div>
+            <div className="modal__backdrop" onClick={() => { setIsModal(false); closeModal(); }}></div>
             <div className="modal__container">
 
                 <h3 className="modal__title" id="example-custom-modal-styling-title">{project.name}</h3>
@@ -26,17 +37,18 @@ const Modal = ({ project, closeModal }) => {
                     ></iframe>
                 </div>
                 <Tag className="tag" isModal={true} tags={project.tags} />
+                <div >
+                    <Scrollbars
+                        autoHeight
+                        autoHeightMax={100}
+                        renderView={(props) => <div {...props} className="view" />}
+                        renderTrackVertical={(props) => <div {...props} className="vtrack" />}
+                        renderThumbVertical={(props) => <div {...props} className="vthumb" />}
+                    >
+                        <p ref={myContainer} >{project.description}</p>
+                    </Scrollbars>
+                </div>
 
-                <Scrollbars
-                    autoHeight
-                    autoHeightMax={100}
-                    renderView={(props) => <div {...props} className="view" />}
-                    renderTrackVertical={(props) => <div {...props} className="vtrack" />}
-                    renderThumbVertical={(props) => <div {...props} className="vthumb" />}
-                >
-                    <p >{project.description}</p>
-
-                </Scrollbars>
                 <div className="center padding-top-1">
                     <button type="button " className="btn btn-dark center" onClick={() => { setIsModal(false); closeModal(); }}>
                         Close
