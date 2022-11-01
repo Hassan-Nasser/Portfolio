@@ -12,8 +12,7 @@ export function Navigation(props) {
   const { setIsNav } = useContext(AppContext);
   const handleClick = () => {
     setClick(!click);
-    // if (click) setIsNav(false);
-    // else setIsNav(true);
+    setIsNav(!click);
   };
   const Close = () => setClick(false);
 
@@ -23,12 +22,19 @@ export function Navigation(props) {
       <nav className="navbar fixed-top" onClick={e => e.stopPropagation()}>
         <div className="nav-container">
           <a className=" font-3 nav-logo" onClick={() => { props.goToPage(0) }}>
-            Hassan Nasser   <FontAwesomeIcon icon={faGamepad} />
+            Hassan Nasser
+            {/* <FontAwesomeIcon icon={faGamepad} /> */}
           </a>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             {pages.map((page, index) => (
               <li className={props.activePage === index ? "nav-item active" : "nav-item"} key={index}
-                onClick={() => { handleClick(); props.goToPage(page.pageNumber); }}
+                onClick={() => {
+                  setIsNav(false);
+                  setTimeout(() => {
+                    props.goToPage(page.pageNumber);
+                    Close();
+                  }, 200);
+                }}
                 data-menuanchor={page.title}>
                 <a className="font-2 nav-links">
                   {page.title}

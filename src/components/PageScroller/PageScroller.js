@@ -7,7 +7,6 @@ import "./PageScroller.scss";
 import animatedScrollTo from '../../utils/animated-scroll-to';
 import isMobileDevice from '../../utils/is-mobile';
 import AppContext from "../AppContext";
-import Portfolio from "../Portfolio/Portfolio";
 
 let animSetTime = null;
 
@@ -182,7 +181,9 @@ class PageScroller extends Component {
   // }
 
   scrollToSlide = (slide) => {
-    if (this.state.isModal || this.state.isNav)
+    if (this.state.isModal)
+      return;
+    if (this.state.isNav)
       return;
     if (slide >= 0 && slide < this.state.slidesCount) {
       this._isScrollPending = true;
@@ -291,7 +292,6 @@ class PageScroller extends Component {
         isModal: this.state.isModal, setIsModal: this.state.setIsModal
         , isNav: this.state.isNav, setIsNav: this.state.setIsNav
       }}>
-        {console.log("From page scroller ", this.state.isNav)}
         <div style={{ height: this.state.height }}>
           {this.renderChildren()}
         </div>
