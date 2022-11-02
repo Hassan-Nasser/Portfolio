@@ -11,7 +11,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import emailjs from "emailjs-com";
 import Swal from "sweetalert2";
-import Upwork from '../../images/Upwork.svg';
+import Upwork from '../../images/Upwork.png';
 
 class Contact extends Component {
   constructor(props) {

@@ -18,7 +18,7 @@ const Project = ({ project, showModal, tagsExist, headerPosition }) => {
                 if (isMounted)
                     setProjectImage(data);
             }).catch((err) => {
-                console.log("err",err);
+                console.log("err", err);
                 setProjectImage(NoImage);
             });
         return () => { isMounted = false };
@@ -38,13 +38,14 @@ const Project = ({ project, showModal, tagsExist, headerPosition }) => {
                 {projectImage
                     ? <img src={projectImage} alt={project.name} />
                     : <img src={require("../../images/grey.png")} alt={project.name} />}
-                <div className={headerPosition}>
-                    <span className="project-name">{project.name}</span>
-                </div>
+
 
                 {tagsExist && (
                     <Tag isModal={false} className="tag tag-position" tags={project.tags} />
                 )}
+                <div className={headerPosition}>
+                    <span className="project-name milonga black font-2 bold">{project.name}</span>
+                </div>
 
             </button>
         </article>

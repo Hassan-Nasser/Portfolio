@@ -78,9 +78,16 @@ header {
 .padding-top-1 {
   padding-top: 0.3em;
 }
+.margin-1 {
+  margin: 0 0.2em;
+}
 
 .white {
   color: white;
+}
+
+.black{
+  color: black;
 }
 
 .font-1 {
@@ -133,8 +140,8 @@ font-size: 1.2em;
 }
 
 @font-face {
-  font-family: "dosis";
-  src: local('dosis'), url("./Fonts/Dosis-Medium.ttf") format('woff');
+  font-family: "milonga";
+  src: local('milonga'), url("./Fonts/Milonga-Regular.ttf") format('woff');
 }
 
 @font-face {
@@ -155,8 +162,8 @@ font-size: 1.2em;
   font-family: blenda;
 }
 
-.dosis {
-  font-family: dosis;
+.milonga {
+  font-family: milonga;
 }
 
 .gantari {

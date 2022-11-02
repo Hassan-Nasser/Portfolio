@@ -3,6 +3,7 @@ import { useContext, useEffect, useRef } from "react";
 import Tag from "../Tag/Tag";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import AppContext from "../AppContext";
+import NoVideo from '../../images/no-video.png';
 
 const Modal = ({ project, closeModal }) => {
 
@@ -13,6 +14,7 @@ const Modal = ({ project, closeModal }) => {
         function disablePreventDefault(e) {
             e.stopPropagation();
         }
+
 
         if (myContainer && myContainer.current) {
             myContainer.current.addEventListener("wheel", disablePreventDefault, false);
@@ -28,7 +30,7 @@ const Modal = ({ project, closeModal }) => {
                 <div className="video image featured ">
                     <iframe
                         title={project.name}
-                        src={project.url}
+                        src={project.url?project.url:NoVideo}
                         frameBorder="0"
                         scrolling="no"
                         seamless="seamless"
@@ -48,9 +50,19 @@ const Modal = ({ project, closeModal }) => {
                         <p ref={myContainer} >{project.description}</p>
                     </Scrollbars>
                 </div>
+                <hr className="modal-hr" />
+                <div className="center padding-top-1 center">
+                    {project.googlePlay && (
+                        <button type="button " className="btn btn-info margin-1"
+                            onClick={(e) => {
+                                // e.preventDefault();
+                                window.open(project.googlePlay, "_blank");
+                            }}>
+                            Project on Google Play
+                        </button>
+                    )}
 
-                <div className="center padding-top-1">
-                    <button type="button " className="btn btn-dark center" onClick={() => { setIsModal(false); closeModal(); }}>
+                    <button type="button " className="btn btn-danger margin-1" onClick={() => { setIsModal(false); closeModal(); }}>
                         Close
                     </button>
                 </div>
