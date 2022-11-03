@@ -39,17 +39,16 @@ const Modal = ({ project, closeModal }) => {
                     ></iframe>
                 </div>
                 <Tag className="tag" isModal={true} tags={project.tags} />
-                <div >
                     <Scrollbars
                         autoHeight
                         autoHeightMax={100}
+                        className="scroll-bar"
                         renderView={(props) => <div {...props} className="view" />}
                         renderTrackVertical={(props) => <div {...props} className="vtrack" />}
                         renderThumbVertical={(props) => <div {...props} className="vthumb" />}
                     >
                         <p ref={myContainer} >{project.description}</p>
                     </Scrollbars>
-                </div>
                 <hr className="modal-hr" />
                 <div className="center padding-top-1 center">
                     {project.googlePlay && (

@@ -12,21 +12,27 @@ export const pages = [
     color: "#5727B0"
   },
   {
+    path: "/review",
+    title: "Review",
+    pageNumber: 2,
+    color: "#57ACDC"
+  },
+  {
     path: "/highlight",
     title: "Highlight",
-    pageNumber: 2,
+    pageNumber: 3,
     color: "#57ACDC"
   },
   {
     path: "/Portfolio",
     title: "Portfolio",
-    pageNumber: 3,
+    pageNumber: 4,
     color: "#57DCBE"
   },
   {
     path: "/contact",
     title: "Contact",
-    pageNumber: 4,
+    pageNumber: 5,
     color: "#60C689"
   }
 ];

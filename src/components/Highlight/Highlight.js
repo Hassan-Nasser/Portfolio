@@ -44,7 +44,7 @@ const lazyLoadList = [
   },
 ];
 
-class Portfolio extends Component {
+class Highlight extends Component {
   static contextType = AppContext;
   constructor(props) {
     super(props);
@@ -157,4 +157,4 @@ class Portfolio extends Component {
     );
   }
 }
-export default Portfolio;
+export default Highlight;

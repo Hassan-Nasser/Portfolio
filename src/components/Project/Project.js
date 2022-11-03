@@ -36,9 +36,12 @@ const Project = ({ project, showModal, tagsExist, headerPosition }) => {
                 }
             >
                 {projectImage
-                    ? <img src={projectImage} alt={project.name} />
-                    : <img src={require("../../images/grey.png")} alt={project.name} />}
+                    ? <img className="project-image" src={projectImage} alt={project.name} />
+                    : <img className="project-image" src={require("../../images/grey.png")} alt={project.name} />}
 
+                {/* {projectImage
+                    ? <div className="project-cover" style={{ backgroundImage: "url(" + projectImage + ")" }}></div>
+                    : <img src={require("../../images/grey.png")} alt={project.name} />} */}
 
                 {tagsExist && (
                     <Tag isModal={false} className="tag tag-position" tags={project.tags} />

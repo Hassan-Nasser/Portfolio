@@ -4,6 +4,7 @@ import PageScroller from "./components/PageScroller/PageScroller";
 import PageIndicator from "./components/PageIndicator/PageIndicator";
 import Profile from "./components/Profile/Profile";
 import Work from "./components/Work/Work";
+import Review from "./components/Review/Review";
 import Highlight from "./components/Highlight/Highlight";
 import Portfolio from "./components/Portfolio/Portfolio";
 import Page from "./components/Page/Page";
@@ -28,6 +29,9 @@ class App extends React.Component {
         </Page>
         <Page className='page' style={{ backgroundColor: '#5727B0', display: 'flex', alignItems: 'center', justifyContent: 'center' }} nav-title={'Num 2'}>
           <Work />
+        </Page>
+        <Page style={{ backgroundColor: '#57ACDC', display: 'flex', alignItems: 'center', justifyContent: 'center' }} nav-title={'Num 3'}>
+          <Review />
         </Page>
         <Page style={{ backgroundColor: '#57ACDC', display: 'flex', alignItems: 'center', justifyContent: 'center' }} nav-title={'Num 3'}>
           <Highlight />
