@@ -78,7 +78,6 @@ class Review extends Component {
           console.log(err)
         });
     })
-    console.log("reviewes", this.state.allReviews)
   }
 
 
