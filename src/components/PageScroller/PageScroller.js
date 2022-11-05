@@ -58,8 +58,8 @@ class PageScroller extends Component {
   setIsNav = isNav => {
     this.setState({ isNav });
   };
-  setDisableScroll = disableScroll => {
-    this.setState({ disableScroll });
+  setDisableScroll = (disableScroll, callback = null) => {
+    this.setState({ disableScroll },callback);
   };
 
   componentDidMount = () => {
@@ -186,6 +186,7 @@ class PageScroller extends Component {
   // }
 
   scrollToSlide = (slide) => {
+    console.log("ss = ",this.state.disableScroll)
     if (this.state.isModal)
       return;
     if (this.state.isNav)

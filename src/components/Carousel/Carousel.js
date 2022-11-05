@@ -9,10 +9,13 @@ const Carousel = ({ children }) => {
     const count = React.Children.count(children);
     const [touchStart, setTouchStart] = React.useState(0);
     const [touchEnd, setTouchEnd] = React.useState(0);
-    const [mouseStart, setMouseStart] = React.useState(0);
-    const [mouseEnd, setMouseEnd] = React.useState(0);
+    const [startY, setStartY] = React.useState(0);
+    const [endY, setEndY] = React.useState(0);
     const [width, setWidth] = useState(window.innerWidth);
-    const { disableScroll, setDisableScroll } = useContext(AppContext)
+    const { disableScroll, setDisableScroll } = useContext(AppContext);
+    const [isTicking, setIsTicking] = useState(false);
+
+
     useEffect(() => {
         window.addEventListener('resize', handleWindowSizeChange);
         return () => {
@@ -20,44 +23,52 @@ const Carousel = ({ children }) => {
         }
     }, []);
 
+    useEffect(() => {
+        if (isTicking) sleep(300).then(() => { setIsTicking(false); setDisableScroll(false); });
+    }, [isTicking]);
+
+
     const handleWindowSizeChange = (e) => {
         setWidth(window.innerWidth);
     }
     const handleTouchStart = (e) => {
-        setDisableScroll(true);
+        // setDisableScroll(true);
         setTouchStart(e.targetTouches[0].clientX);
+        setStartY(e.targetTouches[0].clientY);
     }
-    // const handleMouseDown = (e) => {
-    //     setMouseStart(e.clientX);
-    // }
+
 
 
     const handleTouchMove = (e) => {
+        setDisableScroll(true);
         setTouchEnd(e.targetTouches[0].clientX);
+        setEndY(e.targetTouches[0].clientY);
     }
-    // const handleMouseMove = (e) => {
-    //     setMouseEnd(e.clientX);
-    // }
+
+    const sleep = (ms = 0) => {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    };
 
     const handleTouchEnd = () => {
-        setDisableScroll(false);
-        if (touchStart - touchEnd > 150) {
-            setActive(i => i + 1)
-        }
 
-        if (touchStart - touchEnd < -150) {
-            setActive(i => i - 1)
-        }
+        if (Math.abs(startY - endY) < Math.abs(touchStart - touchEnd)) {
+            console.log("scroll xoo");
+            setDisableScroll(true, () => {
+                if (touchStart - touchEnd > 150) {
+                    setActive(i => i + 1)
+                }
+
+                if (touchStart - touchEnd < -150) {
+                    setActive(i => i - 1)
+                }
+                setIsTicking(true);
+            })
+
+
+        } else setDisableScroll(false);
+
     }
-    // const handleMouseUp = () => {
-    //     if (mouseStart - mouseEnd > 150) {
-    //         setActive(i => i + 1)
-    //     }
 
-    //     if (mouseStart - mouseEnd < -150) {
-    //         setActive(i => i - 1)
-    //     }
-    // }
     const pervious = () => {
         let newActive = active;
         newActive--;
@@ -67,36 +78,13 @@ const Carousel = ({ children }) => {
         let newActive = active;
         setActive((newActive + 1) % count);
     }
-    // const generateItems = () => {
-    //     var items = []
-    //     var level
-    //     for (var i = active - 2; i < active + 3; i++) {
-    //         var index = i
-    //         if (i < 0) {
-    //             index = count + i
-    //         } else if (i >= count) {
-    //             index = i % count
-    //         }
-    //         level = active - i
-    //         items.push(<Item
-    //             key={index} id={this.state.items[index]}
-    //             level={level} />)
-    //     }
-    //     return items
-    // }
-
 
     const MAX_VISIBILITY = 3;
     return (
         <div className='carousel'
-            // onMouseDown={mouseDownEvent => handleMouseDown(mouseDownEvent)}
-            // onMouseMove={mouseMoveEvent => handleMouseMove(mouseMoveEvent)}
-            // onMouseUp={() => handleMouseUp()}
-
             onTouchStart={touchStartEvent => handleTouchStart(touchStartEvent)}
             onTouchMove={touchMoveEvent => handleTouchMove(touchMoveEvent)}
             onTouchEnd={() => handleTouchEnd()}
-
         >
             {active > 0 &&
                 <button className='nav left' onClick={() => pervious()}>

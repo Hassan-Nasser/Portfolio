@@ -220,6 +220,8 @@ $mobil-slide-width: 20rem;
 
 .carousel__btn {
   align-items: center;
+  background: 0;
+  border: 0;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -228,11 +230,11 @@ $mobil-slide-width: 20rem;
   transform: translateY(-50%);
 
   &--prev {
-    left: 0;
+      left: 0;
   }
 
   &--next {
-    right: 0;
+      right: 0;
   }
 }
 
@@ -256,7 +258,6 @@ $mobil-slide-width: 20rem;
 .carousel__dots {
   display: inline-block;
   left: 50%;
-  margin-top: 2rem;
   position: absolute;
   transform: translateX(-50%);
 

@@ -51,8 +51,6 @@ class Review extends Component {
       }]
     };
   }
-
-
   componentDidMount() {
     this.getReviews();
 
@@ -80,19 +78,16 @@ class Review extends Component {
     })
   }
 
-
-
   render() {
 
     return (
 
       <div className="container">
-        {/* <div className=" d-flex justify-content-center lora">
+        <div className=" d-flex justify-content-center lora">
           <header>
-            <h2>Reviews</h2>
-
+            <h4>Some of client reviews</h4>
           </header>
-        </div> */}
+        </div>
 
         <div className="container-fluid review-slider">
           <ImageGallery
@@ -100,7 +95,6 @@ class Review extends Component {
             items={this.state.allReviews}
             thumbnailPosition="bottom"
             showThumbnails={false}
-            showFullscreenButton={true}
             showPlayButton={true}
             showBullets={false}
             lazyLoad={true}
@@ -108,8 +102,6 @@ class Review extends Component {
             autoPlay={true}
           />
         </div>
-
-
       </div>
     );
   }

@@ -24,36 +24,33 @@ const Project = ({ project, showModal, tagsExist, headerPosition }) => {
         return () => { isMounted = false };
     }, [project]);
 
-    return <div>
-        <article className="pbox style2"
-            style={{ width: "100%", cursor: "pointer" }}>
-            <button
-                className="transparent image featured"
-                onClick={() => {
-                    setIsModal(true);
-                    showModal();
-                }
-                }
-            >
-                {projectImage
-                    ? <img className="project-image" src={projectImage} alt={project.name} />
-                    : <img className="project-image" src={require("../../images/grey.png")} alt={project.name} />}
+    return (<article className="pbox style2"
+        style={{ width: "100%", cursor: "pointer", height: "20em" }}>
+        <button
+            className="transparent image featured"
+            onClick={() => {
+                setIsModal(true);
+                showModal();
+            }
+            }
+        >
+            {projectImage
+                ? <img className="project-image" src={projectImage} alt={project.name} />
+                : <img className="project-image" src={require("../../images/grey.png")} alt={project.name} />}
 
-                {/* {projectImage
+            {/* {projectImage
                     ? <div className="project-cover" style={{ backgroundImage: "url(" + projectImage + ")" }}></div>
                     : <img src={require("../../images/grey.png")} alt={project.name} />} */}
 
-                {tagsExist && (
-                    <Tag isModal={false} className="tag tag-position" tags={project.tags} />
-                )}
-                <div className={headerPosition}>
-                    <span className="project-name milonga black font-2 bold">{project.name}</span>
-                </div>
+            {tagsExist && (
+                <Tag isModal={false} className="tag tag-position" tags={project.tags} />
+            )}
+            <div className={headerPosition}>
+                <span className="project-name milonga black font-2 bold">{project.name}</span>
+            </div>
 
-            </button>
-        </article>
-    </div>
-
+        </button>
+    </article>)
 }
 
 export default Project;

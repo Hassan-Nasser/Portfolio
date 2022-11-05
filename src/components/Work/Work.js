@@ -105,6 +105,7 @@ const Work = () => {
   const bigLength = items.length;
 
   const prevClick = (jump = 1) => {
+    console.log("prev");
     if (!isTicking) {
       setIsTicking(true);
       setItems((prev) => {
@@ -114,6 +115,8 @@ const Work = () => {
   };
 
   const nextClick = (jump = 1) => {
+    console.log("next");
+
     if (!isTicking) {
       setIsTicking(true);
       setItems((prev) => {
@@ -151,10 +154,7 @@ const Work = () => {
       <div className="row d-flex justify-content-center">
         <div className="carousel__wrap">
           <div className="carousel__inner">
-            <FontAwesomeIcon
-              onClick={() => prevClick()}
-              className="carousel__btn carousel__btn--prev"
-              icon={faChevronLeft} size="5x" />
+
             <div className="carousel__container">
               <ul className="carousel__slide-list">
                 {items.map((pos, i) => (
@@ -167,6 +167,10 @@ const Work = () => {
                 ))}
               </ul>
             </div>
+            <FontAwesomeIcon
+              onClick={() => prevClick()}
+              className="carousel__btn carousel__btn--prev"
+              icon={faChevronLeft} size="5x" />
             <FontAwesomeIcon
               onClick={() => nextClick()}
               className="carousel__btn carousel__btn--next"

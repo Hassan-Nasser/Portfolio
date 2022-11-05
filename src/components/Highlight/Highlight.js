@@ -1,6 +1,5 @@
 import { Component } from "react";
 import "./Highlight.scss";
-import { Scrollbars } from "react-custom-scrollbars";
 import Tag from "../Tag/Tag";
 import 'react-multi-carousel/lib/styles.css';
 import firebase from 'firebase/compat/app';
@@ -29,20 +28,7 @@ const responsive = {
     items: 1
   }
 };
-const lazyLoadList = [
-  {
-    original: require("../../images/grey.png"),
-    thumbnail: require("../../images/grey.png"),
-  },
-  {
-    original: require("../../images/grey.png"),
-    thumbnail: require("../../images/grey.png"),
-  },
-  {
-    original: require("../../images/grey.png"),
-    thumbnail: require("../../images/grey.png"),
-  },
-];
+
 
 class Highlight extends Component {
   static contextType = AppContext;
@@ -123,7 +109,7 @@ class Highlight extends Component {
 
 
   render() {
-    const { isModal, setIsModal } = this.context
+    const { isModal, setIsModal,setDisableScroll } = this.context
     return (
 
       <div className="container">
@@ -136,7 +122,11 @@ class Highlight extends Component {
           </header>
         </div>
 
-        <div className="container-fluid slider">
+        <div 
+        className="container-fluid slider"
+        onTouchStart={() => setDisableScroll(true)}
+        onTouchEnd={() => setDisableScroll(false)}
+        >
           <ImageGallery items={this.state.projectsCover}
             thumbnailPosition="bottom"
             showFullscreenButton={false}
