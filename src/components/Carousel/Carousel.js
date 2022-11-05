@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import "./Carousel.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import AppContext from "../AppContext";
 
 const Carousel = ({ children }) => {
     const [active, setActive] = useState(2);
@@ -11,7 +12,7 @@ const Carousel = ({ children }) => {
     const [mouseStart, setMouseStart] = React.useState(0);
     const [mouseEnd, setMouseEnd] = React.useState(0);
     const [width, setWidth] = useState(window.innerWidth);
-
+    const { disableScroll, setDisableScroll } = useContext(AppContext)
     useEffect(() => {
         window.addEventListener('resize', handleWindowSizeChange);
         return () => {
@@ -23,6 +24,7 @@ const Carousel = ({ children }) => {
         setWidth(window.innerWidth);
     }
     const handleTouchStart = (e) => {
+        setDisableScroll(true);
         setTouchStart(e.targetTouches[0].clientX);
     }
     // const handleMouseDown = (e) => {
@@ -38,7 +40,7 @@ const Carousel = ({ children }) => {
     // }
 
     const handleTouchEnd = () => {
-        console.log("=====", touchStart - touchEnd)
+        setDisableScroll(false);
         if (touchStart - touchEnd > 150) {
             setActive(i => i + 1)
         }
@@ -87,13 +89,13 @@ const Carousel = ({ children }) => {
     const MAX_VISIBILITY = 3;
     return (
         <div className='carousel'
-        // onMouseDown={mouseDownEvent => handleMouseDown(mouseDownEvent)}
-        // onMouseMove={mouseMoveEvent => handleMouseMove(mouseMoveEvent)}
-        // onMouseUp={() => handleMouseUp()}
+            // onMouseDown={mouseDownEvent => handleMouseDown(mouseDownEvent)}
+            // onMouseMove={mouseMoveEvent => handleMouseMove(mouseMoveEvent)}
+            // onMouseUp={() => handleMouseUp()}
 
-        // onTouchStart={touchStartEvent => handleTouchStart(touchStartEvent)}
-        // onTouchMove={touchMoveEvent => handleTouchMove(touchMoveEvent)}
-        // onTouchEnd={() => handleTouchEnd()}
+            onTouchStart={touchStartEvent => handleTouchStart(touchStartEvent)}
+            onTouchMove={touchMoveEvent => handleTouchMove(touchMoveEvent)}
+            onTouchEnd={() => handleTouchEnd()}
 
         >
             {active > 0 &&

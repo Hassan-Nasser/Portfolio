@@ -37,8 +37,10 @@ class PageScroller extends Component {
       modalMode: false,
       isModal: false,
       isNav: false,
+      disableScroll: false,
       setIsModal: this.setIsModal,
-      setIsNav: this.setIsNav
+      setIsNav: this.setIsNav,
+      setDisableScroll: this.setDisableScroll,
     };
 
     this.pages = 0;
@@ -55,6 +57,9 @@ class PageScroller extends Component {
   };
   setIsNav = isNav => {
     this.setState({ isNav });
+  };
+  setDisableScroll = disableScroll => {
+    this.setState({ disableScroll });
   };
 
   componentDidMount = () => {
@@ -185,6 +190,8 @@ class PageScroller extends Component {
       return;
     if (this.state.isNav)
       return;
+    if (this.state.disableScroll)
+      return
     if (slide >= 0 && slide < this.state.slidesCount) {
       this._isScrollPending = true;
       this.setState({
@@ -291,6 +298,7 @@ class PageScroller extends Component {
       <AppContext.Provider value={{
         isModal: this.state.isModal, setIsModal: this.state.setIsModal
         , isNav: this.state.isNav, setIsNav: this.state.setIsNav
+        , disableScroll: this.state.disableScroll, setDisableScroll: this.state.setDisableScroll
       }}>
         <div style={{ height: this.state.height }}>
           {this.renderChildren()}
