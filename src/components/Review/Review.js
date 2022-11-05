@@ -40,12 +40,12 @@ class Review extends Component {
       value: 0,
       isModalOpen: false,
       allReviews: [{
-        original: "https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg?w=2000",
-        thumbnail: "https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg?w=2000",
+        original: require("../../images/grey.png"),
+        thumbnail: require("../../images/grey.png"),
         description: "HELLO"
       },
       {
-        original: "https://www.upwork.com/ab/g/pub/wom/bnr/eyJwZXJzb25VaWQiOiIxMTE4NjY5NzU4NTcxMjE2ODk2IiwiY29udHJhY3RSaWQiOiIyODcwMjAxNiIsImJhbm5lclR5cGUiOiJjb250cmFjdCIsImJhbm5lclZhcmlhbnQiOiJkZWZhdWx0Iiwid29tIjoiZmx2MiJ9",
+        original: require("../../images/grey.png"),
         thumbnail: require("../../images/grey.png"),
         description: "HELLO2"
       }]
@@ -87,12 +87,12 @@ class Review extends Component {
     return (
 
       <div className="container">
-        <div className=" d-flex justify-content-center lora">
+        {/* <div className=" d-flex justify-content-center lora">
           <header>
             <h2>Reviews</h2>
 
           </header>
-        </div>
+        </div> */}
 
         <div className="container-fluid review-slider">
           <ImageGallery

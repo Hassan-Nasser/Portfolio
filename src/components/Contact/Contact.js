@@ -2,12 +2,9 @@ import { Component } from "react";
 import "./Contact.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faFacebookF,
   faGithub,
   faLinkedin,
-  faTwitter,
-  faYoutube,
-
+  faYoutube
 } from "@fortawesome/free-brands-svg-icons";
 import emailjs from "emailjs-com";
 import Swal from "sweetalert2";
