@@ -113,9 +113,9 @@ class Highlight extends Component {
     return (
 
       <div className="container">
-        <div className=" d-flex justify-content-center lora">
+        <div className=" d-flex justify-content-center">
           <header>
-            <h2>Career Highlight</h2>
+            <h4 className="timeline">Career Highlight</h4>
             <p className="montserrat">
               These are some of the biggest projects I worked on.
             </p>

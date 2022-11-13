@@ -120,16 +120,6 @@ font-size: 1.2em;
 
 
 @font-face {
-  font-family: "crimson";
-  src: local('crimson'), url("./Fonts/Crimson/CrimsonPro-VariableFont_wght.ttf");
-}
-
-@font-face {
-  font-family: "gantari";
-  src: local('gantari'), url("./Fonts/gantari/Gantari-VariableFont_wght.ttf") format('woff');
-}
-
-@font-face {
   font-family: "prototype";
   src: local('prototype'), url("./Fonts/Prototype.ttf") format('woff');
 }
@@ -139,43 +129,28 @@ font-size: 1.2em;
   src: local('montserrat'), url("./Fonts/Montserrat-Regular.ttf") format('woff');
 }
 
-@font-face {
-  font-family: "milonga";
-  src: local('milonga'), url("./Fonts/Milonga-Regular.ttf") format('woff');
-}
 
 @font-face {
   font-family: "blenda";
   src: local('blenda'), url("./Fonts/Blenda\ Script.otf") format('woff');
 }
 
+
 @font-face {
-  font-family: "lora";
-  src: local('lora'), url("./Fonts/Lora-VariableFont_wght.ttf") format('woff');
+  font-family: "timeline";
+  src: local('timeline'), url("./Fonts/Timeline.ttf") format('woff');
 }
 
-.lora {
-  font-family: lora;
+.timeline {
+  font-family: timeline;
 }
 
 .blenda {
   font-family: blenda;
 }
 
-.milonga {
-  font-family: milonga;
-}
-
-.gantari {
-  font-family: gantari;
-}
-
 .montserrat {
   font-family: montserrat;
-}
-
-.crimson {
-  font-family: crimson;
 }
 
 .prototype {

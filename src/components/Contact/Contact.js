@@ -65,9 +65,9 @@ class Contact extends Component {
   render() {
     return (
       <div className="container">
-        <div className="row d-flex justify-content-center white lora">
+        <div className="row d-flex justify-content-center white">
           <header >
-            <h2>Get in touch</h2>
+            <h4 className="timeline">Get in touch</h4>
             <p className="montserrat">
               As a freelancer, i'm available for new projects and
               collaborations.

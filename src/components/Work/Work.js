@@ -143,8 +143,8 @@ const Work = () => {
   return (
     <div className="container">
       <div className="row d-flex justify-content-center">
-        <header className=" work-header lora">
-          <h2>Here's all the stuff I do</h2>
+        <header className=" work-header">
+          <h4 className="timeline">Here's all the stuff I do</h4>
           <p className="font-5 montserrat">Softwares and technologies i have multiple years experience at.</p>
         </header>
       </div>

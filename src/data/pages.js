@@ -13,7 +13,7 @@ export const pages = [
   },
   {
     path: "/review",
-    title: "Review",
+    title: "Reviews",
     pageNumber: 2,
     color: "#57ACDC"
   },

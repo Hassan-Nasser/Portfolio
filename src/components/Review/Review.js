@@ -133,9 +133,11 @@ const Review = () => {
   return (
     <div className="container">
 
-      <div className=" d-flex justify-content-center lora">
+      <div className=" d-flex justify-content-center">
         <header>
-          <h4 className="montserrat">Some of client reviews</h4>
+          <h4 className="timeline">Client's Reviews</h4>
+          <p className="font-5 montserrat">Some of my freelance projects reviews, projects were done on upwork. </p>
+
         </header>
       </div>
       <div className="row d-flex justify-content-center">
