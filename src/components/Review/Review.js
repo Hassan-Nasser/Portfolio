@@ -135,7 +135,7 @@ const Review = () => {
 
       <div className=" d-flex justify-content-center lora">
         <header>
-          <h4>Some of client reviews</h4>
+          <h4 className="montserrat">Some of client reviews</h4>
         </header>
       </div>
       <div className="row d-flex justify-content-center">

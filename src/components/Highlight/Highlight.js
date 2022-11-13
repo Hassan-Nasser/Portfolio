@@ -116,7 +116,7 @@ class Highlight extends Component {
         <div className=" d-flex justify-content-center lora">
           <header>
             <h2>Career Highlight</h2>
-            <p>
+            <p className="montserrat">
               These are some of the biggest projects I worked on.
             </p>
           </header>

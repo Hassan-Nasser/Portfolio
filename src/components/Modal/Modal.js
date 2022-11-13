@@ -4,6 +4,8 @@ import Tag from "../Tag/Tag";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import AppContext from "../AppContext";
 import NoVideo from '../../images/no-video.png';
+import GooglePlay from '../../images/google-play.png';
+
 
 const Modal = ({ project, closeModal }) => {
 
@@ -30,7 +32,7 @@ const Modal = ({ project, closeModal }) => {
                 <div className="video image featured ">
                     <iframe
                         title={project.name}
-                        src={project.url?project.url:NoVideo}
+                        src={project.url ? project.url : NoVideo}
                         frameBorder="0"
                         scrolling="no"
                         seamless="seamless"
@@ -39,28 +41,32 @@ const Modal = ({ project, closeModal }) => {
                     ></iframe>
                 </div>
                 <Tag className="tag" isModal={true} tags={project.tags} />
-                    <Scrollbars
-                        autoHeight
-                        autoHeightMax={100}
-                        className="scroll-bar"
-                        renderView={(props) => <div {...props} className="view" />}
-                        renderTrackVertical={(props) => <div {...props} className="vtrack" />}
-                        renderThumbVertical={(props) => <div {...props} className="vthumb" />}
+
+                {project.googlePlay && (
+
+                    <a
+                        className="google-play-link"
+                        href={project.googlePlay}
+                        target="_blank"
+                        rel="noreferrer"
                     >
-                        <p ref={myContainer} >{project.description}</p>
-                    </Scrollbars>
+                        <img className="google-play-icon"  style={{ backgroundImage: "url(" + GooglePlay + ")" }} />
+                    </a>
+
+                )}
+
+              <Scrollbars
+                    autoHeight
+                    autoHeightMax={100}
+                    className="scroll-bar"
+                    renderView={(props) => <div {...props} className="view" />}
+                    renderTrackVertical={(props) => <div {...props} className="vtrack" />}
+                    renderThumbVertical={(props) => <div {...props} className="vthumb" />}
+                >
+                    <p ref={myContainer} >{project.description}</p>
+                </Scrollbars>
                 <hr className="modal-hr" />
                 <div className="center padding-top-1 center">
-                    {project.googlePlay && (
-                        <button type="button " className="btn btn-info margin-1"
-                            onClick={(e) => {
-                                // e.preventDefault();
-                                window.open(project.googlePlay, "_blank");
-                            }}>
-                            Project on Google Play
-                        </button>
-                    )}
-
                     <button type="button " className="btn btn-danger margin-1" onClick={() => { setIsModal(false); closeModal(); }}>
                         Close
                     </button>

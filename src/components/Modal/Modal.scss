@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600");
 
 main {
 	background: #fff;
@@ -51,7 +50,7 @@ code {
 	width: 100vw;
 }
 
-.modalbackdrop{	
+.modalbackdrop {
 	bottom: 0;
 	left: 0;
 	overflow: auto;
@@ -95,7 +94,7 @@ iframe {
 	width: 100%;
 	margin: 0 auto;
 	text-align: center;
-	
+
 }
 
 .view {
@@ -104,38 +103,52 @@ iframe {
 	padding: 10px;
 	box-sizing: border-box;
 	scrollbar-width: 10px;
-  }
-  
-//   .view::-webkit-scrollbar {
-// 	/* Fix webkit scrollbar issue
-// 	 What about Firefox? */
-// 	visibility: hidden;
-//   }
-  
-  .view p {
+}
+
+.view::-webkit-scrollbar {
+	/* Fix webkit scrollbar issue
+	 What about Firefox? */
+	visibility: hidden;
+}
+
+.view p {
 	line-height: 1.5rem;
-  }
-  
-  .vtrack {
-	// background-color: blue;
+}
+
+.vtrack {
 	top: 2px;
 	right: 2px;
 	bottom: 2px;
 	width: 10px;
-  }
-  
-  .vthumb {
-	background-color: gray;
-  }
+}
 
-  .modal-hr {
+.vthumb {
+	background-color: gray;
+}
+
+.modal-hr {
 	margin: 0.5em 0;
-    position: relative;
-    bottom: 1.5em;
+	position: relative;
+	// bottom: 1.5em;
 }
 
 .scroll-bar {
-    bottom: 2em;
 	border-radius: 4px;
 	height: 6em;
+}
+
+.google-play-icon {
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 35px;
+    height: 35px;
+}
+.google-play-link{
+	position: absolute;
+    top: 61.5%;
+    display: inline-block;
+    right: 0;
+    margin-right: 2em;
+    cursor: pointer;
 }

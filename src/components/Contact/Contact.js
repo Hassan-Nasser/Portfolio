@@ -68,7 +68,7 @@ class Contact extends Component {
         <div className="row d-flex justify-content-center white lora">
           <header >
             <h2>Get in touch</h2>
-            <p>
+            <p className="montserrat">
               As a freelancer, i'm available for new projects and
               collaborations.
             </p>
@@ -170,7 +170,7 @@ class Contact extends Component {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img className="upwork" style={{ backgroundImage: "url(" + Upwork + ")" }}></img>
+                  <img className="upwork" style={{ backgroundImage: "url(" + Upwork + ")" }} />
                 </a>
               </li>
 

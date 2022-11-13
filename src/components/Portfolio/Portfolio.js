@@ -86,7 +86,7 @@ class Portfolio extends Component {
         <div className="row d-flex justify-content-center">
           <header className=" lora">
             <h2>My Recent Work</h2>
-            <p>
+            <p className="montserrat">
               Here are a few projects I've worked on recently. Want to see more?{" "}
               <a href="#contact">Email me</a>.
             </p>
