@@ -3,7 +3,7 @@ export const pages = [
     path: "/profile",
     title: "Profile",
     pageNumber: 0,
-    color: "#272BB0"
+    color: "#004a7c"
   },
   {
     path: "/work",

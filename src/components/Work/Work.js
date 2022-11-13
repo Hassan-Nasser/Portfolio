@@ -105,7 +105,6 @@ const Work = () => {
   const bigLength = items.length;
 
   const prevClick = (jump = 1) => {
-    console.log("prev");
     if (!isTicking) {
       setIsTicking(true);
       setItems((prev) => {
@@ -115,8 +114,6 @@ const Work = () => {
   };
 
   const nextClick = (jump = 1) => {
-    console.log("next");
-
     if (!isTicking) {
       setIsTicking(true);
       setItems((prev) => {

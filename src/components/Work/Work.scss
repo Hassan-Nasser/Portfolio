@@ -230,11 +230,11 @@ $mobil-slide-width: 20rem;
   transform: translateY(-50%);
 
   &--prev {
-      left: 0;
+    left: 0;
   }
 
   &--next {
-      right: 0;
+    right: 0;
   }
 }
 
@@ -260,6 +260,8 @@ $mobil-slide-width: 20rem;
   left: 50%;
   position: absolute;
   transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
 
   .dot {
     background: #ccc;

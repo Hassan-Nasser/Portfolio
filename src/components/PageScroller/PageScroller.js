@@ -59,7 +59,7 @@ class PageScroller extends Component {
     this.setState({ isNav });
   };
   setDisableScroll = (disableScroll, callback = null) => {
-    this.setState({ disableScroll },callback);
+    this.setState({ disableScroll }, callback);
   };
 
   componentDidMount = () => {
@@ -70,6 +70,8 @@ class PageScroller extends Component {
       document.addEventListener('touchstart', this.onTouchStart);
     } else {
       document.addEventListener('wheel', this.onScroll, { passive: false });
+      document.addEventListener('keydown', this.onKeyPress);
+
     }
     window.addEventListener('resize', this.onResize);
 
@@ -100,6 +102,7 @@ class PageScroller extends Component {
       document.removeEventListener('touchstart', this.onTouchStart);
     } else {
       document.removeEventListener('wheel', this.onScroll);
+      document.addEventListener('keydown', this.onKeyPress);
     }
     window.removeEventListener('resize', this.onResize);
   }
@@ -139,6 +142,25 @@ class PageScroller extends Component {
       }
     }
   }
+
+  onKeyPress = (event) => {
+    event.preventDefault();
+    let key = event.key;
+    let slide = this.state.activeSlide;
+    switch (key) {
+      case "ArrowDown":
+        slide++;
+        this.scrollToSlide(slide);
+        break;
+      case "ArrowUp":
+        slide--;
+        this.scrollToSlide(slide);
+        break;
+      default:
+        break;
+    }
+  }
+
   onScroll = (evt) => {
     // if (this.props.scrollMode !== scrollMode.FULL_PAGE) {
     //   return;
@@ -186,7 +208,7 @@ class PageScroller extends Component {
   // }
 
   scrollToSlide = (slide) => {
-    console.log("ss = ",this.state.disableScroll)
+    
     if (this.state.isModal)
       return;
     if (this.state.isNav)

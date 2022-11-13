@@ -1,4 +1,5 @@
-import { Component } from "react";
+import React from "react";
+import { useEffect, useState } from "react";
 import "./Review.scss";
 import 'react-multi-carousel/lib/styles.css';
 import firebase from 'firebase/compat/app';
@@ -7,103 +8,179 @@ import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { db } from "../../config/firebase";
-import AppContext from "../AppContext";
 import NoImage from '../../images/no-image.png';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight, faChevronLeft } from "@fortawesome/fontawesome-free-solid";
 
 const storage = getStorage();
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 1
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 1
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1
-  }
+
+const mobilSlideWidth = 20;
+const webSlideWidth = 30
+
+const CarouselSlideItem = ({ pos, idx, activeIdx, reviews }) => {
+  // _items.push(..._items);
+  const _items = reviews;
+  // console.log("_items", _items);
+
+  const [width, setWidth] = useState(window.innerWidth);
+  const [slideWidth, setSlideWidth] = useState(width <= 576 ? mobilSlideWidth : webSlideWidth);
+
+  useEffect(() => {
+    const handleWindowSizeChange = (e) => {
+      setWidth(window.innerWidth);
+      if (width <= 576) {
+        setSlideWidth(mobilSlideWidth);
+      } else {
+        setSlideWidth(webSlideWidth);
+      }
+
+    }
+    window.addEventListener('resize', handleWindowSizeChange);
+    return () => {
+      window.removeEventListener('resize', handleWindowSizeChange);
+    }
+  }, [width, slideWidth]);
+
+
+
+  const createItem = (position, idx) => {
+    const item = {
+      styles: {
+        transform: `translateX(${position * slideWidth}rem)`,
+      },
+      review: _items[idx],
+    };
+
+    switch (position) {
+      case Math.floor(_items.length / 2):
+        break;
+      default:
+        item.styles = { ...item.styles, opacity: 0 };
+        break;
+    }
+
+    return item;
+  };
+  const item = createItem(pos, idx, activeIdx);
+
+  return (
+
+    <li className="box style1 carousel__slide-item" style={item.styles} >
+      <div className="image-review-cover">
+        <img className="image-review" alt={item.review.name}
+          src={item.review.url}
+        />
+      </div>
+      <h3 className="subject prototype">{item.review.name}</h3>
+    </li>
+  );
 };
 
-class Review extends Component {
-  static contextType = AppContext;
-  constructor(props) {
-    super(props);
-    this.state = {
-      show: false,
-      currentProject: "",
-      projectswithTag: [],
-      reviews: [],
-      tags: [],
-      projectImage: "",
-      value: 0,
-      isModalOpen: false,
-      allReviews: [{
-        original: require("../../images/grey.png"),
-        thumbnail: require("../../images/grey.png"),
-        description: "HELLO"
-      },
-      {
-        original: require("../../images/grey.png"),
-        thumbnail: require("../../images/grey.png"),
-        description: "HELLO2"
-      }]
-    };
-  }
-  componentDidMount() {
-    this.getReviews();
-
-  }
 
 
-  getReviews = async () => {
-    const reviews = await firebase.firestore().collection('reviews').get();
-    const reviewList = reviews.docs.map(doc => doc.data());
-    this.setState({ allReviews: [] });
-    reviewList.forEach(review => {
-      getDownloadURL(ref(storage, `Reviews/${review.number}.png`))
-        .then((data) => {
-          var joined = this.state.allReviews.concat(
-            { original: data, thumbnail: data, description: review.name }
-          );
-          this.setState({ allReviews: joined })
-        }).catch(err => {
-          var joined = this.state.allReviews.concat(
-            { original: NoImage, thumbnail: NoImage, originalAlt: review.name }
-          );
-          this.setState({ allReviews: joined })
-          console.log(err)
-        });
-    })
-  }
 
-  render() {
+const Review = () => {
+  let keys = Array.from(Array(9).keys());
+  const [items, setItems] = useState(keys);
+  const [reviews, setReviews] = useState([]);
+  const [isTicking, setIsTicking] = useState(false);
+  const [activeIdx, setActiveIdx] = useState(0);
+  let bigLength = items.length;
+  useEffect(() => {
 
-    return (
+    firebase.firestore().collection('reviews').get().then(reviews => {
+      const reviewList = reviews.docs.map(doc => doc.data());
+      setReviews(reviewList);
+    }).catch(err => console.log(err));
 
-      <div className="container">
-        <div className=" d-flex justify-content-center lora">
-          <header>
-            <h4>Some of client reviews</h4>
-          </header>
-        </div>
+  }, [items]);
 
-        <div className="container-fluid review-slider">
-          <ImageGallery
-            className="image-gallery"
-            items={this.state.allReviews}
-            thumbnailPosition="bottom"
-            showThumbnails={false}
-            showPlayButton={true}
-            showBullets={false}
-            lazyLoad={true}
-            infinite={true}
-            autoPlay={true}
-          />
+  const prevClick = (jump = 1) => {
+    if (!isTicking) {
+      setIsTicking(true);
+      setItems((prev) => {
+        return prev.map((_, i) => prev[(i + jump) % bigLength]);
+      });
+    }
+  };
+
+  const nextClick = (jump = 1) => {
+    if (!isTicking) {
+      setIsTicking(true);
+      setItems((prev) => {
+        return prev.map(
+          (_, i) => prev[(i - jump + bigLength) % bigLength],
+        );
+      });
+    }
+  };
+
+  const handleDotClick = (idx) => {
+    if (idx < activeIdx) prevClick(activeIdx - idx);
+    if (idx > activeIdx) nextClick(idx - activeIdx);
+  };
+  const sleep = (ms = 0) => {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  };
+
+  useEffect(() => {
+    if (isTicking) sleep(300).then(() => setIsTicking(false));
+  }, [isTicking]);
+
+  useEffect(() => {
+    setActiveIdx((bigLength - (items[0] % bigLength)) % bigLength)
+  }, [items]);
+
+  return (
+    <div className="container">
+      <div className=" d-flex justify-content-center lora">
+        <header>
+          <h4>Some of client reviews</h4>
+        </header>
+      </div>
+      <div className="row d-flex justify-content-center">
+        <div className="carousel__wrap">
+          <div className="carousel__inner">
+
+            <div className="carousel__container">
+              <ul className="carousel__slide-list">
+                {items.length > 0 && reviews.length > 0 && items.map((pos, i) => {
+
+                  return (
+                    <CarouselSlideItem
+                      key={i}
+                      idx={i}
+                      pos={pos}
+                      activeIdx={activeIdx}
+                      reviews={reviews}
+                    />
+                  )
+                })}
+              </ul>
+            </div>
+            <FontAwesomeIcon
+              onClick={() => prevClick()}
+              className="carousel__btn carousel__btn--prev"
+              icon={faChevronLeft} size="5x" />
+            <FontAwesomeIcon
+              onClick={() => nextClick()}
+              className="carousel__btn carousel__btn--next"
+              icon={faChevronRight} size="5x" />
+            <div className="carousel__dots">
+              {items.slice(0, reviews.length).map((pos, i) => (
+                <button
+                  key={i}
+                  onClick={() => handleDotClick(i)}
+                  className={i === activeIdx ? 'dot active' : 'dot'}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-    );
-  }
-}
+
+    </div>
+
+  );
+};
 export default Review;
