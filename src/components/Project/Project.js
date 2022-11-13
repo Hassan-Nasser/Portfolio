@@ -46,7 +46,7 @@ const Project = ({ project, showModal, tagsExist, headerPosition }) => {
                 <Tag isModal={false} className="tag tag-position" tags={project.tags} />
             )}
             <div className={headerPosition}>
-                <span className="project-name milonga black font-2 bold">{project.name}</span>
+                <span className="project-name prototype black font-2 bold">{project.name}</span>
             </div>
 
         </button>

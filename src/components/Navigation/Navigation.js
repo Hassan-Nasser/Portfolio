@@ -4,7 +4,7 @@ import { pages } from "../../data";
 import "./Navigation.scss";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes, faBars, faGamepad } from '@fortawesome/fontawesome-free-solid';
+import { faTimes, faBars } from '@fortawesome/fontawesome-free-solid';
 import AppContext from "../AppContext";
 
 export function Navigation(props) {
@@ -18,13 +18,12 @@ export function Navigation(props) {
 
   return (
     <div className="prototype">
-      <div className={click ? "main-container" : ""} onClick={() => Close()} />
+      <div className={click ? "main-container" : ""} onClick={() => { handleClick() }} ></div>
       <nav className="navbar fixed-top" onClick={e => e.stopPropagation()}>
         <div className="nav-container">
-          <a className=" font-3 nav-logo" onClick={() => { props.goToPage(0) }}>
+          <div className=" font-3 nav-logo" onClick={() => { props.goToPage(0) }}>
             Hassan Nasser
-            {/* <FontAwesomeIcon icon={faGamepad} /> */}
-          </a>
+          </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             {pages.map((page, index) => (
               <li className={props.activePage === index ? "nav-item active" : "nav-item"} key={index}

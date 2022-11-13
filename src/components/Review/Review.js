@@ -12,15 +12,14 @@ import NoImage from '../../images/no-image.png';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faChevronLeft } from "@fortawesome/fontawesome-free-solid";
 
+
 const storage = getStorage();
 
 const mobilSlideWidth = 20;
 const webSlideWidth = 30
 
 const CarouselSlideItem = ({ pos, idx, activeIdx, reviews }) => {
-  // _items.push(..._items);
   const _items = reviews;
-  // console.log("_items", _items);
 
   const [width, setWidth] = useState(window.innerWidth);
   const [slideWidth, setSlideWidth] = useState(width <= 576 ? mobilSlideWidth : webSlideWidth);
@@ -133,6 +132,7 @@ const Review = () => {
 
   return (
     <div className="container">
+
       <div className=" d-flex justify-content-center lora">
         <header>
           <h4>Some of client reviews</h4>
