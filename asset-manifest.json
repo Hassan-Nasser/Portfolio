@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Portfolio/static/css/main.56542d95.css",
-    "main.js": "/Portfolio/static/js/main.a546ced6.js",
+    "main.css": "/Portfolio/static/css/main.3e8a2a8d.css",
+    "main.js": "/Portfolio/static/js/main.f479696b.js",
     "static/media/Multiplayer.png": "/Portfolio/static/media/Multiplayer.cf745757bcd691fc2572.png",
     "static/media/AR&VR.png": "/Portfolio/static/media/AR&VR.d323ad0ba71319981077.png",
     "static/media/CrimsonPro-VariableFont_wght.ttf": "/Portfolio/static/media/CrimsonPro-VariableFont_wght.4af3cccf68390b98dbf3.ttf",
@@ -20,11 +20,11 @@
     "static/media/revicons.ttf": "/Portfolio/static/media/revicons.57fd05d4ae650374c8de.ttf",
     "static/media/revicons.woff": "/Portfolio/static/media/revicons.e8746a624ed098489406.woff",
     "index.html": "/Portfolio/index.html",
-    "main.56542d95.css.map": "/Portfolio/static/css/main.56542d95.css.map",
-    "main.a546ced6.js.map": "/Portfolio/static/js/main.a546ced6.js.map"
+    "main.3e8a2a8d.css.map": "/Portfolio/static/css/main.3e8a2a8d.css.map",
+    "main.f479696b.js.map": "/Portfolio/static/js/main.f479696b.js.map"
   },
   "entrypoints": [
-    "static/css/main.56542d95.css",
-    "static/js/main.a546ced6.js"
+    "static/css/main.3e8a2a8d.css",
+    "static/js/main.f479696b.js"
   ]
 }
