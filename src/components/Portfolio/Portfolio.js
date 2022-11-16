@@ -85,8 +85,8 @@ class Portfolio extends Component {
       <div className="container">
         <div className="row d-flex justify-content-center">
           <header>
-            <h4 className="timeline" >Some of my work</h4>
-            <p className="montserrat">
+            <h4 className="prototype white" >Some of my work</h4>
+            <p className="montserrat custom-grey">
               Here are a few projects I've worked on recently. Want to see more?{" "}
               <a href="#contact">Email me</a>.
             </p>

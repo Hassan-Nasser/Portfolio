@@ -67,8 +67,8 @@ class Contact extends Component {
       <div className="container">
         <div className="row d-flex justify-content-center white">
           <header >
-            <h4 className="timeline">Get in touch</h4>
-            <p className="montserrat">
+            <h4 className="prototype">Get in touch</h4>
+            <p className="montserrat custom-grey">
               As a freelancer, i'm available for new projects and
               collaborations.
             </p>

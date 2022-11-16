@@ -37,7 +37,7 @@ const Profile = () => {
             <strong className="font-1 prototype white">Hassan Nasser</strong>
           </h1>
           <div className="job-title" style={{ backgroundImage: "url(" + Background + ")" }}>
-            <span className="font-2 blenda white">Senior Game Developer</span>
+            <span className="font-2 blenda custom-grey">Senior Game Developer</span>
           </div>
         </header>
       </div>

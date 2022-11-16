@@ -1,5 +1,5 @@
 $review-slide-count: 9;
-$slide-width: 35rem;
+$slide-width: 40rem;
 $mobil-slide-width: 25rem;
 
 
@@ -79,9 +79,9 @@ $mobil-slide-width: 25rem;
 // }
 
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 770px) {
     .review-carousel__slide-list {
-        width: calc(#{($review-slide-count ) * $mobil-slide-width}) !important;
+        width: calc(#{($review-slide-count+2) * $mobil-slide-width}) !important;
     }
 
     .review-carousel__slide-item {
@@ -94,7 +94,7 @@ $mobil-slide-width: 25rem;
 
 @media screen and (min-width: 576px) {
     .review-carousel__slide-list {
-        width: calc(#{($review-slide-count+2) * $slide-width});
+        width: calc(#{($review-slide-count+ 2) * $slide-width});
     }
 
 }

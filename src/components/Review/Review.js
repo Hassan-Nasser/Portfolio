@@ -16,13 +16,13 @@ import { faChevronRight, faChevronLeft } from "@fortawesome/fontawesome-free-sol
 const storage = getStorage();
 
 const mobilSlideWidth = 25;
-const webSlideWidth = 35;
+const webSlideWidth = 40;
 
 const CarouselSlideItem = ({ pos, idx, activeIdx, reviews }) => {
   const _items = reviews;
 
   const [width, setWidth] = useState(window.innerWidth);
-  const [slideWidth, setSlideWidth] = useState(width <= 576 ? mobilSlideWidth : webSlideWidth);
+  const [slideWidth, setSlideWidth] = useState(width <= 770 ? mobilSlideWidth : webSlideWidth);
 
   useEffect(() => {
     const handleWindowSizeChange = (e) => {
@@ -136,8 +136,8 @@ const Review = () => {
 
       <div className=" d-flex justify-content-center">
         <header>
-          <h4 className="timeline">Client's Reviews</h4>
-          <p className="font-5 montserrat">Some of my freelance projects reviews, projects were done on upwork. </p>
+          <h4 className="prototype white">Client's Reviews</h4>
+          <p className="font-5 montserrat custom-grey">Some of my freelance projects reviews, projects were done on upwork. </p>
 
         </header>
       </div>

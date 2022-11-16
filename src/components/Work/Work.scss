@@ -4,7 +4,6 @@ $mobil-work-slide-width: 20rem;
 
 
 .work-description {
-  color: white;
   display: inline-block;
   direction: ltr;
   width: 100%;
@@ -16,7 +15,8 @@ $mobil-work-slide-width: 20rem;
 
 .image-icon {
   img {
-    width: 6em;
+    width: 6em;  
+    padding-top: 5px;
   }
 }
 

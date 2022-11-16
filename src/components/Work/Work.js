@@ -97,7 +97,7 @@ const CarouselSlideItem = ({ pos, idx, activeIdx }) => {
           <img src={item.work.image} alt={item.work.title} />
         </div>
         <h3 className="subject prototype white">{item.work.title}</h3>
-        <p className="work-description montserrat">{item.work.desc} </p>
+        <p className="work-description montserrat custom-grey">{item.work.desc} </p>
       </div>
 
     </li>
@@ -151,9 +151,9 @@ const Work = () => {
   return (
     <div className="container">
       <div className="row d-flex justify-content-center">
-        <header className=" work-header white">
-          <h4 className="timeline">Here's all the stuff I do</h4>
-          <p className="font-5 montserrat">Softwares and technologies i have multiple years experience at.</p>
+        <header className=" work-header">
+          <h4 className="prototype white">Here's all the stuff I do</h4>
+          <p className="font-5 montserrat custom-grey">Softwares and technologies i have multiple years experience at.</p>
         </header>
       </div>
       <div className="row d-flex justify-content-center">
@@ -180,7 +180,7 @@ const Work = () => {
               onClick={() => nextClick()}
               className="carousel__btn carousel__btn--next"
               icon={faChevronRight} size="5x" />
-            <div className="carousel__dots">
+            {/* <div className="carousel__dots">
               {items.slice(0, length).map((pos, i) => (
                 <button
                   key={i}
@@ -188,7 +188,7 @@ const Work = () => {
                   className={i === activeIdx ? 'dot active' : 'dot'}
                 />
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
