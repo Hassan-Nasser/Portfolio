@@ -11,16 +11,31 @@ const Modal = ({ project, closeModal }) => {
 
     const { isModal, setIsModal } = useContext(AppContext);
     const myContainer = useRef();
+    const iframeContainer = useRef();
 
     useEffect(() => {
-        function disablePreventDefault(e) {
-            e.stopPropagation();
+        // function disablePreventDefault(e) {
+        //     e.stopPropagation();
+        // }
+        function disableScrollInIframe(e) {
+            e.preventDefault();
         }
+        // function x(e) {
+        //     // e.preventDefault();
+        //     e.stopPropagation();
+        //     myContainer.current.focus();
+        // }
 
 
-        if (myContainer && myContainer.current) {
-            myContainer.current.addEventListener("wheel", disablePreventDefault, false);
+        // if (myContainer && myContainer.current) {
+        //     // myContainer.current.addEventListener("wheel", disablePreventDefault, {passive:false});
+        //     // myContainer.current.addEventListener("wheel", disablePreventDefault, false);
+        //     // myContainer.current.focus();
+        // }
+        if (iframeContainer && iframeContainer.current) {
+            iframeContainer.current.contentWindow.addEventListener("wheel", disableScrollInIframe, { passive: false });
         }
+        //   return  myContainer.current.removeEventListener("wheel",(e)=>e.stopPropagation());
     }, []);
 
     return (
@@ -29,8 +44,10 @@ const Modal = ({ project, closeModal }) => {
             <div className="modal__container">
 
                 <h3 className="modal__title" id="example-custom-modal-styling-title">{project.name}</h3>
-                <div className="video image featured ">
+                <div
+                    className="video image featured ">
                     <iframe
+                        ref={iframeContainer}
                         title={project.name}
                         src={project.url ? project.url : NoVideo}
                         frameBorder="0"
@@ -50,21 +67,26 @@ const Modal = ({ project, closeModal }) => {
                         target="_blank"
                         rel="noreferrer"
                     >
-                        <img className="google-play-icon"  style={{ backgroundImage: "url(" + GooglePlay + ")" }} />
+                        <img className="google-play-icon" style={{ backgroundImage: "url(" + GooglePlay + ")" }} />
                     </a>
 
                 )}
+                <div
+                    // ref={myContainer}
+                    style={{ width: "100%", height: "100px" }}>
+                    <Scrollbars
 
-              <Scrollbars
-                    autoHeight
-                    autoHeightMax={100}
-                    className="scroll-bar"
-                    renderView={(props) => <div {...props} className="view" />}
-                    renderTrackVertical={(props) => <div {...props} className="vtrack" />}
-                    renderThumbVertical={(props) => <div {...props} className="vthumb" />}
-                >
-                    <p ref={myContainer} >{project.description}</p>
-                </Scrollbars>
+                        autoHeight
+                        autoHeightMax={100}
+                        className="scroll-bar"
+                        renderView={(props) => <div {...props} className="view" />}
+                        renderTrackVertical={(props) => <div {...props} className="vtrack" />}
+                        renderThumbVertical={(props) => <div {...props} className="vthumb" />}
+                    >
+                        <p className="noscroll"  >{project.description}</p>
+                    </Scrollbars>
+                </div>
+
                 <hr className="modal-hr" />
                 <div className="center padding-top-1 center">
                     <button type="button " className="btn btn-danger margin-1" onClick={() => { setIsModal(false); closeModal(); }}>

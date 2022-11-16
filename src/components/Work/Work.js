@@ -38,7 +38,7 @@ const _items = [
 
 const length = _items.length;
 const mobilSlideWidth = 20;
-const webSlideWidth = 30
+const webSlideWidth = 20
 _items.push(..._items);
 
 
@@ -76,6 +76,10 @@ const CarouselSlideItem = ({ pos, idx, activeIdx }) => {
     switch (position) {
       case length:
         break;
+      case (width > 576) && length - 1:
+        break;
+      case (width > 576) && length + 1:
+        break;
       default:
         item.styles = { ...item.styles, opacity: 0 };
         break;
@@ -86,12 +90,16 @@ const CarouselSlideItem = ({ pos, idx, activeIdx }) => {
   const item = createItem(pos, idx, activeIdx);
 
   return (
+
     <li className="box style1 carousel__slide-item" style={item.styles} >
-      <div className="image-icon">
-        <img src={item.work.image} alt={item.work.title} />
+      <div className="work-contain">
+        <div className="image-icon ">
+          <img src={item.work.image} alt={item.work.title} />
+        </div>
+        <h3 className="subject prototype white">{item.work.title}</h3>
+        <p className="work-description montserrat">{item.work.desc} </p>
       </div>
-      <h3 className="subject prototype">{item.work.title}</h3>
-      <p className="work-description montserrat">{item.work.desc} </p>
+
     </li>
   );
 };
@@ -143,7 +151,7 @@ const Work = () => {
   return (
     <div className="container">
       <div className="row d-flex justify-content-center">
-        <header className=" work-header">
+        <header className=" work-header white">
           <h4 className="timeline">Here's all the stuff I do</h4>
           <p className="font-5 montserrat">Softwares and technologies i have multiple years experience at.</p>
         </header>

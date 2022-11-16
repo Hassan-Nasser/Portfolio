@@ -15,8 +15,8 @@ import { faChevronRight, faChevronLeft } from "@fortawesome/fontawesome-free-sol
 
 const storage = getStorage();
 
-const mobilSlideWidth = 20;
-const webSlideWidth = 30
+const mobilSlideWidth = 25;
+const webSlideWidth = 35;
 
 const CarouselSlideItem = ({ pos, idx, activeIdx, reviews }) => {
   const _items = reviews;
@@ -51,7 +51,7 @@ const CarouselSlideItem = ({ pos, idx, activeIdx, reviews }) => {
     };
 
     switch (position) {
-      case Math.floor(_items.length / 2):
+      case Math.ceil(_items.length/2):
         break;
       default:
         item.styles = { ...item.styles, opacity: 0 };
@@ -64,13 +64,14 @@ const CarouselSlideItem = ({ pos, idx, activeIdx, reviews }) => {
 
   return (
 
-    <li className="box style1 carousel__slide-item" style={item.styles} >
+    <li className="review-carousel__slide-item" style={item.styles} >
       <div className="image-review-cover">
         <img className="image-review" alt={item.review.name}
           src={item.review.url}
         />
+        <span className="review-subject prototype white">{item.review.name}</span>
       </div>
-      <h3 className="subject prototype">{item.review.name}</h3>
+      {/* <h3 className="subject prototype">{item.review.name}</h3> */}
     </li>
   );
 };
@@ -145,7 +146,7 @@ const Review = () => {
           <div className="carousel__inner">
 
             <div className="carousel__container">
-              <ul className="carousel__slide-list">
+              <ul className="review-carousel__slide-list">
                 {items.length > 0 && reviews.length > 0 && items.map((pos, i) => {
 
                   return (

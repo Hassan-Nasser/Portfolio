@@ -102,7 +102,7 @@ class PageScroller extends Component {
       document.removeEventListener('touchstart', this.onTouchStart);
     } else {
       document.removeEventListener('wheel', this.onScroll);
-      document.addEventListener('keydown', this.onKeyPress);
+      document.removeEventListener('keydown', this.onKeyPress);
     }
     window.removeEventListener('resize', this.onResize);
   }
@@ -165,8 +165,10 @@ class PageScroller extends Component {
     // if (this.props.scrollMode !== scrollMode.FULL_PAGE) {
     //   return;
     // }
+    if (!evt.target.classList.contains('noscroll')) {
+      evt.preventDefault();
+    }
 
-    evt.preventDefault();
     if (this._isScrollPending) {
       return;
     }
@@ -208,7 +210,6 @@ class PageScroller extends Component {
   // }
 
   scrollToSlide = (slide) => {
-    
     if (this.state.isModal)
       return;
     if (this.state.isNav)
@@ -229,46 +230,9 @@ class PageScroller extends Component {
   }
 
   scroll = (pageIndex) => {
-    // this.scrollToXY(2000, winHeight, pageIndex);
     this.scrollToSlide(pageIndex);
-    // this.scrollLocker = setTimeout(() => {
-    //   this.setState({ scrollAgain: true });
-    // }, 1000);
+  }
 
-    // this.setState({
-    //   pageIndex: pageIndex,
-    //   scrollAgain: false
-    // });
-  }
-  ////////////////////////
-  scrollToXY = (duration, winHeight, pageIndex) => {
-    var start = winHeight * this.state.activeSlide;
-    var end = winHeight * pageIndex;
-    var distance = end - start;
-    var target;
-    var t = 0;
-    var duration = 300;
-    var increament = 3;
-    var easeAnim = this.easeAnimation;
-    const animateScroll = function () {
-      //  target = start + (distance * t);
-      target = easeAnim(t, start, distance, duration);
-      t += increament;
-      window.scrollTo(0, target);
-      if (t <= duration)
-        animSetTime = setTimeout(animateScroll, increament);
-
-    }
-    animateScroll();
-    this.state.activeSlide = pageIndex;
-  }
-  //t = current time
-  //b = start value
-  //c = change in value
-  //d = duration
-  easeAnimation = (t, b, c, d) => {
-    return c * t / d + b
-  }
 
   goToPage = (index) => {
     if (animSetTime !== null)

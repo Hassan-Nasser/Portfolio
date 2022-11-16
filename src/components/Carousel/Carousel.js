@@ -23,51 +23,51 @@ const Carousel = ({ children }) => {
         }
     }, []);
 
-    useEffect(() => {
-        if (isTicking) sleep(300).then(() => { setIsTicking(false); setDisableScroll(false); });
-    }, [isTicking]);
+    // useEffect(() => {
+    //     if (isTicking) sleep(300).then(() => { setIsTicking(false); setDisableScroll(false); });
+    // }, [isTicking]);
 
 
     const handleWindowSizeChange = (e) => {
         setWidth(window.innerWidth);
     }
-    const handleTouchStart = (e) => {
-        // setDisableScroll(true);
-        setTouchStart(e.targetTouches[0].clientX);
-        setStartY(e.targetTouches[0].clientY);
-    }
+    // const handleTouchStart = (e) => {
+    //     // setDisableScroll(true);
+    //     setTouchStart(e.targetTouches[0].clientX);
+    //     setStartY(e.targetTouches[0].clientY);
+    // }
 
 
 
-    const handleTouchMove = (e) => {
-        setDisableScroll(true);
-        setTouchEnd(e.targetTouches[0].clientX);
-        setEndY(e.targetTouches[0].clientY);
-    }
+    // const handleTouchMove = (e) => {
+    //     setDisableScroll(true);
+    //     setTouchEnd(e.targetTouches[0].clientX);
+    //     setEndY(e.targetTouches[0].clientY);
+    // }
 
-    const sleep = (ms = 0) => {
-        return new Promise((resolve) => setTimeout(resolve, ms));
-    };
+    // const sleep = (ms = 0) => {
+    //     return new Promise((resolve) => setTimeout(resolve, ms));
+    // };
 
-    const handleTouchEnd = () => {
+    // const handleTouchEnd = () => {
 
-        if (Math.abs(startY - endY) < Math.abs(touchStart - touchEnd)) {
-            console.log("scroll xoo");
-            setDisableScroll(true, () => {
-                if (touchStart - touchEnd > 150) {
-                    setActive(i => i + 1)
-                }
+    //     if (Math.abs(startY - endY) < Math.abs(touchStart - touchEnd)) {
+    //         console.log("scroll xoo");
+    //         setDisableScroll(true, () => {
+    //             if (touchStart - touchEnd > 150) {
+    //                 setActive(i => i + 1)
+    //             }
 
-                if (touchStart - touchEnd < -150) {
-                    setActive(i => i - 1)
-                }
-                setIsTicking(true);
-            })
+    //             if (touchStart - touchEnd < -150) {
+    //                 setActive(i => i - 1)
+    //             }
+    //             setIsTicking(true);
+    //         })
 
 
-        } else setDisableScroll(false);
+    //     } else setDisableScroll(false);
 
-    }
+    // }
 
     const pervious = () => {
         let newActive = active;
@@ -82,9 +82,9 @@ const Carousel = ({ children }) => {
     const MAX_VISIBILITY = 3;
     return (
         <div className='carousel'
-            onTouchStart={touchStartEvent => handleTouchStart(touchStartEvent)}
-            onTouchMove={touchMoveEvent => handleTouchMove(touchMoveEvent)}
-            onTouchEnd={() => handleTouchEnd()}
+            // onTouchStart={touchStartEvent => handleTouchStart(touchStartEvent)}
+            // onTouchMove={touchMoveEvent => handleTouchMove(touchMoveEvent)}
+            // onTouchEnd={() => handleTouchEnd()}
         >
             {active > 0 &&
                 <button className='nav left' onClick={() => pervious()}>

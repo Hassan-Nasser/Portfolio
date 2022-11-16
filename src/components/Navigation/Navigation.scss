@@ -1,6 +1,6 @@
 .navbar {
     background: rgba(0, 0, 0, 0.3);
-    height: 80px;
+    height: 70px;
     display: flex;
     font-size: 1.2rem;
     position: fixed;
@@ -14,7 +14,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 80px;
+    height: 100%;
     max-width: 1500px;
 }
 
@@ -24,7 +24,9 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.3);
+    height: 100vh;
+    width: 100vh;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .nav-logo {
@@ -34,14 +36,13 @@
     cursor: pointer;
     text-decoration: none !important;
     flex-grow: 1;
-    margin: 0 32px 16px 0;
+    margin: 0 32px 0 0;
 }
 
 .nav-menu {
     display: flex;
     list-style: none;
-    text-align: center;
-    margin-right: 2rem;
+    margin-bottom: 0;
 }
 
 .nav-links {
@@ -92,7 +93,7 @@
         width: 100%;
         border-top: 1pxsolid #fff;
         position: absolute;
-        top: 80px;
+        top: 70px;
         left: -110%;
         opacity: 1;
         transition: all 0.5s ease;
