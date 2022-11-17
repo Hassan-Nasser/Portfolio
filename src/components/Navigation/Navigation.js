@@ -17,9 +17,9 @@ export function Navigation(props) {
   const Close = () => setClick(false);
 
   return (
-    <div className="prototype">
+    <>
       <div className={click ? "main-container" : ""} onClick={() => { handleClick() }} ></div>
-      <nav className="navbar fixed-top" onClick={e => e.stopPropagation()}>
+      <nav className="prototype navbar fixed-top" onClick={e => e.stopPropagation()}>
         <div className="nav-container">
           <div className=" font-3 nav-logo" onClick={() => { props.goToPage(0) }}>
             Hassan Nasser
@@ -50,7 +50,7 @@ export function Navigation(props) {
           </div>
         </div>
       </nav>
-    </ div>
+    </>
   );
 }
 

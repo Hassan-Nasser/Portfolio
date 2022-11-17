@@ -18,6 +18,7 @@ const Profile = () => {
     }
     if (profileRef && profileRef.current) {
       profileRef.current.addEventListener("wheel", disablePreventDefault, false);
+      profileRef.current.addEventListener("touchmove", disablePreventDefault, false);
     }
   }, [])
 
@@ -46,7 +47,6 @@ const Profile = () => {
           <div ref={profileRef} className="intro">
             <Scrollbars
               autoHeight
-              autoHeightMax={170}
               className="scroll-bar"
               renderView={(props) => <div {...props} className="intro-view" />}
             >

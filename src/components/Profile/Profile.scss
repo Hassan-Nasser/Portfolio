@@ -44,17 +44,18 @@
   .intro {
     text-align: left;
     background: rgba(0, 0, 0, 0.3);
-    height: 180px;
+    height: 100%;
     padding: 0.5em;
     border-radius: 10px;
 
   }
 }
 .intro-view{
-  height: 180px;
+  height: 100%;
   padding: 0.5em;
   border-radius: 10px;
 }
+
 .profile-header{
   margin-bottom: 1%;
   flex: 2;

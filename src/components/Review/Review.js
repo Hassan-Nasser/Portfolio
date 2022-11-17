@@ -51,7 +51,7 @@ const CarouselSlideItem = ({ pos, idx, activeIdx, reviews }) => {
     };
 
     switch (position) {
-      case Math.ceil(_items.length/2):
+      case Math.ceil(_items.length / 2):
         break;
       default:
         item.styles = { ...item.styles, opacity: 0 };
@@ -87,7 +87,7 @@ const Review = () => {
   const [activeIdx, setActiveIdx] = useState(0);
   let bigLength = items.length;
   useEffect(() => {
-
+    setInterval(nextClick, 2000);
     firebase.firestore().collection('reviews').get().then(reviews => {
       const reviewList = reviews.docs.map(doc => doc.data());
       setReviews(reviewList);
@@ -163,11 +163,11 @@ const Review = () => {
             </div>
             <FontAwesomeIcon
               onClick={() => prevClick()}
-              className="carousel__btn carousel__btn--prev"
+              className="carousel__btn review-carousel__btn--prev"
               icon={faChevronLeft} size="5x" />
             <FontAwesomeIcon
               onClick={() => nextClick()}
-              className="carousel__btn carousel__btn--next"
+              className="carousel__btn review-carousel__btn--next"
               icon={faChevronRight} size="5x" />
             <div className="carousel__dots">
               {items.slice(0, reviews.length).map((pos, i) => (

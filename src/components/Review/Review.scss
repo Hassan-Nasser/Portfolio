@@ -2,9 +2,6 @@ $review-slide-count: 9;
 $slide-width: 40rem;
 $mobil-slide-width: 25rem;
 
-
-
-
 .image-review-cover {
     display: inline-block;
     position: relative;
@@ -27,58 +24,6 @@ $mobil-slide-width: 25rem;
     right: 0;
     margin-right: 6px;
 }
-
-// @media screen and (max-width: 576px) {
-//   .box {
-//     height: 90% !important;
-//   }
-
-//   .work-container {
-//     margin-top: 6em;
-//   }
-
-
-//   .work-header {
-//     margin-top: 10%;
-//   }
-
-// }
-
-
-
-
-// .box {
-//   margin: 0 0 20px 0 !important;
-
-//   .image {
-//     &.centered {
-//       margin-bottom: 1em;
-//     }
-
-//     &.featured {
-//       position: relative;
-//       left: 20px;
-//       top: 20px;
-//       margin: -50px 0 50px -40px;
-//       width: auto;
-//     }
-//   }
-
-//   &.style1 {
-//     padding: 0.4em;
-//     max-width: 30em;
-//     margin-left: auto !important;
-//     margin-right: auto !important;
-//   }
-
-//   &.style2 {
-//     max-width: 32em;
-//     margin-left: auto !important;
-//     margin-right: auto !important;
-//   }
-// }
-
-
 @media screen and (max-width: 770px) {
     .review-carousel__slide-list {
         width: calc(#{($review-slide-count+2) * $mobil-slide-width}) !important;
@@ -87,9 +32,21 @@ $mobil-slide-width: 25rem;
     .review-carousel__slide-item {
         width: $mobil-slide-width !important;
     }
+
     .review-subject {
         font-size: 0.8em;
     }
+
+    .review-carousel__btn {
+        &--prev {
+            display: none;
+        }
+
+        &--next {
+            display: none;
+        }
+    }
+
 }
 
 @media screen and (min-width: 576px) {
@@ -98,32 +55,6 @@ $mobil-slide-width: 25rem;
     }
 
 }
-
-// .carousel__wrap {
-//   align-items: center;
-//   display: flex;
-//   flex: 1;
-//   justify-content: center;
-//   position: relative;
-//   width: 80%;
-//   min-width: 60%;
-//   left: 50%;
-//   transform: translateX(-50%);
-// }
-
-// .carousel__inner {
-//   height: 21rem;
-//   position: relative;
-//   width: 100%;
-//   // min-width: 50%;
-// }
-
-// .carousel__container {
-//   height: 100%;
-//   overflow: hidden;
-//   position: relative;
-//   width: 100%;
-// }
 
 .review-carousel__slide-list {
     height: 100%;
@@ -138,7 +69,6 @@ $mobil-slide-width: 25rem;
 
 .review-carousel__slide-item {
     display: inline-block;
-    // height: $slide-width;
     margin: 0;
     padding: 1rem;
     position: absolute;
@@ -180,7 +110,7 @@ $mobil-slide-width: 25rem;
     }
 }
 
-.carousel__btn {
+.review-carousel__btn {
     align-items: center;
     background: 0;
     border: 0;
@@ -190,6 +120,7 @@ $mobil-slide-width: 25rem;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    display: block;
 
     &--prev {
         left: 0;
@@ -199,23 +130,6 @@ $mobil-slide-width: 25rem;
         right: 0;
     }
 }
-
-// .carousel__btn-arrow {
-//   border: solid black;
-//   border-width: 0 0.4rem 0.4rem 0;
-//   height: 6rem;
-//   padding: 3px;
-//   width: 6rem;
-//   z-index: 10;
-
-//   &--left {
-//     transform: rotate(135deg);
-//   }
-
-//   &--right {
-//     transform: rotate(-45deg);
-//   }
-// }
 
 // .carousel__dots {
 //   display: inline-block;

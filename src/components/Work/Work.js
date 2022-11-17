@@ -99,7 +99,6 @@ const CarouselSlideItem = ({ pos, idx, activeIdx }) => {
         <h3 className="subject prototype white">{item.work.title}</h3>
         <p className="work-description montserrat custom-grey">{item.work.desc} </p>
       </div>
-
     </li>
   );
 };

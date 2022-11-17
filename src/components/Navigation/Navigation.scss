@@ -19,13 +19,11 @@
 }
 
 .main-container {
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 100vh;
-    width: 100vh;
     background-color: rgba(0, 0, 0, 0);
 }
 
@@ -56,6 +54,7 @@
 .nav-item {
     line-height: 25px;
     margin-right: 1rem;
+    text-align: center;
 }
 
 .nav-item:after {
