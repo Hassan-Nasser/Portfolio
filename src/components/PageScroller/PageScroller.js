@@ -41,16 +41,19 @@ class PageScroller extends Component {
       setIsModal: this.setIsModal,
       setIsNav: this.setIsNav,
       setDisableScroll: this.setDisableScroll,
+      y: window.scrollY,
     };
 
     this.pages = 0;
-    this.scrollLocker = () => { };
     this._isScrollPending = false;
     this._isScrolledAlready = false;
     this._slides = [];
     this._touchSensitivity = 5;
     this._touchStart = 0;
     this._isMobile = null;
+    this.threshold = 1;
+    this.lastScrollY = window.pageYOffset;
+    this.ticking = false;
   }
   setIsModal = isModal => {
     this.setState({ isModal });
@@ -64,12 +67,12 @@ class PageScroller extends Component {
 
   componentDidMount = () => {
     this._isMobile = isMobileDevice();
-
     if (this._isMobile) {
       document.addEventListener('touchmove', this.onTouchMove, { passive: false });
       document.addEventListener('touchstart', this.onTouchStart);
     } else {
-      document.addEventListener('wheel', this.onScroll, { passive: false });
+      window.addEventListener('wheel', this.onScroll, { passive: false });
+      window.addEventListener('scroll', (e)=>{console.log("AAAA"); e.preventDefault()}, { passive: false });
       document.addEventListener('keydown', this.onKeyPress);
 
     }
@@ -102,7 +105,9 @@ class PageScroller extends Component {
       document.removeEventListener('touchstart', this.onTouchStart);
     } else {
       document.removeEventListener('wheel', this.onScroll);
+      window.removeEventListener('scroll', this.onScroll);
       document.removeEventListener('keydown', this.onKeyPress);
+      window.removeEventListener('scroll', (e)=>e.preventDefault());
     }
     window.removeEventListener('resize', this.onResize);
   }
@@ -144,7 +149,10 @@ class PageScroller extends Component {
   }
 
   onKeyPress = (event) => {
-    event.preventDefault();
+    if (event.target.classList && !event.target.classList.contains('disable')) {
+      event.preventDefault();
+    }
+    
     let key = event.key;
     let slide = this.state.activeSlide;
     switch (key) {
@@ -160,12 +168,38 @@ class PageScroller extends Component {
         break;
     }
   }
+  handleScroll = (event) => {
+    event.preventDefault();
+    // if (this._isScrollPending) {
+    //   return;
+    // }
+    // if (!this.ticking) {
+    //   window.requestAnimationFrame(this.updateScrollDir);
+    //   this.ticking = true;
+    // }
+  }
+  updateScrollDir = () => {
+    const scrollY = window.pageYOffset;
+
+    if (Math.abs(scrollY - this.lastScrollY) < this.threshold) {
+      this.ticking = false;
+      return;
+    }
+    console.log(scrollY >= this.lastScrollY ? "scrolling down" : "scrolling up");
+    let { activeSlide } = this.state;
+    scrollY >= this.lastScrollY ? activeSlide++ : activeSlide--;
+    if (!this._isScrollPending)
+      this.scrollToSlide(activeSlide);
+    this.lastScrollY = scrollY > 0 ? scrollY : 0;
+    this.ticking = false;
+
+  };
 
   onScroll = (evt) => {
     // if (this.props.scrollMode !== scrollMode.FULL_PAGE) {
     //   return;
     // }
-    if (!evt.target.classList.contains('noscroll')) {
+    if (evt.target.classList && !evt.target.classList.contains('noscroll')) {
       evt.preventDefault();
     }
 
@@ -210,6 +244,7 @@ class PageScroller extends Component {
   // }
 
   scrollToSlide = (slide) => {
+    console.log(slide);
     if (this.state.isModal)
       return;
     if (this.state.isNav)

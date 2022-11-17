@@ -28,15 +28,16 @@ const Modal = ({ project, closeModal }) => {
         // }
 
 
-        // if (myContainer && myContainer.current) {
-        //     // myContainer.current.addEventListener("wheel", disablePreventDefault, {passive:false});
-        //     // myContainer.current.addEventListener("wheel", disablePreventDefault, false);
-        //     // myContainer.current.focus();
-        // }
+        if (myContainer && myContainer.current) {
+            // myContainer.current.addEventListener("wheel", disablePreventDefault, {passive:false});
+            // myContainer.current.addEventListener("wheel", disablePreventDefault, false);
+            // myContainer.current.focus();
+        }
         if (iframeContainer && iframeContainer.current) {
             iframeContainer.current.contentWindow.addEventListener("wheel", disableScrollInIframe, { passive: false });
+            iframeContainer.current.contentWindow.addEventListener("scroll", disableScrollInIframe, { passive: false });
         }
-        //   return  myContainer.current.removeEventListener("wheel",(e)=>e.stopPropagation());
+          return  iframeContainer.current.contentWindow.removeEventListener("wheel", disableScrollInIframe);
     }, []);
 
     return (
@@ -45,11 +46,10 @@ const Modal = ({ project, closeModal }) => {
             <div className="modal__container">
 
                 <div className="modal__title font-2" id="example-custom-modal-styling-title">{project.name}</div>
-                <FontAwesomeIcon
+                <FontAwesomeIcon 
                     onClick={() => { setIsModal(false); closeModal(); }}
-                    className="close-btn" icon={faTimes} />
-                <div
-                    className="video image featured ">
+                    className="close-btn pointer" icon={faTimes} />
+                <div className="video">
                     <iframe
                         ref={iframeContainer}
                         title={project.name}
@@ -90,13 +90,6 @@ const Modal = ({ project, closeModal }) => {
                         <p className="noscroll"  >{project.description}</p>
                     </Scrollbars>
                 </div>
-
-                {/* <hr className="modal-hr" />
-                <div className="center padding-top-1 center">
-                    <button type="button " className="btn btn-danger margin-1" onClick={() => { setIsModal(false); closeModal(); }}>
-                        Close
-                    </button>
-                </div> */}
             </div>
 
         </>

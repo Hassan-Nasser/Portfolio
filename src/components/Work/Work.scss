@@ -190,7 +190,7 @@ $mobil-work-slide-width: 20rem;
   margin: 0;
   padding: 1rem;
   position: absolute;
-  transition: all 0.3s;
+  transition: all 0.3s ease-in-out;
   width: $work-slide-width;
 }
 
@@ -205,7 +205,7 @@ $mobil-work-slide-width: 20rem;
   img {
     height: 50%;
     object-fit: cover;
-    transition: all 0.5s ease;
+    transition: all 0.5s ease-in-out;
     width: 50%;
   }
 

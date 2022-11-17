@@ -20,6 +20,9 @@ class Contact extends Component {
       message: "",
     };
   }
+//  handleKeyDown = (e)=>{
+//   e.stopPropagation();
+//  }
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -52,7 +55,7 @@ class Contact extends Component {
           });
           // console.log("error, = ", error.text);
         }
-      );
+      ).catch(err=>console.log(err))
   };
   handleChange = (type, e) => {
     e.preventDefault();
@@ -64,7 +67,7 @@ class Contact extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container ">
         <div className="row d-flex justify-content-center white">
           <header >
             <h2 className="prototype">Get in touch</h2>
@@ -79,22 +82,25 @@ class Contact extends Component {
           <div className="col-12">
             <form method="post" onSubmit={this.handleSubmit}>
               <div className="row">
-                <div className="col-lg-6 col-sm-12 col-md-6">
+                <div className="col-lg-6 col-sm-12 col-md-6 ">
                   <input
                     type="text"
                     name="name"
                     id="name"
+                    className="disable"
                     required
                     placeholder="Name"
                     value={this.state.name}
                     onChange={(e) => this.handleChange("name", e)}
+                    onkeypress="return /[0-9a-zA-Z]/i.test(event.key)"
                   />
                 </div>
                 <div className="col-lg-6 col-sm-12  col-md-6">
                   <input
                     type="email"
                     name="email"
-                    id="email"
+                    id="email" 
+                    className="disable"
                     required
                     placeholder="Email"
                     value={this.state.email}
@@ -105,6 +111,7 @@ class Contact extends Component {
                   <input
                     type="text"
                     name="subject"
+                    className="disable"
                     id="subject"
                     required
                     placeholder="Subject"
@@ -116,6 +123,7 @@ class Contact extends Component {
                   <textarea
                     name="message"
                     id="message"
+                    className="disable"
                     required
                     placeholder="Message"
                     value={this.state.message}

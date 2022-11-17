@@ -5,7 +5,7 @@ import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons
 import AppContext from "../AppContext";
 
 const Carousel = ({ children }) => {
-    const [active, setActive] = useState(2);
+    const [active, setActive] = useState(3);
     const count = React.Children.count(children);
     const [touchStart, setTouchStart] = React.useState(0);
     const [touchEnd, setTouchEnd] = React.useState(0);
