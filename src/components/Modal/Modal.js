@@ -5,7 +5,8 @@ import { Scrollbars } from "react-custom-scrollbars-2";
 import AppContext from "../AppContext";
 import NoVideo from '../../images/no-video.png';
 import GooglePlay from '../../images/google-play.png';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from '@fortawesome/fontawesome-free-solid';
 
 const Modal = ({ project, closeModal }) => {
 
@@ -43,7 +44,10 @@ const Modal = ({ project, closeModal }) => {
             <div className="modal__backdrop" onClick={() => { setIsModal(false); closeModal(); }}></div>
             <div className="modal__container">
 
-                <h3 className="modal__title" id="example-custom-modal-styling-title">{project.name}</h3>
+                <div className="modal__title font-2" id="example-custom-modal-styling-title">{project.name}</div>
+                <FontAwesomeIcon
+                    onClick={() => { setIsModal(false); closeModal(); }}
+                    className="close-btn" icon={faTimes} />
                 <div
                     className="video image featured ">
                     <iframe
@@ -67,7 +71,7 @@ const Modal = ({ project, closeModal }) => {
                         target="_blank"
                         rel="noreferrer"
                     >
-                        <img className="google-play-icon" style={{ backgroundImage: "url(" + GooglePlay + ")" }} />
+                        <div className="google-play-icon" style={{ backgroundImage: "url(" + GooglePlay + ")" }}></div>
                     </a>
 
                 )}
@@ -87,12 +91,12 @@ const Modal = ({ project, closeModal }) => {
                     </Scrollbars>
                 </div>
 
-                <hr className="modal-hr" />
+                {/* <hr className="modal-hr" />
                 <div className="center padding-top-1 center">
                     <button type="button " className="btn btn-danger margin-1" onClick={() => { setIsModal(false); closeModal(); }}>
                         Close
                     </button>
-                </div>
+                </div> */}
             </div>
 
         </>

@@ -1,4 +1,3 @@
-
 main {
 	background: #fff;
 	margin: 0 auto;
@@ -76,9 +75,14 @@ code {
 }
 
 .modal__title {
-	font-size: 18px;
+	display: inline-block;
 	font-weight: 600;
-	margin-bottom: 25px;
+}
+
+.close-btn {
+	position: absolute;
+	right: 2em;
+	top: 1.5em;
 }
 
 iframe {
@@ -141,16 +145,17 @@ iframe {
 
 .google-play-icon {
 	background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 35px;
-    height: 35px;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 35px;
+	height: 35px;
 }
-.google-play-link{
+
+.google-play-link {
 	position: absolute;
-    top: 61.5%;
-    display: inline-block;
-    right: 0;
-    margin-right: 2em;
-    cursor: pointer;
+	top: 61.5%;
+	display: inline-block;
+	right: 0;
+	margin-right: 2em;
+	cursor: pointer;
 }

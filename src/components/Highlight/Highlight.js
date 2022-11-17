@@ -115,7 +115,7 @@ class Highlight extends Component {
       <div className="container">
         <div className=" d-flex justify-content-center">
           <header>
-            <h4 className="prototype white">Career Highlight</h4>
+            <h2 className="prototype white">Career Highlight</h2>
             <p className="montserrat custom-grey">
               These are some of the biggest projects I worked on.
             </p>

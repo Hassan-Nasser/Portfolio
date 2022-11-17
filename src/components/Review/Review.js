@@ -136,7 +136,7 @@ const Review = () => {
 
       <div className=" d-flex justify-content-center">
         <header>
-          <h4 className="prototype white">Client's Reviews</h4>
+          <h2 className="prototype white">Client's Reviews</h2>
           <p className="font-5 montserrat custom-grey">Some of my freelance projects reviews, projects were done on upwork. </p>
 
         </header>

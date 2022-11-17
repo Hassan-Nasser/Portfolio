@@ -67,7 +67,7 @@ class Contact extends Component {
       <div className="container">
         <div className="row d-flex justify-content-center white">
           <header >
-            <h4 className="prototype">Get in touch</h4>
+            <h2 className="prototype">Get in touch</h2>
             <p className="montserrat custom-grey">
               As a freelancer, i'm available for new projects and
               collaborations.
@@ -79,7 +79,7 @@ class Contact extends Component {
           <div className="col-12">
             <form method="post" onSubmit={this.handleSubmit}>
               <div className="row">
-                <div className="col-lg-6 col-sm-12">
+                <div className="col-lg-6 col-sm-12 col-md-6">
                   <input
                     type="text"
                     name="name"
@@ -90,7 +90,7 @@ class Contact extends Component {
                     onChange={(e) => this.handleChange("name", e)}
                   />
                 </div>
-                <div className="col-lg-6 col-sm-12">
+                <div className="col-lg-6 col-sm-12  col-md-6">
                   <input
                     type="email"
                     name="email"
@@ -168,9 +168,9 @@ class Contact extends Component {
                 <a
                   href="https://www.upwork.com/freelancers/hassannasser"
                   target="_blank"
-                  rel="noreferrer"
                 >
-                  <img className="upwork" style={{ backgroundImage: "url(" + Upwork + ")" }} />
+                  <div className="upwork" style={{ backgroundImage: "url(" + Upwork + ")" }}></div>
+                  {/* <img className="upwork" style={{ backgroundImage: "url(" + Upwork + ")" }} /> */}
                 </a>
               </li>
 
@@ -179,9 +179,9 @@ class Contact extends Component {
                   href="https://www.linkedin.com/in/hassan-naser/"
                   target="_blank"
                   rel="noreferrer"
-                  
+
                 >
-                  <FontAwesomeIcon  icon={faLinkedin} size="2x" />
+                  <FontAwesomeIcon icon={faLinkedin} size="2x" />
                 </a>
               </li>
               <li>

@@ -46,12 +46,12 @@ _items.push(..._items);
 
 const CarouselSlideItem = ({ pos, idx, activeIdx }) => {
   const [width, setWidth] = useState(window.innerWidth);
-  const [slideWidth, setSlideWidth] = useState(width <= 576 ? mobilSlideWidth : webSlideWidth);
+  const [slideWidth, setSlideWidth] = useState(width <= 990 ? mobilSlideWidth : webSlideWidth);
 
   useEffect(() => {
     const handleWindowSizeChange = (e) => {
       setWidth(window.innerWidth);
-      if (width <= 576) {
+      if (width <= 990) {
         setSlideWidth(mobilSlideWidth);
       } else {
         setSlideWidth(webSlideWidth);
@@ -76,9 +76,9 @@ const CarouselSlideItem = ({ pos, idx, activeIdx }) => {
     switch (position) {
       case length:
         break;
-      case (width > 576) && length - 1:
+      case (width > 990) && length - 1:
         break;
-      case (width > 576) && length + 1:
+      case (width > 990) && length + 1:
         break;
       default:
         item.styles = { ...item.styles, opacity: 0 };
@@ -152,7 +152,7 @@ const Work = () => {
     <div className="container">
       <div className="row d-flex justify-content-center">
         <header className=" work-header">
-          <h4 className="prototype white">Here's all the stuff I do</h4>
+          <h2 className="prototype white">Here's all the stuff I do</h2>
           <p className="font-5 montserrat custom-grey">Softwares and technologies i have multiple years experience at.</p>
         </header>
       </div>

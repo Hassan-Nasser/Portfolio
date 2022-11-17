@@ -125,7 +125,7 @@ $mobil-work-slide-width: 20rem;
 }
 
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 990px) {
   .carousel__slide-list {
     width: calc(#{($slide-count + 0.5) * $mobil-work-slide-width* 2}) !important;
   }
@@ -138,7 +138,7 @@ $mobil-work-slide-width: 20rem;
   }
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 990px) {
   .carousel__slide-list {
     width: calc(#{($slide-count + 0.5) * $work-slide-width* 2});
   }
