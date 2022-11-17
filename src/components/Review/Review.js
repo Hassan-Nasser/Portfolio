@@ -87,7 +87,7 @@ const Review = () => {
   const [activeIdx, setActiveIdx] = useState(0);
   let bigLength = items.length;
   useEffect(() => {
-    setInterval(nextClick, 2000);
+    setInterval(nextClick, 5000);
     firebase.firestore().collection('reviews').get().then(reviews => {
       const reviewList = reviews.docs.map(doc => doc.data());
       setReviews(reviewList);
