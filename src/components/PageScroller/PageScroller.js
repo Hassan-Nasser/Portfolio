@@ -50,6 +50,7 @@ class PageScroller extends Component {
     this._slides = [];
     this._touchSensitivity = 5;
     this._touchStart = 0;
+    this._xDown = 0;
     this._isMobile = null;
     this.threshold = 1;
     this.lastScrollY = window.pageYOffset;
@@ -68,9 +69,8 @@ class PageScroller extends Component {
   componentDidMount = () => {
     this._isMobile = isMobileDevice();
     if (this._isMobile) {
-      window.addEventListener('wheel', this.onScroll, { passive: false });
       document.addEventListener('touchmove', this.onTouchMove, { passive: false });
-      // document.addEventListener('touchstart', this.onTouchStart);
+      document.addEventListener('touchstart', this.onTouchStart);
     } else {
       window.addEventListener('wheel', this.onScroll, { passive: false });
       document.addEventListener('keydown', this.onKeyPress);
@@ -113,9 +113,9 @@ class PageScroller extends Component {
 
   componentWillUnmount() {
     if (this._isMobile) {
-      document.removeEventListener('wheel', this.onScroll);
+      // document.removeEventListener('wheel', this.onScroll);
       document.removeEventListener('touchmove', this.onTouchMove);
-      // document.removeEventListener('touchstart', this.onTouchStart);
+      document.removeEventListener('touchstart', this.onTouchStart);
     } else {
       document.removeEventListener('wheel', this.onScroll);
       // window.removeEventListener('scroll', this.onScroll);
@@ -142,6 +142,7 @@ class PageScroller extends Component {
 
   onTouchStart = (evt) => {
     this._touchStart = evt.touches[0].clientY;
+    this._xDown = evt.touches[0].clientX;
     this._isScrolledAlready = false;
   }
 
@@ -151,15 +152,24 @@ class PageScroller extends Component {
     // }
 
     evt.preventDefault();
-    // const touchEnd = evt.changedTouches[0].clientY;
+    var xUp = evt.touches[0].clientX;
+    var yUp = evt.touches[0].clientY;
 
-    // if (!this._isScrollPending && !this._isScrolledAlready) {
-    //   if (this._touchStart > touchEnd + this._touchSensitivity) {
-    //     this.scrollToSlide(this.state.activeSlide + 1);
-    //   } else if (this._touchStart < touchEnd - this._touchSensitivity) {
-    //     this.scrollToSlide(this.state.activeSlide - 1);
-    //   }
-    // }
+    var xDiff = this._xDown - xUp;
+    var yDiff = this._touchStart - yUp;
+
+    const touchEnd = evt.changedTouches[0].clientY;
+
+    if (!this._isScrollPending && !this._isScrolledAlready) {
+      if (Math.abs(xDiff) < Math.abs(yDiff)) {
+        if (yDiff > 0) {
+          this.scrollToSlide(this.state.activeSlide + 1);
+        } else {
+          this.scrollToSlide(this.state.activeSlide - 1);
+        }
+      }
+
+    }
   }
 
   onKeyPress = (event) => {
