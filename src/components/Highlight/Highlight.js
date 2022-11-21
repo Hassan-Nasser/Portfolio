@@ -124,8 +124,8 @@ class Highlight extends Component {
 
         <div 
         className="container-fluid slider"
-        onTouchStart={() => setDisableScroll(true)}
-        onTouchEnd={() => setDisableScroll(false)}
+        // onTouchStart={() => setDisableScroll(true)}
+        // onTouchEnd={() => setDisableScroll(false)}
         >
           <ImageGallery items={this.state.projectsCover}
             thumbnailPosition="bottom"

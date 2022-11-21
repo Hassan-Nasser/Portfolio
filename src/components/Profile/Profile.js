@@ -12,9 +12,13 @@ const Profile = () => {
   const profileRef = useRef();
   useEffect(() => {
     function disablePreventDefault(e) {
-      e.stopPropagation();
+      // e.stopPropagation();
       setDisableScroll(true);
       setTimeout(() => setDisableScroll(false), 1000);
+    }
+    function preventDefault (e){
+      console.log("+++");
+      e.preventDefault();
     }
     if (profileRef && profileRef.current) {
       profileRef.current.addEventListener("wheel", disablePreventDefault, false);

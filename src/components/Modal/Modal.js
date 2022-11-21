@@ -19,6 +19,7 @@ const Modal = ({ project, closeModal }) => {
         //     e.stopPropagation();
         // }
         function disableScrollInIframe(e) {
+            console.log("HEY!!");
             e.preventDefault();
         }
         // function x(e) {
@@ -37,8 +38,14 @@ const Modal = ({ project, closeModal }) => {
             iframeContainer.current.contentWindow.addEventListener("wheel", disableScrollInIframe, { passive: false });
             iframeContainer.current.contentWindow.addEventListener("scroll", disableScrollInIframe, { passive: false });
         }
-          return  iframeContainer.current.contentWindow.removeEventListener("wheel", disableScrollInIframe);
+        return iframeContainer.current.contentWindow.removeEventListener("wheel", disableScrollInIframe);
     }, []);
+    const videoLoad = (e) => {
+        console.log('videoLoaded');
+        var iframe = e.target;
+        iframe.contentWindow.postMessage("message", '*');
+        // iframe.contentWindow.addEventListener('wheel', e => { console.log("HSSSS"); e.preventDefault() });
+    }
 
     return (
         <>
@@ -46,11 +53,12 @@ const Modal = ({ project, closeModal }) => {
             <div className="modal__container">
 
                 <div className="modal__title font-2" id="example-custom-modal-styling-title">{project.name}</div>
-                <FontAwesomeIcon 
+                <FontAwesomeIcon
                     onClick={() => { setIsModal(false); closeModal(); }}
                     className="close-btn pointer" icon={faTimes} />
-                <div className="video">
+                <div onScroll={e=>{e.preventDefault();console.log("HEY")}} className="video">
                     <iframe
+                        // onLoadStart={(e) => videoLoad(e)}
                         ref={iframeContainer}
                         title={project.name}
                         src={project.url ? project.url : NoVideo}

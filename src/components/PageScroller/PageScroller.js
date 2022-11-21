@@ -68,14 +68,20 @@ class PageScroller extends Component {
   componentDidMount = () => {
     this._isMobile = isMobileDevice();
     if (this._isMobile) {
+      window.addEventListener('wheel', this.onScroll, { passive: false });
       document.addEventListener('touchmove', this.onTouchMove, { passive: false });
-      document.addEventListener('touchstart', this.onTouchStart);
+      // document.addEventListener('touchstart', this.onTouchStart);
     } else {
       window.addEventListener('wheel', this.onScroll, { passive: false });
-      window.addEventListener('scroll', (e)=>{console.log("AAAA"); e.preventDefault()}, { passive: false });
       document.addEventListener('keydown', this.onKeyPress);
 
     }
+    // document.addEventListener('scroll', (e) => {  e.preventDefault();console.log("AAAA",e.defaultPrevented); }, false);
+    // window.addEventListener('message', (e) => {
+    //   var iframe = e.target;
+    //   iframe.contentWindow.addEventListener('wheel', e => { console.log("HSSSS"); e.preventDefault() });
+    //   console.log("message");
+    // }, { passive: false })
     window.addEventListener('resize', this.onResize);
 
     this.onResize();
@@ -97,18 +103,26 @@ class PageScroller extends Component {
         }, this.updateSlides);
       }
     }
+    // window.addEventListener('message', (e) => {
+    //   var iframe = e.target;
+    //   if (iframe && iframe.contentWindow)
+    //     iframe.contentWindow.addEventListener('wheel', e => { console.log("HSSSS"); e.preventDefault() });
+    //   console.log("message");
+    // }, { passive: false })
   }
 
   componentWillUnmount() {
     if (this._isMobile) {
+      document.removeEventListener('wheel', this.onScroll);
       document.removeEventListener('touchmove', this.onTouchMove);
-      document.removeEventListener('touchstart', this.onTouchStart);
+      // document.removeEventListener('touchstart', this.onTouchStart);
     } else {
       document.removeEventListener('wheel', this.onScroll);
-      window.removeEventListener('scroll', this.onScroll);
+      // window.removeEventListener('scroll', this.onScroll);
       document.removeEventListener('keydown', this.onKeyPress);
-      window.removeEventListener('scroll', (e)=>e.preventDefault());
+      window.removeEventListener('scroll', (e) => e.preventDefault());
     }
+
     window.removeEventListener('resize', this.onResize);
   }
 
@@ -137,22 +151,22 @@ class PageScroller extends Component {
     // }
 
     evt.preventDefault();
-    const touchEnd = evt.changedTouches[0].clientY;
+    // const touchEnd = evt.changedTouches[0].clientY;
 
-    if (!this._isScrollPending && !this._isScrolledAlready) {
-      if (this._touchStart > touchEnd + this._touchSensitivity) {
-        this.scrollToSlide(this.state.activeSlide + 1);
-      } else if (this._touchStart < touchEnd - this._touchSensitivity) {
-        this.scrollToSlide(this.state.activeSlide - 1);
-      }
-    }
+    // if (!this._isScrollPending && !this._isScrolledAlready) {
+    //   if (this._touchStart > touchEnd + this._touchSensitivity) {
+    //     this.scrollToSlide(this.state.activeSlide + 1);
+    //   } else if (this._touchStart < touchEnd - this._touchSensitivity) {
+    //     this.scrollToSlide(this.state.activeSlide - 1);
+    //   }
+    // }
   }
 
   onKeyPress = (event) => {
     if (event.target.classList && !event.target.classList.contains('disable')) {
       event.preventDefault();
     }
-    
+
     let key = event.key;
     let slide = this.state.activeSlide;
     switch (key) {
@@ -244,13 +258,15 @@ class PageScroller extends Component {
   // }
 
   scrollToSlide = (slide) => {
-    console.log(slide);
+
     if (this.state.isModal)
       return;
     if (this.state.isNav)
       return;
     if (this.state.disableScroll)
-      return
+      return;
+
+    console.log(slide);
     if (slide >= 0 && slide < this.state.slidesCount) {
       this._isScrollPending = true;
       this.setState({

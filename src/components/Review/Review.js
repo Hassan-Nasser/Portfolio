@@ -12,7 +12,6 @@ import NoImage from '../../images/no-image.png';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faChevronLeft } from "@fortawesome/fontawesome-free-solid";
 
-
 const storage = getStorage();
 
 const mobilSlideWidth = 25;
@@ -86,8 +85,13 @@ const Review = () => {
   const [isTicking, setIsTicking] = useState(false);
   const [activeIdx, setActiveIdx] = useState(0);
   let bigLength = items.length;
+  const [touchStart, setTouchStart] = React.useState(0);
+  const [touchEnd, setTouchEnd] = React.useState(0);
+  const [startY, setStartY] = React.useState(0);
+  const [endY, setEndY] = React.useState(0);
+
   useEffect(() => {
-    setInterval(nextClick, 5000);
+    // setInterval(nextClick, 5000);
     firebase.firestore().collection('reviews').get().then(reviews => {
       const reviewList = reviews.docs.map(doc => doc.data());
       setReviews(reviewList);
@@ -130,7 +134,44 @@ const Review = () => {
   useEffect(() => {
     setActiveIdx((bigLength - (items[0] % bigLength)) % bigLength)
   }, [items]);
+  const handleTouchStart = (e) => {
+    // setDisableScroll(true);
+    setTouchStart(e.targetTouches[0].clientX);
+    setStartY(e.targetTouches[0].clientY);
+}
 
+
+
+const handleTouchMove = (e) => {
+    // setDisableScroll(true);
+    setTouchEnd(e.targetTouches[0].clientX);
+    setEndY(e.targetTouches[0].clientY);
+}
+
+// const sleep = (ms = 0) => {
+//     return new Promise((resolve) => setTimeout(resolve, ms));
+// };
+
+const handleTouchEnd = () => {
+
+    if (Math.abs(startY - endY) < Math.abs(touchStart - touchEnd)) {
+        
+            if (touchStart - touchEnd > 150) {
+              nextClick();
+                // setActive(i => i + 1)
+            }
+
+            if (touchStart - touchEnd < -150) {
+                // setActive(i => i - 1)
+                prevClick();
+            }
+            setIsTicking(true);
+       
+
+
+    } 
+
+}
   return (
     <div className="container">
 
@@ -146,19 +187,23 @@ const Review = () => {
           <div className="carousel__inner">
 
             <div className="carousel__container">
-              <ul className="review-carousel__slide-list">
-                {items.length > 0 && reviews.length > 0 && items.map((pos, i) => {
+              <ul className="review-carousel__slide-list"
+              onTouchStart={touchStartEvent => handleTouchStart(touchStartEvent)}
+              onTouchMove={touchMoveEvent => handleTouchMove(touchMoveEvent)}
+              onTouchEnd={() => handleTouchEnd()}
+              >
+                  {items.length > 0 && reviews.length > 0 && items.map((pos, i) => {
 
-                  return (
-                    <CarouselSlideItem
-                      key={i}
-                      idx={i}
-                      pos={pos}
-                      activeIdx={activeIdx}
-                      reviews={reviews}
-                    />
-                  )
-                })}
+                    return (
+                      <CarouselSlideItem
+                        key={i}
+                        idx={i}
+                        pos={pos}
+                        activeIdx={activeIdx}
+                        reviews={reviews}
+                      />
+                    )
+                  })}
               </ul>
             </div>
             <FontAwesomeIcon

@@ -31,43 +31,37 @@ const Carousel = ({ children }) => {
     const handleWindowSizeChange = (e) => {
         setWidth(window.innerWidth);
     }
-    // const handleTouchStart = (e) => {
-    //     // setDisableScroll(true);
-    //     setTouchStart(e.targetTouches[0].clientX);
-    //     setStartY(e.targetTouches[0].clientY);
-    // }
+    const handleTouchStart = (e) => {
+        // setDisableScroll(true);
+        setTouchStart(e.targetTouches[0].clientX);
+        setStartY(e.targetTouches[0].clientY);
+    }
 
 
 
-    // const handleTouchMove = (e) => {
-    //     setDisableScroll(true);
-    //     setTouchEnd(e.targetTouches[0].clientX);
-    //     setEndY(e.targetTouches[0].clientY);
-    // }
+    const handleTouchMove = (e) => {
+        setTouchEnd(e.targetTouches[0].clientX);
+        setEndY(e.targetTouches[0].clientY);
+    }
 
     // const sleep = (ms = 0) => {
     //     return new Promise((resolve) => setTimeout(resolve, ms));
     // };
 
-    // const handleTouchEnd = () => {
+    const handleTouchEnd = () => {
 
-    //     if (Math.abs(startY - endY) < Math.abs(touchStart - touchEnd)) {
-    //         console.log("scroll xoo");
-    //         setDisableScroll(true, () => {
-    //             if (touchStart - touchEnd > 150) {
-    //                 setActive(i => i + 1)
-    //             }
+        if (Math.abs(startY - endY) < Math.abs(touchStart - touchEnd)) {
+            if (touchStart - touchEnd > 150) {
+                setActive(i => i + 1)
+            }
 
-    //             if (touchStart - touchEnd < -150) {
-    //                 setActive(i => i - 1)
-    //             }
-    //             setIsTicking(true);
-    //         })
+            if (touchStart - touchEnd < -150) {
+                setActive(i => i - 1)
+            }
+            setIsTicking(true);
+        }
 
-
-    //     } else setDisableScroll(false);
-
-    // }
+    }
 
     const pervious = () => {
         let newActive = active;
@@ -82,9 +76,7 @@ const Carousel = ({ children }) => {
     const MAX_VISIBILITY = 3;
     return (
         <div className='carousel'
-            // onTouchStart={touchStartEvent => handleTouchStart(touchStartEvent)}
-            // onTouchMove={touchMoveEvent => handleTouchMove(touchMoveEvent)}
-            // onTouchEnd={() => handleTouchEnd()}
+
         >
             {active > 0 &&
                 <button className='nav left' onClick={() => pervious()}>
@@ -92,15 +84,19 @@ const Carousel = ({ children }) => {
 
                 </button>}
             {React.Children.map(children, (child, i) => (
-                <div className='card-container' style={{
-                    '--active': i === active ? 1 : 0,
-                    '--offset': (active - i) / (width <= 768 ? 10 : 3.2),
-                    '--direction': Math.sign(active - i),
-                    '--abs-offset': Math.abs(active - i) / 3,
-                    'pointerEvents': active === i ? 'auto' : 'none',
-                    'opacity': Math.abs(active - i) >= MAX_VISIBILITY ? '0.8' : '1',
-                    'display': Math.abs(active - i) > (width <= 768 ? 1 : MAX_VISIBILITY) ? 'none' : 'block',
-                }}>
+                <div className='card-container'
+                    onTouchStart={touchStartEvent => handleTouchStart(touchStartEvent)}
+                    onTouchMove={touchMoveEvent => handleTouchMove(touchMoveEvent)}
+                    onTouchEnd={() => handleTouchEnd()}
+                    style={{
+                        '--active': i === active ? 1 : 0,
+                        '--offset': (active - i) / (width <= 768 ? 10 : 3.2),
+                        '--direction': Math.sign(active - i),
+                        '--abs-offset': Math.abs(active - i) / 3,
+                        'pointerEvents': active === i ? 'auto' : 'none',
+                        'opacity': Math.abs(active - i) >= MAX_VISIBILITY ? '0.8' : '1',
+                        'display': Math.abs(active - i) > (width <= 768 ? 1 : MAX_VISIBILITY) ? 'none' : 'block',
+                    }}>
                     {child}
                 </div>
             ))

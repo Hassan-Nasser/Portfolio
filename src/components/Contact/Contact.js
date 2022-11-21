@@ -20,9 +20,6 @@ class Contact extends Component {
       message: "",
     };
   }
-//  handleKeyDown = (e)=>{
-//   e.stopPropagation();
-//  }
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -92,7 +89,6 @@ class Contact extends Component {
                     placeholder="Name"
                     value={this.state.name}
                     onChange={(e) => this.handleChange("name", e)}
-                    onkeypress="return /[0-9a-zA-Z]/i.test(event.key)"
                   />
                 </div>
                 <div className="col-lg-6 col-sm-12  col-md-6">
