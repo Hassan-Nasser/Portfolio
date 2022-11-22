@@ -24,8 +24,7 @@ const Project = ({ project, showModal, tagsExist, headerPosition }) => {
         return () => { isMounted = false };
     }, [project]);
 
-    return (<article className="pbox style2"
-        style={{ width: "100%", cursor: "pointer", height: "20em" }}>
+    return (<article className="pbox style2" style={{ width: "100%", cursor: "pointer", height: "20em" }}>
         <button
             className="transparent image featured"
             onClick={() => {

@@ -1,8 +1,3 @@
-.image.featured {
-  display: block;
-  width: 100%;
-  margin: 0 0 0.5em 0;
-}
 
 .box.style2 .project-name {
   margin-bottom: 0.25em;
@@ -56,8 +51,8 @@
 }
 
 .pbox {
-  padding: 11px 3px 11px 3px;
-  margin: 0 0 20px 0 !important;
+  // padding: 11px 3px 11px 3px;
+  // margin: 0 0 20px 0 !important;
 
   .project-name {
     margin-bottom: 0.25em;
@@ -69,12 +64,12 @@
     }
 
     &.featured {
-      position: relative;
-      left: 20px;
-      top: 20px;
-      margin: -50px 0 50px -40px;
-      width: auto;
-      height: 93%;
+      // position: relative;
+      // left: 20px;
+      // top: 20px;
+      // margin: -50px 0 50px -40px;
+      // width: auto;
+      height: 100%;
     }
   }
 
@@ -94,11 +89,14 @@
 .image {
   display: inline-block;
   position: relative;
+  text-align: center;
 
   img {
     display: block;
     width: 100%;
+    // height: 70%;
     border-radius: 10px;
+    object-fit: cover;
   }
 
   &.fit {
@@ -132,6 +130,8 @@
 }
 .project-image{
   height: 12em;
+  position: relative;
+    top: 0;
 }
 
 .image {

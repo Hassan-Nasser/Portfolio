@@ -12,9 +12,6 @@ const Carousel = ({ children }) => {
     const [startY, setStartY] = React.useState(0);
     const [endY, setEndY] = React.useState(0);
     const [width, setWidth] = useState(window.innerWidth);
-    const { disableScroll, setDisableScroll } = useContext(AppContext);
-    const [isTicking, setIsTicking] = useState(false);
-
 
     useEffect(() => {
         window.addEventListener('resize', handleWindowSizeChange);
@@ -37,19 +34,12 @@ const Carousel = ({ children }) => {
         setStartY(e.targetTouches[0].clientY);
     }
 
-
-
     const handleTouchMove = (e) => {
         setTouchEnd(e.targetTouches[0].clientX);
         setEndY(e.targetTouches[0].clientY);
     }
 
-    // const sleep = (ms = 0) => {
-    //     return new Promise((resolve) => setTimeout(resolve, ms));
-    // };
-
     const handleTouchEnd = () => {
-
         if (Math.abs(startY - endY) < Math.abs(touchStart - touchEnd)) {
             if (touchStart - touchEnd > 150) {
                 setActive(i => i + 1)
@@ -58,9 +48,7 @@ const Carousel = ({ children }) => {
             if (touchStart - touchEnd < -150) {
                 setActive(i => i - 1)
             }
-            setIsTicking(true);
         }
-
     }
 
     const pervious = () => {

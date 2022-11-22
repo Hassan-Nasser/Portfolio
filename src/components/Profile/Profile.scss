@@ -12,11 +12,6 @@
     width: 100%;
   }
 
-  &.featured {
-    display: block;
-    width: 100%;
-    margin: 0 0 2em 0;
-  }
 
   &.left {
     float: left;
@@ -36,46 +31,56 @@
 
 .title-profile {
   width: 100%;
+
   margin: 0 1%;
   color: #e5e5e5;
+
   h1 {
     font-size: 2em;
   }
+
   .intro {
     text-align: left;
     background: rgba(0, 0, 0, 0.3);
     height: 100%;
+    width: 98%;
     padding: 0.5em;
     border-radius: 10px;
 
   }
 }
-.intro-view{
+
+.intro-view {
   height: 100%;
   padding: 0.5em;
   border-radius: 10px;
 }
 
-.profile-header{
+.profile-header {
   margin-bottom: 1%;
   flex: 2;
   text-align: center;
 }
-.scrolly{
+
+.scrolly {
   text-align: center;
 }
-.profile-section{
+
+.profile-section {
   margin: 0 auto;
 }
+
 .title-profile.col-md-6.col-sm-12.col-lg-6 {
   margin-left: 8%;
 }
-.profile-img{
+
+.profile-img {
   flex: 1;
   display: block;
   // width: 24px;
   // background-color: antiquewhite;
 }
+
 .job-title {
   margin: 12px auto;
   padding: 2px 12px;
@@ -84,17 +89,39 @@
   background-position: center;
   text-align: center;
 }
-@media screen and (max-width: 630px){
+
+@media screen and (max-width: 630px) {
   .image .profile-image {
     width: 60%;
     margin: 0 auto;
   }
-  .intro{
+
+  .intro {
     font-size: 0.82em;
   }
- }
-//  @media (max-width: 992px){
-//   .container {
-//     margin-top: 6%;
-// }
-//  }
+}
+
+.profile-swiper {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swipe-next {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  margin: 5px 0;
+  padding: 3px;
+}

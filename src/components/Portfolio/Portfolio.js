@@ -1,7 +1,6 @@
 import { Component } from "react";
 import "./Portfolio.scss";
 import Modal from "../Modal/Modal";
-import { Scrollbars } from "react-custom-scrollbars";
 import Tag from "../Tag/Tag";
 import Carousel from "../Carousel/Carousel";
 import Project from "../Project/Project";
@@ -10,6 +9,13 @@ import { collection, getDocs } from 'firebase/firestore/lite';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'bootstrap/dist/css/bootstrap.css';
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import "swiper/css";
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
 
 class Portfolio extends Component {
 
@@ -24,7 +30,9 @@ class Portfolio extends Component {
       projectImage: "",
       value: 0,
       isLoaded: false,
-      isModalOpen: false
+      isModalOpen: false,
+      swiper: null,
+      active: 0
     };
   }
 
@@ -88,7 +96,7 @@ class Portfolio extends Component {
             <h2 className="prototype white" >Some of my work</h2>
             <p className="montserrat custom-grey">
               Here are a few projects I've worked on recently. Want to see more?{" "}
-              <a href="#contact">Email me</a>.
+              {/* <div className="pointer"  >Email me</div>. */}
             </p>
           </header>
         </div>
@@ -158,7 +166,7 @@ class Portfolio extends Component {
 
               )}
             </Tabs> */}
-          <Carousel>
+          {/* <Carousel>
             {
               this.state.projects && this.state.projects.map((project, i) => (
                 <div className="card" key={i}>
@@ -170,7 +178,67 @@ class Portfolio extends Component {
                     showModal={() => { this.setShow(project) }} />
                 </div>
               ))}
-          </Carousel>
+          </Carousel> */}
+
+          <Swiper
+            initialSlide={3}
+            centeredSlides={true}
+            onSwiper={(swiper) => { this.setState({ swiper, active: 0 }) }}
+            onSlideChange={() => {
+              if (this.state.swiper) {
+                this.setState({ active: this.state.swiper.realIndex  })
+              }
+            }}
+            slidesPerView={3}
+            // spaceBetween={-30}
+            pagination={{
+              clickable: true,
+            }}
+            navigation={{ clickable: true }}
+            modules={[Navigation]}
+            loop={true}
+            breakpoints={{
+             
+              300: {
+                slidesPerView: 1,
+                spaceBetween: 10
+              },
+              // when window width is >= 640px
+              640: {
+                slidesPerView: 3,
+                spaceBetween: 10
+              }
+            }}
+          >
+            {
+              this.state.projects && this.state.projects.map((project, i) => (
+                <SwiperSlide
+                  key={i}
+                  style={{
+                    // width: i == this.state.active ? "95%" : "20%" ,
+                    height: i == this.state.active ? "90%" : "90%",
+
+                    '--active': i === this.state.active ? 1 : 0,
+                    '--offset': (this.state.active - i) / 3.2,
+                    '--direction': Math.sign(this.state.active - i),
+                    '--abs-offset': Math.abs(this.state.active - i) / 2,
+                    'pointerEvents': this.state.active === i ? 'auto' : 'none',
+                    'opacity': i == this.state.active ? '1' : '0.6',
+                  }}
+                >
+
+                  <div className="card" >
+                    <Project
+                      key={project.name}
+                      tagsExist={true}
+                      project={project}
+                      headerPosition="normal-header-position"
+                      showModal={() => { this.setShow(project) }} />
+                  </div>
+
+                </SwiperSlide>
+              ))}
+          </Swiper>
         </div>
 
       </div>

@@ -91,7 +91,7 @@ const CarouselSlideItem = ({ pos, idx, activeIdx }) => {
 
   return (
 
-    <li className="box style1 carousel__slide-item" style={item.styles} >
+    <li  className="box style1 carousel__slide-item" style={item.styles} >
       <div className="work-contain">
         <div className="image-icon ">
           <img src={item.work.image} alt={item.work.title} />
@@ -109,6 +109,10 @@ const Work = () => {
   const [items, setItems] = useState(keys);
   const [isTicking, setIsTicking] = useState(false);
   const [activeIdx, setActiveIdx] = useState(0);
+  const [touchStart, setTouchStart] = React.useState(0);
+  const [touchEnd, setTouchEnd] = React.useState(0);
+  const [startY, setStartY] = React.useState(0);
+  const [endY, setEndY] = React.useState(0);
   const bigLength = items.length;
 
   const prevClick = (jump = 1) => {
@@ -147,6 +151,29 @@ const Work = () => {
     setActiveIdx((length - (items[0] % length)) % length) // prettier-ignore
   }, [items]);
 
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+    setStartY(e.targetTouches[0].clientY);
+}
+
+const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+    setEndY(e.targetTouches[0].clientY);
+}
+
+const handleTouchEnd = () => {
+    if (Math.abs(startY - endY) < Math.abs(touchStart - touchEnd)) {
+        if (touchStart - touchEnd > 150) {
+            nextClick()
+        }
+
+        if (touchStart - touchEnd < -150) {
+           prevClick()
+        }
+        setIsTicking(true);
+    }
+}
+
   return (
     <div className="container">
       <div className="row d-flex justify-content-center">
@@ -160,7 +187,11 @@ const Work = () => {
           <div className="carousel__inner">
 
             <div className="carousel__container">
-              <ul className="carousel__slide-list">
+              <ul 
+              onTouchStart={touchStartEvent => handleTouchStart(touchStartEvent)}
+              onTouchMove={touchMoveEvent => handleTouchMove(touchMoveEvent)}
+              onTouchEnd={() => handleTouchEnd()}
+              className="carousel__slide-list">
                 {items.map((pos, i) => (
                   <CarouselSlideItem
                     key={i}
