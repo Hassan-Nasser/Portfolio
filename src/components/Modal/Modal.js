@@ -8,6 +8,8 @@ import GooglePlay from '../../images/google-play.png';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from '@fortawesome/fontawesome-free-solid';
 
+
+
 const Modal = ({ project, closeModal }) => {
 
     const { isModal, setIsModal } = useContext(AppContext);
@@ -34,11 +36,11 @@ const Modal = ({ project, closeModal }) => {
             // myContainer.current.addEventListener("wheel", disablePreventDefault, false);
             // myContainer.current.focus();
         }
-        if (iframeContainer && iframeContainer.current) {
-            iframeContainer.current.contentWindow.addEventListener("wheel", disableScrollInIframe, { passive: false });
-            iframeContainer.current.contentWindow.addEventListener("scroll", disableScrollInIframe, { passive: false });
-        }
-        return iframeContainer.current.contentWindow.removeEventListener("wheel", disableScrollInIframe);
+        // if (iframeContainer && iframeContainer.current) {
+        //     iframeContainer.current.contentWindow.addEventListener("wheel", disableScrollInIframe, { passive: false });
+        //     iframeContainer.current.contentWindow.addEventListener("scroll", disableScrollInIframe, { passive: false });
+        // }
+        // return iframeContainer.current.contentWindow.removeEventListener("wheel", disableScrollInIframe);
     }, []);
     const videoLoad = (e) => {
         console.log('videoLoaded');
@@ -56,9 +58,11 @@ const Modal = ({ project, closeModal }) => {
                 <FontAwesomeIcon
                     onClick={() => { setIsModal(false); closeModal(); }}
                     className="close-btn pointer" icon={faTimes} />
-                <div onScroll={e=>{e.preventDefault();console.log("HEY")}} className="video">
+                <div onScroll={e => { e.preventDefault(); console.log("HEY") }} className="video">
+
                     <iframe
                         // onLoadStart={(e) => videoLoad(e)}
+                        referrerPolicy="origin-when-cross-origin"
                         ref={iframeContainer}
                         title={project.name}
                         src={project.url ? project.url : NoVideo}
@@ -67,7 +71,7 @@ const Modal = ({ project, closeModal }) => {
                         seamless="seamless"
                         allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
-                    ></iframe>
+                    />
                 </div>
                 <Tag className="tag" isModal={true} tags={project.tags} />
 

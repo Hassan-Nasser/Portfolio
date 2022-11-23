@@ -92,6 +92,13 @@ iframe {
 	margin: 0 auto;
 	overflow: hidden;
 }
+iframe:focus {
+	outline: none;overflow: hidden;
+  }
+  
+  iframe[seamless] {
+	display: block;overflow: hidden;
+  }
 
 .video {
 	display: block;

@@ -2,15 +2,14 @@ import { Component } from "react";
 import "./Portfolio.scss";
 import Modal from "../Modal/Modal";
 import Tag from "../Tag/Tag";
-import Carousel from "../Carousel/Carousel";
 import Project from "../Project/Project";
 import { db } from "../../config/firebase";
 import { collection, getDocs } from 'firebase/firestore/lite';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper';
 import "swiper/css";
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -32,7 +31,8 @@ class Portfolio extends Component {
       isLoaded: false,
       isModalOpen: false,
       swiper: null,
-      active: 0
+      active: 0,
+      currentTagIndex: -1
     };
   }
 
@@ -52,7 +52,7 @@ class Portfolio extends Component {
   getProjects = async () => {
     const projects = await firebase.firestore().collection('projects').orderBy("order").get();
     const projectList = projects.docs.map(doc => doc.data());
-    this.setState({ projects: projectList });
+    this.setState({ projects: projectList, projectswithTag: projectList });
   }
   getTags = async (db) => {
     const tags = collection(db, 'tags');
@@ -68,13 +68,10 @@ class Portfolio extends Component {
 
   getProjectsWithTag = async (tagId) => {
     const tagRef = firebase.firestore().collection('tags').doc(tagId);
-    const projects = await firebase.firestore().collection('projects').where('tags', 'array-contains', tagRef).orderBy("order").get();
+    const projects = await firebase.firestore().collection('projects').where('tags', 'array-contains', tagRef).get();
     const projectListwithTag = projects.docs.map(doc => doc.data());
     this.setState({ projectswithTag: projectListwithTag });
 
-  }
-  onSelectTap = (event) => {
-    this.getProjectsWithTag(event)
   }
 
   setShow = (currentProject) => {
@@ -84,7 +81,14 @@ class Portfolio extends Component {
   closeModal = () => {
     this.setState({ isModalOpen: false });
   }
+  onSlideClick = (tagId, index) => {
+    this.setState({ currentTagIndex: index });
+    if (tagId !== -1)
+      this.getProjectsWithTag(tagId);
+    else
+      this.setState({ projectswithTag: this.state.projects });
 
+  }
   render() {
     if (!this.state.isLoaded) {
       return null;
@@ -105,80 +109,34 @@ class Portfolio extends Component {
           {this.state.isModalOpen &&
             <Modal project={this.state.currentProject} closeModal={() => this.closeModal()} />
           }
-          {/* <Tabs
-              defaultActiveKey="0"
-              id="uncontrolled-tab-example"
-              className="mb-3"
-              onSelect={(e) => this.onSelectTap(e)}
-              justify
-            >
 
-              <Tab eventKey="0" title="All">
-                <Carousel
-                  ssr={false}
-                  infinite
-                  swipeable
-                  draggable={false}
-                  ref={el => (this.Carousel = el)}
-                  partialVisbile={false}
-                  itemClass="slider-image-item"
-                  responsive={responsive}
-                  containerClass="carousel-container-with-scrollbar"
-                  autoPlay={false}
-                  shouldResetAutoplay={false}
-                >
-                  {this.state.projects && this.state.projects.map((project) =>
-                    <Project
-                      key={project.name}
-                      tagsExist={true}
-                      project={project}
-                      headerPosition="normal-header-position"
-                      showModal={() => this.setShow(true, project)} />
-                  )}
-                </Carousel>
-              </Tab>
-              {this.state.tags && this.state.tags.map(tag =>
-
-                <Tab key={tag.id} eventKey={tag.id} title={tag.name}>
-                  <Carousel
-                    ssr={false}
-                    infinite
-                    swipeable
-                    draggable={false}
-                    ref={el => (this.Carousel = el)}
-                    partialVisbile={false}
-                    itemClass="slider-image-item"
-                    responsive={responsive}
-                    containerClass="carousel-container-with-scrollbar"
-                    autoPlay={false}
-                    shouldResetAutoplay={false}
-                  >
-                    {this.state.projectswithTag && this.state.projectswithTag.map((project) =>
-                      <Project
-                        key={project.name}
-                        tagsExist={true}
-                        project={project}
-                        headerPosition="normal-header-position"
-                        showModal={() => this.setShow(true, project)} />
-                    )}
-                  </Carousel>
-                </Tab>
-
-              )}
-            </Tabs> */}
-          {/* <Carousel>
-            {
-              this.state.projects && this.state.projects.map((project, i) => (
-                <div className="card" key={i}>
-                  <Project
-                    key={project.name}
-                    tagsExist={true}
-                    project={project}
-                    headerPosition="normal-header-position"
-                    showModal={() => { this.setShow(project) }} />
-                </div>
-              ))}
-          </Carousel> */}
+          <Swiper
+            breakpoints={{
+              300: {
+                slidesPerView: 3,
+                spaceBetween: 10
+              },
+              // when window width is >= 640px
+              640: {
+                slidesPerView: 6,
+                spaceBetween: 10
+              }
+            }}
+            navigation={{ clickable: true }}
+            modules={[Navigation]}
+            loop={true}
+          >
+            <SwiperSlide
+              onClick={() => this.onSlideClick(-1, -1)}
+              style={{ backgroundColor: this.state.currentTagIndex == -1 && "blue" }}
+              className="tag-filter prototype">All</SwiperSlide>
+            {this.state.tags && this.state.tags.map((tag, i) =>
+              <SwiperSlide
+                style={{ backgroundColor: this.state.currentTagIndex == i && "blue" }}
+                onClick={() => this.onSlideClick(tag.id, i)} className="tag-filter prototype" key={tag.id}>
+                {tag.name}
+              </SwiperSlide>)}
+          </Swiper>
 
           <Swiper
             initialSlide={3}
@@ -186,11 +144,10 @@ class Portfolio extends Component {
             onSwiper={(swiper) => { this.setState({ swiper, active: 0 }) }}
             onSlideChange={() => {
               if (this.state.swiper) {
-                this.setState({ active: this.state.swiper.realIndex  })
+                this.setState({ active: this.state.swiper.realIndex })
               }
             }}
             slidesPerView={3}
-            // spaceBetween={-30}
             pagination={{
               clickable: true,
             }}
@@ -198,7 +155,7 @@ class Portfolio extends Component {
             modules={[Navigation]}
             loop={true}
             breakpoints={{
-             
+
               300: {
                 slidesPerView: 1,
                 spaceBetween: 10
@@ -211,12 +168,12 @@ class Portfolio extends Component {
             }}
           >
             {
-              this.state.projects && this.state.projects.map((project, i) => (
+              this.state.projectswithTag && this.state.projectswithTag.map((project, i) => (
                 <SwiperSlide
                   key={i}
                   style={{
-                    // width: i == this.state.active ? "95%" : "20%" ,
-                    height: i == this.state.active ? "90%" : "90%",
+                    // width: i == this.state.active ? "313.333px" : "200px" ,
+                    height: i == this.state.active ? "90%" : "70%",
 
                     '--active': i === this.state.active ? 1 : 0,
                     '--offset': (this.state.active - i) / 3.2,

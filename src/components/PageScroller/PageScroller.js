@@ -276,7 +276,6 @@ class PageScroller extends Component {
     if (this.state.disableScroll)
       return;
 
-    console.log(slide);
     if (slide >= 0 && slide < this.state.slidesCount) {
       this._isScrollPending = true;
       this.setState({

@@ -73,3 +73,9 @@ $card-size: 23em;
     transform: translateX(100%) translatey(-50%);
   }
 }
+
+.tag-filter{
+  border-radius: 7px;
+  background: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
