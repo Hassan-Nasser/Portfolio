@@ -36,10 +36,6 @@ class Portfolio extends Component {
     };
   }
 
-  handleChange = (event, newValue) => {
-    this.setState({ value: newValue });
-  };
-
   componentDidMount() {
     this.getProjects();
     this.getTags(db);
@@ -140,16 +136,17 @@ class Portfolio extends Component {
           </Swiper>
 
           <Swiper
-         
+
             initialSlide={3}
             centeredSlides={true}
+
             onSwiper={(swiper) => { this.setState({ swiper, active: 0 }) }}
             onSlideChange={() => {
               if (this.state.swiper) {
                 this.setState({ active: this.state.swiper.realIndex })
               }
             }}
-            slidesPerView={3}
+            // slidesPerView={3}
             pagination={{
               clickable: true,
             }}
@@ -159,12 +156,14 @@ class Portfolio extends Component {
             breakpoints={{
 
               300: {
-                slidesPerView: 1,
-                spaceBetween: 10
+                slidesPerView: 1, centeredSlides: true,
+                spaceBetween: 10,
+                initialSlide: 1
+
               },
               // when window width is >= 640px
-              640: {
-                slidesPerView: 3,
+              600: {
+                slidesPerView: 3, centeredSlides: true,
                 spaceBetween: 10
               }
             }}
@@ -173,7 +172,7 @@ class Portfolio extends Component {
               this.state.projectswithTag && this.state.projectswithTag.map((project, i) => (
                 <SwiperSlide
                   key={i}
-                  
+
                   style={{
                     // width: i == this.state.active ? "313.333px" : "200px" ,
                     // height: i == this.state.active ? "90%" : "70%",
