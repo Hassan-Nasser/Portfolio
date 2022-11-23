@@ -28,7 +28,7 @@
 }
 
 .nav-logo {
-    color: #f5b921;
+    color: #276BB0;
     align-items: center;
     margin-left: 20px;
     cursor: pointer;
@@ -68,12 +68,12 @@
 
 .nav-item:hover:after {
     width: 100%;
-    background: #ffdd40;
+    background: #276BB0;
 }
 
 .nav-item.active {
-    color: #ffdd40;
-    border: 1px solid #ffdd40;
+    color: #276BB0;
+    border: 1px solid #276BB0;
 }
 
 .nav-icon {
