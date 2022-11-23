@@ -38,18 +38,22 @@ $card-size: 23em;
 }
 
 .card {
+  background-color: rgba(245, 245, 245, 0.5); 
   position: relative;
   width: 100%;
   height: 97%;
   padding: 0.3rem;
-  background-color: hsl(280deg, 40%, calc(100% - var(--abs-offset) * 50%));
   border-radius: 1rem;
   color: $color-gray;
   transition: all 0.3s ease-out;
+  margin: 0 auto;
 }
-.card { background-color: rgba(245, 245, 245, 0.5); }
 .card-header, .card-footer { opacity: 1}
-
+@media screen and (max-width: 500px) {
+.card{
+  width: 73%;
+}
+}
 .nav {
   color: white;
   font-size: 5rem;
@@ -78,4 +82,7 @@ $card-size: 23em;
   border-radius: 7px;
   background: rgba(0, 0, 0, 0.3);
   cursor: pointer;
+}
+.tag-swipper{
+  margin-bottom: 8px;
 }

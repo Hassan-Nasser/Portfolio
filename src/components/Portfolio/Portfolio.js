@@ -125,6 +125,7 @@ class Portfolio extends Component {
             navigation={{ clickable: true }}
             modules={[Navigation]}
             loop={true}
+            className="tag-swipper"
           >
             <SwiperSlide
               onClick={() => this.onSlideClick(-1, -1)}
@@ -139,6 +140,7 @@ class Portfolio extends Component {
           </Swiper>
 
           <Swiper
+         
             initialSlide={3}
             centeredSlides={true}
             onSwiper={(swiper) => { this.setState({ swiper, active: 0 }) }}
@@ -171,9 +173,10 @@ class Portfolio extends Component {
               this.state.projectswithTag && this.state.projectswithTag.map((project, i) => (
                 <SwiperSlide
                   key={i}
+                  
                   style={{
                     // width: i == this.state.active ? "313.333px" : "200px" ,
-                    height: i == this.state.active ? "90%" : "70%",
+                    // height: i == this.state.active ? "90%" : "70%",
 
                     '--active': i === this.state.active ? 1 : 0,
                     '--offset': (this.state.active - i) / 3.2,
