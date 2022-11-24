@@ -66,7 +66,12 @@ class Portfolio extends Component {
     const tagRef = firebase.firestore().collection('tags').doc(tagId);
     const projects = await firebase.firestore().collection('projects').where('tags', 'array-contains', tagRef).get();
     const projectListwithTag = projects.docs.map(doc => doc.data());
-    this.setState({ projectswithTag: projectListwithTag });
+    this.setState({ projectswithTag: projectListwithTag }, () => {
+      this.state.swiper.updateSlides();
+      this.state.swiper.slideReset();
+      this.state.swiper.slideNext();
+      this.state.swiper.update();
+    });
 
   }
 
@@ -78,11 +83,17 @@ class Portfolio extends Component {
     this.setState({ isModalOpen: false });
   }
   onSlideClick = (tagId, index) => {
-    this.setState({ currentTagIndex: index });
+
+    this.setState({ currentTagIndex: index, });
     if (tagId !== -1)
       this.getProjectsWithTag(tagId);
     else
-      this.setState({ projectswithTag: this.state.projects });
+      this.setState({ projectswithTag: this.state.projects }, () => {
+        this.state.swiper.updateSlides();
+        this.state.swiper.slideReset();
+        this.state.swiper.slideNext();
+        this.state.swiper.update();
+      });
 
   }
   render() {
@@ -136,10 +147,11 @@ class Portfolio extends Component {
           </Swiper>
 
           <Swiper
-
-            initialSlide={3}
+            watchOverflow={false}
             centeredSlides={true}
-
+            roundLengths={true}
+            centeredSlidesBounds={true}
+            observer={true}
             onSwiper={(swiper) => { this.setState({ swiper, active: 0 }) }}
             onSlideChange={() => {
               if (this.state.swiper) {
@@ -157,32 +169,30 @@ class Portfolio extends Component {
 
               300: {
                 slidesPerView: 1, centeredSlides: true,
-                spaceBetween: 10,
+                spaceBetween: 5,
                 initialSlide: 1
 
               },
               // when window width is >= 640px
               600: {
-                slidesPerView: 3, centeredSlides: true,
-                spaceBetween: 10
+                initialSlide: 3,
+                slidesPerView: 3,
+                centeredSlides: true,
+                spaceBetween: 5
               }
             }}
           >
             {
               this.state.projectswithTag && this.state.projectswithTag.map((project, i) => (
+
                 <SwiperSlide
                   key={i}
-
+                  virtualIndex={i}
                   style={{
-                    // width: i == this.state.active ? "313.333px" : "200px" ,
-                    // height: i == this.state.active ? "90%" : "70%",
-
                     '--active': i === this.state.active ? 1 : 0,
-                    '--offset': (this.state.active - i) / 3.2,
-                    '--direction': Math.sign(this.state.active - i),
-                    '--abs-offset': Math.abs(this.state.active - i) / 2,
                     'pointerEvents': this.state.active === i ? 'auto' : 'none',
                     'opacity': i == this.state.active ? '1' : '0.6',
+                    'transform': i == this.state.active ? 'scale(1)' : 'scale(0.7)',
                   }}
                 >
 
@@ -196,6 +206,7 @@ class Portfolio extends Component {
                   </div>
 
                 </SwiperSlide>
+
               ))}
           </Swiper>
         </div>
