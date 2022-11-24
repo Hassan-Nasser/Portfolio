@@ -91,7 +91,7 @@ const CarouselSlideItem = ({ pos, idx, activeIdx }) => {
 
   return (
 
-    <li  className="box style1 carousel__slide-item" style={item.styles} >
+    <li className="box style1 carousel__slide-item" style={item.styles} >
       <div className="work-contain">
         <div className="image-icon ">
           <img src={item.work.image} alt={item.work.title} />
@@ -154,25 +154,23 @@ const Work = () => {
   const handleTouchStart = (e) => {
     setTouchStart(e.targetTouches[0].clientX);
     setStartY(e.targetTouches[0].clientY);
-}
+  }
 
-const handleTouchMove = (e) => {
+  const handleTouchMove = (e) => {
     setTouchEnd(e.targetTouches[0].clientX);
     setEndY(e.targetTouches[0].clientY);
-}
+  }
 
-const handleTouchEnd = () => {
+  const handleTouchEnd = () => {
     if (Math.abs(startY - endY) < Math.abs(touchStart - touchEnd)) {
-        if (touchStart - touchEnd > 150) {
-            nextClick()
-        }
+      if (touchStart - touchEnd > 0) {
+        nextClick()
+      } else
+        prevClick()
 
-        if (touchStart - touchEnd < -150) {
-           prevClick()
-        }
-        setIsTicking(true);
+      setIsTicking(true);
     }
-}
+  }
 
   return (
     <div className="container">
@@ -187,11 +185,11 @@ const handleTouchEnd = () => {
           <div className="carousel__inner">
 
             <div className="carousel__container">
-              <ul 
-              onTouchStart={touchStartEvent => handleTouchStart(touchStartEvent)}
-              onTouchMove={touchMoveEvent => handleTouchMove(touchMoveEvent)}
-              onTouchEnd={() => handleTouchEnd()}
-              className="carousel__slide-list">
+              <ul
+                onTouchStart={touchStartEvent => handleTouchStart(touchStartEvent)}
+                onTouchMove={touchMoveEvent => handleTouchMove(touchMoveEvent)}
+                onTouchEnd={() => handleTouchEnd()}
+                className="carousel__slide-list">
                 {items.map((pos, i) => (
                   <CarouselSlideItem
                     key={i}

@@ -66,7 +66,7 @@ code {
 	background: #fff;
 	border-radius: 5px;
 	max-width: 100%;
-	margin: 50px auto;
+	margin: 33px auto;
 	padding: 15px;
 	width: 90%;
 	z-index: 2000;
@@ -111,39 +111,20 @@ iframe:focus {
 }
 
 .view {
-	background: #d9d9d9;
+	background-color: rgb(207, 207, 207);
 	border-radius: 8px;
 	padding: 10px;
 	box-sizing: border-box;
-	scrollbar-width: 10px;
+	height: auto;
+	position: relative;
+	top: 5px;
 }
 
-.view::-webkit-scrollbar {
-	/* Fix webkit scrollbar issue
-	 What about Firefox? */
-	visibility: hidden;
-}
 
 .view p {
 	line-height: 1.5rem;
 }
 
-.vtrack {
-	top: 2px;
-	right: 2px;
-	bottom: 2px;
-	width: 10px;
-}
-
-.vthumb {
-	background-color: gray;
-}
-
-.modal-hr {
-	margin: 0.5em 0;
-	position: relative;
-	// bottom: 1.5em;
-}
 
 .scroll-bar {
 	border-radius: 4px;
@@ -154,15 +135,13 @@ iframe:focus {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	width: 35px;
-	height: 35px;
+	width: 30px;
+	height: 30px;
 }
 
 .google-play-link {
-	position: absolute;
-    top: 68.5%;
-	display: inline-block;
-	right: 0;
-	margin-right: 2em;
 	cursor: pointer;
+    position: relative;
+	display: inline-block;
+	margin-top: 2px;
 }

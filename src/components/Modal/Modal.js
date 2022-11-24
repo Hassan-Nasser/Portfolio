@@ -1,7 +1,6 @@
 import "./Modal.scss"
 import { useContext, useEffect, useRef } from "react";
 import Tag from "../Tag/Tag";
-import { Scrollbars } from "react-custom-scrollbars-2";
 import AppContext from "../AppContext";
 import NoVideo from '../../images/no-video.png';
 import GooglePlay from '../../images/google-play.png';
@@ -17,25 +16,20 @@ const Modal = ({ project, closeModal }) => {
     const iframeContainer = useRef();
 
     useEffect(() => {
-        // function disablePreventDefault(e) {
-        //     e.stopPropagation();
-        // }
+        function disablePreventDefault(e) {
+            e.stopPropagation();
+        }
         function disableScrollInIframe(e) {
             console.log("HEY!!");
             e.preventDefault();
         }
-        // function x(e) {
-        //     // e.preventDefault();
-        //     e.stopPropagation();
+
+
+        // if (myContainer && myContainer.current) {
+        //     myContainer.current.addEventListener("wheel", disablePreventDefault, { passive: false });
+        //     myContainer.current.addEventListener("wheel", disablePreventDefault, false);
         //     myContainer.current.focus();
         // }
-
-
-        if (myContainer && myContainer.current) {
-            // myContainer.current.addEventListener("wheel", disablePreventDefault, {passive:false});
-            // myContainer.current.addEventListener("wheel", disablePreventDefault, false);
-            // myContainer.current.focus();
-        }
         // if (iframeContainer && iframeContainer.current) {
         //     iframeContainer.current.contentWindow.addEventListener("wheel", disableScrollInIframe, { passive: false });
         //     iframeContainer.current.contentWindow.addEventListener("scroll", disableScrollInIframe, { passive: false });
@@ -88,19 +82,12 @@ const Modal = ({ project, closeModal }) => {
 
                 )}
                 <div
-                    // ref={myContainer}
-                    style={{ width: "100%", height: "100px" }}>
-                    <Scrollbars
+                className="view"
+                    ref={myContainer}
+                    style={{ width: "100%"}}>
 
-                        autoHeight
-                        autoHeightMax={100}
-                        className="scroll-bar"
-                        renderView={(props) => <div {...props} className="view" />}
-                        renderTrackVertical={(props) => <div {...props} className="vtrack" />}
-                        renderThumbVertical={(props) => <div {...props} className="vthumb" />}
-                    >
-                        <p className="noscroll"  >{project.description}</p>
-                    </Scrollbars>
+                    <p className="noscroll"  >{project.description}</p>
+
                 </div>
             </div>
 
