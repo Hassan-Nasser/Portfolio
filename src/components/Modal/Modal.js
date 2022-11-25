@@ -48,7 +48,7 @@ const Modal = ({ project, closeModal }) => {
             <div className="modal__backdrop" onClick={() => { setIsModal(false); closeModal(); }}></div>
             <div className="modal__container">
 
-                <div className="modal__title font-2" id="example-custom-modal-styling-title">{project.name}</div>
+                <div className="modal__title prototype" id="example-custom-modal-styling-title">{project.name}</div>
                 <FontAwesomeIcon
                     onClick={() => { setIsModal(false); closeModal(); }}
                     className="close-btn pointer" icon={faTimes} />
@@ -82,11 +82,11 @@ const Modal = ({ project, closeModal }) => {
 
                 )}
                 <div
-                className="view"
+                    className="view"
                     ref={myContainer}
-                    style={{ width: "100%"}}>
+                    style={{ width: "100%" }}>
 
-                    <p className="noscroll"  >{project.description}</p>
+                    <p className="noscroll montserrat">{project.description}</p>
 
                 </div>
             </div>

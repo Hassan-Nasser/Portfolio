@@ -37,10 +37,11 @@ const Review = () => {
       <div className="row d-flex justify-content-center">
 
         <Swiper
-        className="review-swiper"
+          className="review-swiper"
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={100}
           loop={true}
+          // navigation={{ nextEl: ".swipper-button-next", prevEl: ".swipper-button-prev" }}
           navigation
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}

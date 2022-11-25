@@ -1,7 +1,3 @@
-$review-slide-count: 9;
-$slide-width: 40rem;
-$mobil-slide-width: 25rem;
-
 .image-review-cover {
     display: inline-block;
     position: relative;
@@ -25,15 +21,8 @@ $mobil-slide-width: 25rem;
     margin-right: 6px;
 }
 
+
 @media screen and (max-width: 770px) {
-    .review-carousel__slide-list {
-        width: calc(#{($review-slide-count+2) * $mobil-slide-width}) !important;
-    }
-
-    .review-carousel__slide-item {
-        width: $mobil-slide-width !important;
-    }
-
     .review-subject {
         font-size: 0.8em;
     }
@@ -42,73 +31,21 @@ $mobil-slide-width: 25rem;
         width: 90%;
         height: 90%;
     }
+
+    .swiper-button-next, .swiper-button-prev {
+        display: none !important;
+    }
+
 }
 
 @media screen and (min-width: 576px) {
-    .review-carousel__slide-list {
-        width: calc(#{($review-slide-count+ 2) * $slide-width});
-    }
-
     .review-swiper {
-        width: 70%;
-        height: 70%;
+        width: 80%;
+        height: 80%;
     }
 
 }
 
-.review-carousel__slide-list {
-    height: 100%;
-    left: 50%;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    transform: translateX(-50%);
-
-}
-
-.review-carousel__slide-item {
-    display: inline-block;
-    margin: 0;
-    padding: 1rem;
-    position: absolute;
-    transition: all 0.3s;
-    width: $slide-width;
-}
-
-.review-carousel__slide-item-img-link {
-    display: flex;
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    text-align: center;
-
-    img {
-        height: 50%;
-        object-fit: cover;
-        transition: all 0.5s ease;
-        width: 50%;
-    }
-
-}
-
-.review-carousel__slide-item__body {
-    bottom: -2.5rem;
-    height: 10%;
-    position: absolute;
-
-    h4 {
-        margin: 0.7rem 0 0;
-        text-transform: uppercase;
-    }
-
-    p {
-        font-size: 1.2rem;
-        line-height: 1.3;
-        margin: 0.7rem 0 0;
-    }
-}
 
 .swiper-slide {
     text-align: center;
@@ -122,10 +59,3 @@ $mobil-slide-width: 25rem;
 .swiper-wrapper {
     align-items: center;
 }
-
-// .swiper-slide img {
-//     display: block;
-//     width: 100%;
-//     height: 100%;
-//     object-fit: cover;
-// }

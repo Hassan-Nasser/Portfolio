@@ -1,4 +1,3 @@
-
 .box.style2 .project-name {
   margin-bottom: 0.25em;
   margin-left: .25em;
@@ -9,7 +8,7 @@
   border-color: white;
   border-width: 5px;
   color: white;
-  font-size: 1.25em;
+  font-size: 1.5em;
   line-height: 1.25em;
 }
 
@@ -24,10 +23,8 @@
 .normal-header-position {
   width: -webkit-fill-available;
   display: block;
-  margin-left: 2%;
-  position: relative;
-  margin: 3.5em auto;
-
+  position: absolute;
+  bottom: 2em;
 }
 
 .box.style2 .image {
@@ -51,11 +48,9 @@
 }
 
 .pbox {
-  // padding: 11px 3px 11px 3px;
-  // margin: 0 0 20px 0 !important;
-
   .project-name {
     margin-bottom: 0.25em;
+    font-size: 1.4em;
   }
 
   .image {
@@ -68,7 +63,7 @@
       // left: 20px;
       // top: 20px;
       // margin: -50px 0 50px -40px;
-      // width: auto;
+      width: 100%;
       height: 100%;
     }
   }
@@ -95,7 +90,7 @@
     display: block;
     width: 100%;
     // height: 70%;
-    border-radius: 10px;
+    border-radius: 7px;
     object-fit: cover;
   }
 
@@ -128,10 +123,12 @@
   padding: 5px;
   text-align: justify;
 }
-.project-image{
-  height: 12em;
-  position: relative;
-    top: 0;
+
+.project-image {
+  height: 10em;
+  position: absolute;
+  top: 0;
+  display: block;
 }
 
 .image {
@@ -139,9 +136,7 @@
   position: relative;
 
   img {
-    display: block;
     width: 100%;
-   
   }
 
   &.fit {

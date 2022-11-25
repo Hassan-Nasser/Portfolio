@@ -77,12 +77,18 @@ code {
 .modal__title {
 	display: inline-block;
 	font-weight: 600;
+	font-size: 1.4em;
 }
 
 .close-btn {
 	position: absolute;
-	right: 2em;
-	top: 1.5em;
+	display: block;
+	top: 0;
+	right: 0;
+	transform: translate(-100%, 40%);
+	font-size: 1.8rem;
+	cursor: pointer;
+
 }
 
 iframe {
@@ -92,13 +98,16 @@ iframe {
 	margin: 0 auto;
 	overflow: hidden;
 }
+
 iframe:focus {
-	outline: none;overflow: hidden;
-  }
-  
-  iframe[seamless] {
-	display: block;overflow: hidden;
-  }
+	outline: none;
+	overflow: hidden;
+}
+
+iframe[seamless] {
+	display: block;
+	overflow: hidden;
+}
 
 .video {
 	display: block;
@@ -106,7 +115,7 @@ iframe:focus {
 	height: 100%;
 	margin: 0 auto;
 	text-align: center;
-	
+
 
 }
 
@@ -125,12 +134,6 @@ iframe:focus {
 	line-height: 1.5rem;
 }
 
-
-.scroll-bar {
-	border-radius: 4px;
-	height: 6em;
-}
-
 .google-play-icon {
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -141,7 +144,13 @@ iframe:focus {
 
 .google-play-link {
 	cursor: pointer;
-    position: relative;
+	position: relative;
 	display: inline-block;
 	margin-top: 2px;
+}
+
+@media screen and (max-width: 960px) {
+	.modal__title {
+		font-size: 1.2em;
+	}
 }
