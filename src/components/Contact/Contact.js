@@ -171,6 +171,7 @@ class Contact extends Component {
               <li>
                 <a
                   href="https://www.upwork.com/freelancers/hassannasser"
+                  rel="noreferrer"
                   target="_blank"
                 >
                   <div className="upwork" style={{ backgroundImage: "url(" + Upwork + ")" }}></div>

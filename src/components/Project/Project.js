@@ -10,7 +10,7 @@ const storage = getStorage();
 
 const Project = ({ project, showModal, tagsExist, headerPosition }) => {
     const [projectImage, setProjectImage] = useState(null);
-    const { isModal, setIsModal } = useContext(AppContext);
+    const { setIsModal } = useContext(AppContext);
     useEffect(() => {
         let isMounted = true;
         getDownloadURL(ref(storage, `${project.name}.jpg`))
@@ -36,10 +36,6 @@ const Project = ({ project, showModal, tagsExist, headerPosition }) => {
             {projectImage
                 ? <img className="project-image" src={projectImage} alt={project.name} />
                 : <img className="project-image" src={require("../../images/grey.png")} alt={project.name} />}
-
-            {/* {projectImage
-                    ? <div className="project-cover" style={{ backgroundImage: "url(" + projectImage + ")" }}></div>
-                    : <img src={require("../../images/grey.png")} alt={project.name} />} */}
 
             {tagsExist && (
                 <Tag isModal={false} className="tag tag-position" tags={project.tags} />

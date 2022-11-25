@@ -1,11 +1,10 @@
-import { useRef, useContext } from "react";
 import "./Profile.scss";
 import Background from '../../images/Title-Frame.png';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import "swiper/css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleRight, faArrowAltCircleLeft } from "@fortawesome/fontawesome-free-solid";
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+
 const SwiperButtonNext = ({ children }) => {
   const swiper = useSwiper();
   return <div onClick={() => swiper.slideNext()}>{children}</div>;

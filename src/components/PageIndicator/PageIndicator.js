@@ -22,16 +22,6 @@ class PageIndicator extends React.Component {
   }
 
   render() {
-    let pageIndicatorStyle = {
-      ...this.props.style,
-      position: 'fixed',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      
-    };
-
-
     return (
       <div className="indicator">
         {this.renderIndicators()}

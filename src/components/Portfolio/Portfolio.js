@@ -1,7 +1,6 @@
 import { Component } from "react";
 import "./Portfolio.scss";
 import Modal from "../Modal/Modal";
-import Tag from "../Tag/Tag";
 import Project from "../Project/Project";
 import { db } from "../../config/firebase";
 import { collection, getDocs } from 'firebase/firestore/lite';
@@ -136,11 +135,11 @@ class Portfolio extends Component {
           >
             <SwiperSlide
               onClick={() => this.onSlideClick(-1, -1)}
-              style={{ backgroundColor: this.state.currentTagIndex == -1 && "blue" }}
+              style={{ backgroundColor: this.state.currentTagIndex === -1 && "blue" }}
               className="tag-filter prototype">All</SwiperSlide>
             {this.state.tags && this.state.tags.map((tag, i) =>
               <SwiperSlide
-                style={{ backgroundColor: this.state.currentTagIndex == i && "blue" }}
+                style={{ backgroundColor: this.state.currentTagIndex === i && "blue" }}
                 onClick={() => this.onSlideClick(tag.id, i)} className="tag-filter prototype" key={tag.id}>
                 {tag.name}
               </SwiperSlide>)}
@@ -191,8 +190,8 @@ class Portfolio extends Component {
                   style={{
                     '--active': i === this.state.active ? 1 : 0,
                     'pointerEvents': this.state.active === i ? 'auto' : 'none',
-                    'opacity': i == this.state.active ? '1' : '0.6',
-                    'transform': i == this.state.active ? 'scale(1)' : 'scale(0.7)',
+                    'opacity': i === this.state.active ? '1' : '0.6',
+                    'transform': i === this.state.active ? 'scale(1)' : 'scale(0.7)',
                   }}
                 >
 

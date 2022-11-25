@@ -1,7 +1,7 @@
 
 import { Component } from "react";
 import "./Tag.scss";
-import { getDoc, DocumentReference } from "firebase/firestore";
+import { getDoc } from "firebase/firestore";
 
 class Tag extends Component {
 

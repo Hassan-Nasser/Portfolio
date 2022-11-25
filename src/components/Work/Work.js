@@ -135,10 +135,6 @@ const Work = () => {
     }
   };
 
-  const handleDotClick = (idx) => {
-    if (idx < activeIdx) prevClick(activeIdx - idx);
-    if (idx > activeIdx) nextClick(idx - activeIdx);
-  };
   const sleep = (ms = 0) => {
     return new Promise((resolve) => setTimeout(resolve, ms));
   };

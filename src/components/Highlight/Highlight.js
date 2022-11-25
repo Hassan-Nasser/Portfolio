@@ -1,6 +1,5 @@
 import { Component } from "react";
 import "./Highlight.scss";
-import Tag from "../Tag/Tag";
 import 'react-multi-carousel/lib/styles.css';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
@@ -14,21 +13,6 @@ import AppContext from "../AppContext";
 import NoImage from '../../images/no-image.png';
 
 const storage = getStorage();
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 1
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 1
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1
-  }
-};
-
 
 class Highlight extends Component {
   static contextType = AppContext;
@@ -109,7 +93,7 @@ class Highlight extends Component {
 
 
   render() {
-    const { isModal, setIsModal,setDisableScroll } = this.context
+    const { setIsModal } = this.context
     return (
 
       <div className="container">
@@ -122,10 +106,8 @@ class Highlight extends Component {
           </header>
         </div>
 
-        <div 
-        className="container-fluid slider"
-        // onTouchStart={() => setDisableScroll(true)}
-        // onTouchEnd={() => setDisableScroll(false)}
+        <div
+          className="container-fluid slider"
         >
           <ImageGallery items={this.state.projectsCover}
             thumbnailPosition="bottom"
