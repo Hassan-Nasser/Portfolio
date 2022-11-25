@@ -135,11 +135,11 @@ class Portfolio extends Component {
           >
             <SwiperSlide
               onClick={() => this.onSlideClick(-1, -1)}
-              style={{ backgroundColor: this.state.currentTagIndex === -1 && "blue" }}
+              style={{ backgroundColor: this.state.currentTagIndex === -1 && "#276BB0" }}
               className="tag-filter prototype">All</SwiperSlide>
             {this.state.tags && this.state.tags.map((tag, i) =>
               <SwiperSlide
-                style={{ backgroundColor: this.state.currentTagIndex === i && "blue" }}
+                style={{ backgroundColor: this.state.currentTagIndex === i && "#276BB0" }}
                 onClick={() => this.onSlideClick(tag.id, i)} className="tag-filter prototype" key={tag.id}>
                 {tag.name}
               </SwiperSlide>)}

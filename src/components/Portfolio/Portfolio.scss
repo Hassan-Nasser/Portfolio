@@ -49,9 +49,9 @@ $card-size: 23em;
   margin: 0 auto;
 }
 .card-header, .card-footer { opacity: 1}
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 900px) {
 .card{
-  width: 73%;
+  width: 83%;
 }
 }
 .nav {
