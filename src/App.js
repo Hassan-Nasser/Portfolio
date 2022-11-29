@@ -33,13 +33,13 @@ class App extends React.Component {
         <Page style={{ backgroundColor: '#488fb1', display: 'flex', alignItems: 'center', justifyContent: 'center' }} nav-title={'Num 3'}>
           <Review />
         </Page>
-        <Page style={{ backgroundColor: '#86ccef', display: 'flex', alignItems: 'center', justifyContent: 'center' }} nav-title={'Num 3'}>
+        <Page style={{ backgroundColor: 'rgb(0 87 131)', display: 'flex', alignItems: 'center', justifyContent: 'center' }} nav-title={'Num 3'}>
           <Highlight />
         </Page>
-        <Page style={{ backgroundColor: '#aeecf5', display: 'flex', alignItems: 'center', justifyContent: 'center' }} nav-title={'Num 4'}>
+        <Page style={{ backgroundColor: 'rgb(71 255 230)', display: 'flex', alignItems: 'center', justifyContent: 'center' }} nav-title={'Num 4'}>
           <Portfolio />
         </Page>
-        <Page style={{ backgroundColor: '#91BBD0', display: 'flex', alignItems: 'center', justifyContent: 'center' }} nav-title={'Num 5'}>
+        <Page style={{ backgroundColor: 'rgb(0 87 131)', display: 'flex', alignItems: 'center', justifyContent: 'center' }} nav-title={'Num 5'}>
           <Contact />
         </Page>
 

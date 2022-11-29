@@ -44,8 +44,8 @@ const Profile = () => {
               <div className="title-profile col-md-12 col-sm-12 col-lg-12 col-12">
                 <div className="intro">
                   <p className="montserrat font-5">
-                    I am a passionate game developer. I enjoy playing games. Because I like to play games, I became interested in game production at a young age.
-
+                    I've been working as a game developer for more than {new Date().getFullYear() - 2017}  years,
+                    I enjoy participating in every aspect of game industry.
                   </p>
                 </div>
 

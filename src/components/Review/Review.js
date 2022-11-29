@@ -38,13 +38,14 @@ const Review = () => {
 
         <Swiper
           className="review-swiper"
-          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          na
+          modules={[Navigation, Pagination,A11y]}
           spaceBetween={100}
           loop={true}
           // navigation={{ nextEl: ".swipper-button-next", prevEl: ".swipper-button-prev" }}
           navigation
           pagination={{ clickable: true }}
-          scrollbar={{ draggable: true }}
+          // scrollbar={{ draggable: true }}
         >
           {reviews.length > 0 && reviews.map((review, i) =>
             <SwiperSlide>

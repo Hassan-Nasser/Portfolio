@@ -1,16 +1,3 @@
-.box.style2 .project-name {
-  margin-bottom: 0.25em;
-  margin-left: .25em;
-  background-color: black;
-  opacity: 0.5;
-  border-radius: 7px;
-  padding: 5px;
-  border-color: white;
-  border-width: 5px;
-  color: white;
-  font-size: 1.5em;
-  line-height: 1.25em;
-}
 
 .hightlight-header-position {
   position: absolute;
@@ -24,7 +11,7 @@
   width: -webkit-fill-available;
   display: block;
   position: absolute;
-  bottom: 2em;
+  bottom: 1em;
 }
 
 .box.style2 .image {
@@ -51,6 +38,7 @@
   .project-name {
     margin-bottom: 0.25em;
     font-size: 1.4em;
+    color: #004b97;
   }
 
   .image {
