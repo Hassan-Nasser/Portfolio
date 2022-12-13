@@ -32,7 +32,8 @@ class Portfolio extends Component {
       isModalOpen: false,
       swiper: null,
       active: 0,
-      currentTagIndex: -1
+      currentTagIndex: -1,
+      slidePerView: 0
     };
   }
 
@@ -49,6 +50,7 @@ class Portfolio extends Component {
     const projects = await firebase.firestore().collection('projects').orderBy("order").get();
     const projectList = projects.docs.map(doc => doc.data());
     this.setState({ projects: projectList, projectswithTag: projectList });
+
   }
   getTags = async (db) => {
     const tags = collection(db, 'tags');
@@ -67,13 +69,32 @@ class Portfolio extends Component {
     const projects = await firebase.firestore().collection('projects').where('tags', 'array-contains', tagRef).get();
     const projectListwithTag = projects.docs.map(doc => doc.data());
     this.setState({ projectswithTag: projectListwithTag }, () => {
+      if (this.state.projectswithTag.length === 1) {
+        this.state.swiper.params.slidesPerView = 1;
+
+      } else {
+        this.state.swiper.params.slidesPerView = 3;
+      }
       this.state.swiper.updateSlides();
       this.state.swiper.slideReset();
       this.state.swiper.slideNext();
       this.state.swiper.update();
+
     });
 
   }
+  // getProjectsWithTag = (tagName) => {
+  //   console.log(this.state.projects);
+  //   const projects = this.state.projects.filter(project =>{console.log(project.tags); return project.tags.includes(tagName)});
+  //   console.log(" === ",projects);
+  //   this.setState({ projectswithTag: projects }, () => {
+  //     this.state.swiper.updateSlides();
+  //     this.state.swiper.slideReset();
+  //     this.state.swiper.slideNext();
+  //     this.state.swiper.update();
+
+  //   });
+  // }
 
   setShow = (currentProject) => {
     this.setState({ isModalOpen: true });
@@ -89,6 +110,7 @@ class Portfolio extends Component {
       this.getProjectsWithTag(tagId);
     else
       this.setState({ projectswithTag: this.state.projects }, () => {
+        this.state.swiper.params.slidesPerView = 3;
         this.state.swiper.updateSlides();
         this.state.swiper.slideReset();
         this.state.swiper.slideNext();
@@ -161,7 +183,6 @@ class Portfolio extends Component {
                 this.setState({ active: this.state.swiper.realIndex })
               }
             }}
-            // slidesPerView={3}
             pagination={{
               clickable: true,
             }}
@@ -172,7 +193,6 @@ class Portfolio extends Component {
             // watchOverflow={true}
             // loop={this.state.projectswithTag && this.state.projectswithTag.length > 1 ? true : false}
             breakpoints={{
-
               300: {
                 slidesPerView: 1, centeredSlides: true,
                 spaceBetween: 5,
