@@ -5,11 +5,14 @@ main {
 	padding: 50px 30px;
 }
 
-p {
-	line-height: 1.4;
-	font-size: 16px;
-	margin-bottom: 30px;
+.view {
+	p {
+		line-height: 1.4;
+		font-size: 16px;
+		margin-bottom: 30px;
+	}
 }
+
 
 code {
 	background: #f4f6fc;
@@ -68,7 +71,7 @@ code {
 	max-width: 100%;
 	margin: 33px auto;
 	padding: 15px;
-	width: 90%;
+	width: 60%;
 	z-index: 2000;
 	position: fixed;
 	top: 0;
@@ -111,7 +114,7 @@ iframe[seamless] {
 
 .video {
 	display: block;
-	width: 100%;
+	width: 80%;
 	height: 100%;
 	margin: 0 auto;
 	text-align: center;
@@ -153,4 +156,23 @@ iframe[seamless] {
 	.modal__title {
 		font-size: 1.2em;
 	}
+
+	.modal__container {
+		width: 90%;
+	}
+
+	.video {
+		width: 100%;
+		height: 70%;
+	}
+
+	.view {
+		p {
+			margin-bottom: 0;
+			font-size: 16px;
+			line-height: 1.35;
+		}
+	}
+
+
 }

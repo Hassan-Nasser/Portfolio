@@ -44,7 +44,7 @@ const Modal = ({ project, closeModal }) => {
     }
 
     return (
-        <>
+        <div className=" d-flex justify-content-center">
             <div className="modal__backdrop" onClick={() => { setIsModal(false); closeModal(); }}></div>
             <div className="modal__container">
 
@@ -91,7 +91,7 @@ const Modal = ({ project, closeModal }) => {
                 </div>
             </div>
 
-        </>
+        </div>
     );
 };
 
