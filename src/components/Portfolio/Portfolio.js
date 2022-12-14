@@ -33,7 +33,7 @@ class Portfolio extends Component {
       swiper: null,
       active: 0,
       currentTagIndex: -1,
-      slidePerView: 0
+      isMobile: false
     };
   }
 
@@ -41,9 +41,15 @@ class Portfolio extends Component {
     this.getProjects();
     this.getTags(db);
     this.setState({ isLoaded: true });
+    window.addEventListener("resize", this.resize.bind(this));
+    this.resize();
   }
   componentWillUnmount() {
     this.setState({ isLoaded: false });
+    window.removeEventListener("resize", this.resize.bind(this));
+  }
+  resize() {
+    this.setState({ isMobile: window.innerWidth <= 760 });
   }
 
   getProjects = async () => {
@@ -69,12 +75,13 @@ class Portfolio extends Component {
     const projects = await firebase.firestore().collection('projects').where('tags', 'array-contains', tagRef).get();
     const projectListwithTag = projects.docs.map(doc => doc.data());
     this.setState({ projectswithTag: projectListwithTag }, () => {
-      if (this.state.projectswithTag.length === 1) {
-        this.state.swiper.params.slidesPerView = 1;
+      if (!this.state.isMobile)
+        if (this.state.projectswithTag.length === 1) {
+          this.state.swiper.params.slidesPerView = 1;
 
-      } else {
-        this.state.swiper.params.slidesPerView = 3;
-      }
+        } else {
+          this.state.swiper.params.slidesPerView = 3;
+        }
       this.state.swiper.updateSlides();
       this.state.swiper.slideReset();
       this.state.swiper.slideNext();
@@ -110,7 +117,8 @@ class Portfolio extends Component {
       this.getProjectsWithTag(tagId);
     else
       this.setState({ projectswithTag: this.state.projects }, () => {
-        this.state.swiper.params.slidesPerView = 3;
+        if (!this.state.isMobile)
+          this.state.swiper.params.slidesPerView = 3;
         this.state.swiper.updateSlides();
         this.state.swiper.slideReset();
         this.state.swiper.slideNext();

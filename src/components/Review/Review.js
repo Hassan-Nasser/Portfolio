@@ -48,7 +48,7 @@ const Review = () => {
           // scrollbar={{ draggable: true }}
         >
           {reviews.length > 0 && reviews.map((review, i) =>
-            <SwiperSlide>
+            <SwiperSlide key={i}>
               <div className="image-review-cover">
                 <img className="image-review" alt={review.name}
                   src={review.url}
