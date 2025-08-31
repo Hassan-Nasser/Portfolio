@@ -22,7 +22,7 @@ const _items = [
   {
     work: {
       title: 'Multiplayer',
-      desc: 'Used different frameworks like Photon and Unet with unity to integrate multiplayer to different kind of games,board games with turn based and Host migration multiplayer, and real-time strategy games.',
+      desc: 'Used different frameworks like Photon and Unet with unity to add multiplayer features to board games, RPG games and turn based games, with both P2P and server-authoritative multiplayer.',
       image: require("../../images/Multiplayer.png"),
     },
   },
